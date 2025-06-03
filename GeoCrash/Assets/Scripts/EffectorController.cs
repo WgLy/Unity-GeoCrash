@@ -21,6 +21,7 @@ public class EffectorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         transform.localScale += new Vector3(
             Time.deltaTime*blowSpeed, 
             Time.deltaTime*blowSpeed, 
