@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     public GameObject perfectEffectorPrefeb;
     public GameObject goodEffectorPrefeb;
     public GameObject missEffectorPrefeb;
+    public GameObject wallPrefeb;
     public SpriteRenderer spriteRenderer;
     public float velocity;
     public Vector3 dir;
@@ -23,7 +24,6 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     public float perfectLimit;
     public float goodLimit;
-    Note theTop;
 
     void Start()
     {
@@ -32,11 +32,10 @@ public class CharacterController : MonoBehaviour
         for(int i=0;i<1000;i++){
             Note tmp = new Note();
             tmp.t = i*0.3333333f;
-            tmp.type = i;
+            tmp.type = i%4+1;
             notes.Enqueue(tmp);
             turns.Enqueue(tmp);
         }
-        theTop = turns.Peek();
     }
 
     // Update is called once per frame
@@ -71,21 +70,49 @@ public class CharacterController : MonoBehaviour
 
         
         if(gameTime >= turns.Peek().t){
-            theTop = turns.Peek();
             turns.Dequeue();
-            SwitchDirction();
+            SwitchDirction(turns.Peek().type);
+            if(turns.Peek().type == 1){
+                GameObject newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position-new Vector3(0,0.6f,0), 
+                    Quaternion.identity
+                );
+            }
+            if(turns.Peek().type == 2){
+                GameObject newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0,0.6f,0), 
+                    Quaternion.identity
+                );
+            }
+            if(turns.Peek().type == 3){
+                GameObject newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.6f,0,0), 
+                    Quaternion.Euler(0f, 0f, 90f)
+                );
+            }
+            if(turns.Peek().type == 4){
+                GameObject newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(-0.6f,0,0), 
+                    Quaternion.Euler(0f, 0f, 90f)
+                );
+            }
         }
     }
 
-    void SwitchDirction(){
-        if(dir == new Vector3(1, 1, 0)){
-            dir = new Vector3(-1, 1, 0);
-        }else if(dir == new Vector3(-1, 1, 0)){
-            dir = new Vector3(-1, -1, 0);
-        }else if(dir == new Vector3(-1, -1, 0)){
+    void SwitchDirction(int dirIndex){
+        if(dirIndex == 1){
             dir = new Vector3(1, -1, 0);
-        }else if(dir == new Vector3(1, -1, 0)){
-            dir = new Vector3(1, 1, 0);
+        }else if(dirIndex == 2){
+            dir = new Vector3(-1, -1, 0);
+        }else if(dirIndex == 3){
+            dir = new Vector3(1, -1, 0);
+        }else if(dirIndex == 4){
+            dir = new Vector3(-1, -1, 0);
         }
+        
     }
 }
