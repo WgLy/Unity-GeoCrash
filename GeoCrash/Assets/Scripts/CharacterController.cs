@@ -94,7 +94,7 @@ public class CharacterController : MonoBehaviour
     {
         gameTime += Time.deltaTime;
 
-        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=0)?1:0);
+        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
         // if(Input.anyKeyDown){
         //     GameObject newEffector = Instantiate(effectorPrefeb, transform.position, Quaternion.identity); // copy a new prefeb
         // }
