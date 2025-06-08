@@ -19,17 +19,28 @@ public class CharacterController : MonoBehaviour
         public float t;
         public int type;
     };
+    struct Hold{
+        public float t_begin,t_end;
+        public int type;
+    };
     Queue<Note> notes = new Queue<Note>();
+    Queue<Hold> holds = new Queue<Hold>();
     Queue<Note> turns = new Queue<Note>();
     public float gameTime;
     // Start is called before the first frame update
     public float perfectLimit;
     public float goodLimit;
+    public AudioSource audioSource;
+    public bool isPlayingMusic;
+    public bool autoPlay;
+    bool canCatchHold;
+    public float deviation; // 單位為毫秒
 
     void Start()
     {
         gameTime = 0.00000f-8*60/BPM;
         dir = new Vector3(1, 1, 0);
+        isPlayingMusic = false;
 //            2
 //        4       3
 //            1
@@ -79,7 +90,58 @@ public class CharacterController : MonoBehaviour
         AddNote(7, 7.0f, 2);
         AddNote(7, 7.5f, 1);
 
+        // 前奏B
+        AddNote(8, 0.0f, 2);
+        AddNote(8, 1.0f, 1);
+        AddHold(8, 2.0f, 3.0f, 1);
+        AddNote(8, 3.5f, 2);
+        AddNote(8, 4.5f, 1);
+        AddNote(8, 5.0f, 2);
+        AddNote(8, 5.5f, 1);
+        AddNote(8, 6.0f, 2);
+        AddNote(8, 6.5f, 1);
+        AddNote(8, 7.0f, 2);
+        AddNote(8, 7.5f, 1);
 
+        AddNote(9, 0.0f, 2);
+        AddNote(9, 1.0f, 1);
+        AddHold(9, 2.0f, 3.0f, 1);
+        AddNote(9, 3.5f, 2);
+        AddNote(9, 4.5f, 1);
+        AddNote(9, 5.0f, 2);
+        AddNote(9, 5.5f, 1);
+        AddNote(9, 6.0f, 2);
+        AddNote(9, 6.5f, 1);
+        AddNote(9, 7.0f, 2);
+        AddNote(9, 7.5f, 1);
+
+        AddNote(10, 0.0f, 2);
+        AddNote(10, 1.0f, 1);
+        AddHold(10, 2.0f, 3.0f, 1);
+        AddNote(10, 3.5f, 2);
+        AddNote(10, 4.5f, 1);
+        AddNote(10, 5.0f, 2);
+        AddNote(10, 5.5f, 1);
+        AddNote(10, 6.0f, 2);
+        AddNote(10, 6.5f, 1);
+        AddNote(10, 7.0f, 2);
+        AddNote(10, 7.5f, 1);
+
+        AddNote(11, 0.0f, 4);
+        AddNote(11, 0.5f, 3);
+        AddNote(11, 1.5f, 4);
+        AddNote(11, 2.0f, 3);
+        AddNote(11, 3.0f, 4);
+        AddNote(11, 3.5f, 3);
+        AddNote(11, 4.5f, 4);
+        AddNote(11, 5.0f, 3);
+        AddHold(11, 6.0f, 7.0f, 1);
+
+        // 主歌A
+        
+
+        AddNote(0, 4000f, 1);
+        AddHold(0, 4000.0f, 5000.5f, 1);
         // for(int i=0;i<1000;i++){
         //     Note tmp = new Note();
         //     tmp.t = i*60.0f/BPM;
@@ -92,9 +154,14 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameTime += Time.deltaTime;
+        gameTime += Time.deltaTime; // 讓時間流動
 
-        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
+        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0); // 移動
+
+        if(gameTime >= deviation*0.001 && !isPlayingMusic){
+            audioSource.Play();
+            isPlayingMusic = true;
+        }
         // if(Input.anyKeyDown){
         //     GameObject newEffector = Instantiate(effectorPrefeb, transform.position, Quaternion.identity); // copy a new prefeb
         // }
@@ -138,12 +205,19 @@ public class CharacterController : MonoBehaviour
             }
         }
         */
+        if(autoPlay){ // 自動演奏
+            if(gameTime>=notes.Peek().t){
+                GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
+                notes.Dequeue();
+            }
+        }
 
-        if(Input.anyKeyDown){
+
+        if(Input.anyKeyDown || !autoPlay){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 notes.Dequeue();
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
-            }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit ){
+            }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 notes.Dequeue();
                 GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
             }
@@ -152,44 +226,62 @@ public class CharacterController : MonoBehaviour
             notes.Dequeue();
             GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
         }
-        
 
+        if(gameTime < holds.Peek().t_begin){ // 長條判定
+            canCatchHold = true;
+        }
+        else if(gameTime >= holds.Peek().t_begin+goodLimit && gameTime < holds.Peek().t_end-goodLimit){
+            if( (!Input.anyKey || !canCatchHold) && !autoPlay ){
+                canCatchHold = false;
+                GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
+                newEffector.GetComponent<EffectorController>().blowSpeed = 2;
+                newEffector.GetComponent<EffectorController>().fadeSpeed = 2;
+            }else{
+                GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
+                newEffector.GetComponent<EffectorController>().blowSpeed = 2;
+                newEffector.GetComponent<EffectorController>().fadeSpeed = 2;
+            }
+        }else if(gameTime >= holds.Peek().t_end){
+            holds.Dequeue();
+        }
         
-        if(gameTime >= turns.Peek().t){
+        if(gameTime >= turns.Peek().t){  // 碰撞轉向與製造牆壁
             turns.Dequeue();
-            SwitchDirction(turns.Peek().type);
-            if(turns.Peek().type == 1 || Input.GetKeyDown(KeyCode.A)){ //down
+            SwitchDirction(turns.Peek().type); // 轉向
+            /*  // 造牆
+            if(turns.Peek().type == 1){ //down
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position-new Vector3(0,0.6f,0), 
                     Quaternion.identity
                 );
             }
-            if(turns.Peek().type == 2 || Input.GetKeyDown(KeyCode.S)){ //up
+            if(turns.Peek().type == 2){ //up
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0,0.6f,0), 
                     Quaternion.identity
                 );
             }
-            if(turns.Peek().type == 3 || Input.GetKeyDown(KeyCode.D)){ //right
+            if(turns.Peek().type == 3){ //right
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f)
                 );
             }
-            if(turns.Peek().type == 4 || Input.GetKeyDown(KeyCode.F)){ //left
+            if(turns.Peek().type == 4){ //left
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(-0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f)
                 );
             }
+            */
         }
     }
 
-    void SwitchDirction(int dirIndex){
+    void SwitchDirction(int dirIndex){  //轉向函式
         if(dirIndex == 1){ //down
             if(dir.y==1) Debug.Log("ERROR");
             dir.y *= -1;
@@ -206,11 +298,19 @@ public class CharacterController : MonoBehaviour
         
     }
 
-    void AddNote(int p,float t,int type){
+    void AddNote(int p,float t,int type){  // 加入音符函式
         Note tmp = new Note();
         tmp.t = (t+p*8)*60.0f/BPM;
         tmp.type = type;
         notes.Enqueue(tmp);
         turns.Enqueue(tmp);
+    }
+
+    void AddHold(int p,float t_b,float t_e,int type){  // 加入長條函式
+        Hold tmp = new Hold();
+        tmp.t_begin = (t_b+p*8)*60.0f/BPM;
+        tmp.t_end = (t_e+p*8)*60.0f/BPM;
+        tmp.type = type;
+        holds.Enqueue(tmp);
     }
 }
