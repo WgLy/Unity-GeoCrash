@@ -36,112 +36,178 @@ public class CharacterController : MonoBehaviour
     bool canCatchHold;
     public float deviation; // 單位為毫秒
 
+    void FillTheQueue(){
+        //        2
+        //    4       3 
+        //        1
+        AddNote(0, 0.0f, 2);
+        AddNote(0, 1.5f, 1);
+        AddNote(0, 3.0f, 2);
+        AddNote(0, 3.5f, 1);
+        AddNote(0, 4.0f, 2);
+        AddNote(0, 5.5f, 1);
+        AddNote(0, 7.0f, 2);
+        AddNote(0, 7.5f, 1);
+        AddNote(1, 0.0f, 2);
+        AddNote(1, 1.5f, 1);
+        AddNote(1, 3.0f, 2);
+        AddNote(1, 3.5f, 1);
+        AddNote(1, 6.0f, 2);
+        AddNote(1, 6.5f, 1);
+        AddNote(1, 7.0f, 2);
+        AddNote(2, 0.0f, 1);
+        AddNote(2, 1.5f, 2);
+        AddNote(2, 3.0f, 1);
+        AddNote(2, 4.0f, 2);
+        AddNote(2, 5.0f, 1);
+        AddNote(2, 5.5f, 2);
+        AddNote(2, 6.5f, 1);
+        AddNote(2, 7.5f, 2);
+        AddNote(3, 0.0f, 1);
+        AddNote(3, 2.0f, 2);
+        AddNote(3, 3.0f, 1);
+        AddNote(3, 4.0f, 2);
+        AddNote(3, 6.0f, 1);
+        AddNote(3, 6.5f, 2);
+        AddNote(3, 7.0f, 1);
+        AddNote(3, 7.5f, 3);
+
+        AddNote(4, 0.0f, 4);
+        AddNote(5, 0.0f, 3);
+        AddNote(6, 0.0f, 2);
+        AddNote(7, 0.0f, 1);
+        AddNote(7, 2.0f, 2);
+        AddNote(7, 4.0f, 1);
+        AddNote(7, 4.5f, 2);
+        AddNote(7, 5.0f, 1);
+        AddNote(7, 5.5f, 2);
+        AddNote(7, 6.0f, 1);
+        AddNote(7, 6.5f, 2);
+        AddNote(7, 7.0f, 1);
+        AddNote(7, 7.5f, 2);
+
+        // 前奏B
+        AddNote(8, 0.0f, 1);
+        AddNote(8, 1.0f, 2);
+        AddHold(8, 2.0f, 3.0f, 1);
+        AddNote(8, 3.5f, 1);
+        AddNote(8, 4.5f, 2);
+        AddNote(8, 5.0f, 1);
+        AddNote(8, 5.5f, 2);
+        AddNote(8, 6.0f, 1);
+        AddNote(8, 6.5f, 2);
+        AddNote(8, 7.0f, 1);
+        AddNote(8, 7.5f, 2);
+
+        AddNote(9, 0.0f, 1);
+        AddNote(9, 1.0f, 2);
+        AddHold(9, 2.0f, 3.0f, 1);
+        AddNote(9, 3.5f, 1);
+        AddNote(9, 4.5f, 2);
+        AddNote(9, 5.0f, 1);
+        AddNote(9, 5.5f, 2);
+        AddNote(9, 6.0f, 1);
+        AddNote(9, 6.5f, 2);
+        AddNote(9, 7.0f, 1);
+        AddNote(9, 7.5f, 2);
+
+        AddNote(10, 0.0f, 1);
+        AddNote(10, 1.0f, 2);
+        AddHold(10, 2.0f, 3.0f, 1);
+        AddNote(10, 3.5f, 1);
+        AddNote(10, 4.5f, 2);
+        AddNote(10, 5.0f, 1);
+        AddNote(10, 5.5f, 2);
+        AddNote(10, 6.0f, 1);
+        AddNote(10, 6.5f, 2);
+        AddNote(10, 7.0f, 1);
+        AddNote(10, 7.5f, 4);
+
+        AddNote(11, 0.0f, 3);
+        AddNote(11, 0.5f, 4);
+        AddNote(11, 1.5f, 3);
+        AddNote(11, 2.0f, 4);
+        AddNote(11, 3.0f, 3);
+        AddNote(11, 3.5f, 4);
+        AddNote(11, 4.5f, 3);
+        AddNote(11, 5.0f, 4);
+        AddHold(11, 6.0f, 7.0f, 1);
+
+        // 主歌A
+        AddNote(12, 0.0f, 3);
+        AddNote(12, 1.0f, 2);
+        AddNote(12, 3.0f, 1);
+        AddNote(12, 4.5f, 4);
+        AddNote(12, 5.0f, 3);
+        AddNote(12, 5.5f, 2);
+        AddNote(12, 6.0f, 1);
+        AddNote(12, 7.0f, 4);
+
+        AddNote(13, 0.0f, 3);
+        AddNote(13, 1.0f, 2);
+        AddNote(13, 3.0f, 1);
+        AddNote(13, 4.5f, 4);
+        AddNote(13, 5.0f, 3);
+        AddNote(13, 5.5f, 2);
+        AddNote(13, 6.0f, 1);
+        AddNote(13, 7.0f, 4);
+
+        AddNote(14, 0.0f, 3);
+        AddNote(14, 1.0f, 2);
+        AddNote(14, 3.0f, 1);
+        AddNote(14, 4.5f, 4);
+        AddNote(14, 5.0f, 3);
+        AddNote(14, 5.5f, 2);
+        AddNote(14, 6.0f, 1);
+        AddNote(14, 7.0f, 4);
+
+        AddNote(15, 0.0f, 3);
+        AddNote(15, 3.0f, 2);
+        AddNote(15, 4.0f, 1);
+        AddNote(15, 6.0f, 2);
+
+        //主歌A-2
+        AddNote(16, 0.0f, 4);
+        AddNote(16, 1.0f, 3);
+        AddNote(16, 3.0f, 1);
+        AddNote(16, 4.5f, 4);
+        AddNote(16, 5.0f, 3);
+        AddNote(16, 5.5f, 2);
+        AddNote(16, 6.0f, 1);
+        AddNote(16, 7.0f, 2);
+
+        AddNote(17, 0.0f, 4);
+        AddNote(17, 1.0f, 3);
+        AddNote(17, 4.0f, 1);
+        AddNote(17, 5.0f, 2);
+        AddNote(17, 6.0f, 1);
+        AddNote(17, 7.0f, 2);
+
+        AddNote(18, 0.0f, 4);
+        AddNote(18, 1.5f, 3);
+        AddNote(18, 3.0f, 1);
+        AddNote(18, 4.5f, 4);
+        AddNote(18, 5.0f, 3);
+        AddNote(18, 5.5f, 2);
+        AddNote(18, 6.0f, 1);
+        AddNote(18, 7.0f, 2);
+
+        AddNote(19, 0.0f, 1);
+
+        // 主歌B
+
+        AddNote(0, 4000f, 1);
+        AddHold(0, 4000.0f, 5000.5f, 1);
+    }
+
     void Start()
     {
         gameTime = 0.00000f-8*60/BPM;
         dir = new Vector3(1, 1, 0);
         isPlayingMusic = false;
-//            2
-//        4       3
-//            1
-        AddNote(0, 0.0f, 1);
-        AddNote(0, 1.5f, 2);
-        AddNote(0, 3.0f, 1);
-        AddNote(0, 3.5f, 2);
-        AddNote(0, 4.0f, 1);
-        AddNote(0, 5.5f, 2);
-        AddNote(0, 7.0f, 1);
-        AddNote(0, 7.5f, 2);
-        AddNote(1, 0.0f, 1);
-        AddNote(1, 1.5f, 2);
-        AddNote(1, 3.0f, 1);
-        AddNote(1, 3.5f, 2);
-        AddNote(1, 6.0f, 1);
-        AddNote(1, 6.5f, 2);
-        AddNote(1, 7.0f, 1);
-        AddNote(2, 0.0f, 2);
-        AddNote(2, 1.5f, 1);
-        AddNote(2, 3.0f, 2);
-        AddNote(2, 4.0f, 1);
-        AddNote(2, 5.0f, 2);
-        AddNote(2, 5.5f, 1);
-        AddNote(2, 6.5f, 2);
-        AddNote(2, 7.5f, 1);
-        AddNote(3, 0.0f, 2);
-        AddNote(3, 2.0f, 1);
-        AddNote(3, 3.0f, 2);
-        AddNote(3, 4.0f, 1);
-        AddNote(3, 6.0f, 2);
-        AddNote(3, 6.5f, 1);
-        AddNote(3, 7.0f, 2);
-        AddNote(3, 7.5f, 1);
-
-        AddNote(4, 0.0f, 3);
-        AddNote(5, 0.0f, 4);
-        AddNote(6, 0.0f, 3);
-        AddNote(7, 0.0f, 2);
-        AddNote(7, 2.0f, 1);
-        AddNote(7, 4.0f, 2);
-        AddNote(7, 4.5f, 1);
-        AddNote(7, 5.0f, 2);
-        AddNote(7, 5.5f, 1);
-        AddNote(7, 6.0f, 2);
-        AddNote(7, 6.5f, 1);
-        AddNote(7, 7.0f, 2);
-        AddNote(7, 7.5f, 1);
-
-        // 前奏B
-        AddNote(8, 0.0f, 2);
-        AddNote(8, 1.0f, 1);
-        AddHold(8, 2.0f, 3.0f, 1);
-        AddNote(8, 3.5f, 2);
-        AddNote(8, 4.5f, 1);
-        AddNote(8, 5.0f, 2);
-        AddNote(8, 5.5f, 1);
-        AddNote(8, 6.0f, 2);
-        AddNote(8, 6.5f, 1);
-        AddNote(8, 7.0f, 2);
-        AddNote(8, 7.5f, 1);
-
-        AddNote(9, 0.0f, 2);
-        AddNote(9, 1.0f, 1);
-        AddHold(9, 2.0f, 3.0f, 1);
-        AddNote(9, 3.5f, 2);
-        AddNote(9, 4.5f, 1);
-        AddNote(9, 5.0f, 2);
-        AddNote(9, 5.5f, 1);
-        AddNote(9, 6.0f, 2);
-        AddNote(9, 6.5f, 1);
-        AddNote(9, 7.0f, 2);
-        AddNote(9, 7.5f, 1);
-
-        AddNote(10, 0.0f, 2);
-        AddNote(10, 1.0f, 1);
-        AddHold(10, 2.0f, 3.0f, 1);
-        AddNote(10, 3.5f, 2);
-        AddNote(10, 4.5f, 1);
-        AddNote(10, 5.0f, 2);
-        AddNote(10, 5.5f, 1);
-        AddNote(10, 6.0f, 2);
-        AddNote(10, 6.5f, 1);
-        AddNote(10, 7.0f, 2);
-        AddNote(10, 7.5f, 1);
-
-        AddNote(11, 0.0f, 4);
-        AddNote(11, 0.5f, 3);
-        AddNote(11, 1.5f, 4);
-        AddNote(11, 2.0f, 3);
-        AddNote(11, 3.0f, 4);
-        AddNote(11, 3.5f, 3);
-        AddNote(11, 4.5f, 4);
-        AddNote(11, 5.0f, 3);
-        AddHold(11, 6.0f, 7.0f, 1);
-
-        // 主歌A
         
-
-        AddNote(0, 4000f, 1);
-        AddHold(0, 4000.0f, 5000.5f, 1);
+        FillTheQueue();
+        
         // for(int i=0;i<1000;i++){
         //     Note tmp = new Note();
         //     tmp.t = i*60.0f/BPM;
@@ -215,16 +281,16 @@ public class CharacterController : MonoBehaviour
 
         if(Input.anyKeyDown || !autoPlay){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
-                notes.Dequeue();
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
-            }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 notes.Dequeue();
+            }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
+                notes.Dequeue();
             }
         }
         if(gameTime > notes.Peek().t + goodLimit){
-            notes.Dequeue();
             GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
+            notes.Dequeue();
         }
 
         if(gameTime < holds.Peek().t_begin){ // 長條判定
@@ -246,8 +312,8 @@ public class CharacterController : MonoBehaviour
         }
         
         if(gameTime >= turns.Peek().t){  // 碰撞轉向與製造牆壁
-            turns.Dequeue();
             SwitchDirction(turns.Peek().type); // 轉向
+            turns.Dequeue();
             /*  // 造牆
             if(turns.Peek().type == 1){ //down
                 GameObject newWallPrefeb = Instantiate(
