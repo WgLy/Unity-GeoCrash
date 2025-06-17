@@ -10,10 +10,10 @@ public class CharacterController : MonoBehaviour
     public GameObject missEffectorPrefeb;
     public GameObject wallPrefeb;
     public SpriteRenderer spriteRenderer;
-    public float velocity;
-    public Vector3 dir;
-    public int moveSpeed;
+    public Vector2 dir;
+    public float moveSpeed;
     public int BPM;
+    private Rigidbody2D rb;
 
     struct Note{
         public float t;
@@ -35,6 +35,7 @@ public class CharacterController : MonoBehaviour
     public bool autoPlay;
     bool canCatchHold;
     public float deviation; // 單位為毫秒
+    private bool moving;
 
     void FillTheQueue(){
         //        2
@@ -202,10 +203,11 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
-        gameTime = 0.00000f-8*60/BPM;
-        dir = new Vector3(1, 1, 0);
+        rb = GetComponent<Rigidbody2D>();
+        gameTime = 0.00000f-8*60f/BPM;
+        dir = new Vector2(1, 1);
         isPlayingMusic = false;
-        
+        moving = false;
         FillTheQueue();
         
         // for(int i=0;i<1000;i++){
@@ -218,11 +220,18 @@ public class CharacterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        gameTime += Time.deltaTime; // 讓時間流動
+        gameTime += Time.fixedDeltaTime; // 讓時間流動
 
-        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0); // 移動
+        if (gameTime >= -4 * 60f / BPM && moving == false){
+            transform.position = new Vector3(0, 0, 0); 
+            rb.velocity = dir.normalized * moveSpeed;
+            moving = true;
+        }else if(moving == false){
+            rb.velocity = Vector2.zero; // 如果還沒到開始移動的時間，則速度為零
+        }//transform.position += dir * moveSpeed * Time.fixedDeltaTime * ((gameTime>=-4*60/BPM)?1:0); // 移動
+
 
         if(gameTime >= deviation*0.001 && !isPlayingMusic){
             audioSource.Play();
@@ -312,7 +321,7 @@ public class CharacterController : MonoBehaviour
         }
         
         if(gameTime >= turns.Peek().t){  // 碰撞轉向與製造牆壁
-            SwitchDirction(turns.Peek().type); // 轉向
+            //SwitchDirction(turns.Peek().type); // 轉向
             turns.Dequeue();
             /*  // 造牆
             if(turns.Peek().type == 1){ //down
@@ -347,6 +356,8 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+
+    /*
     void SwitchDirction(int dirIndex){  //轉向函式
         if(dirIndex == 1){ //down
             if(dir.y==1) Debug.Log("ERROR");
@@ -363,6 +374,7 @@ public class CharacterController : MonoBehaviour
         }
         
     }
+    */
 
     void AddNote(int p,float t,int type){  // 加入音符函式
         Note tmp = new Note();

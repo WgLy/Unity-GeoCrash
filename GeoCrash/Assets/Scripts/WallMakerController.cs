@@ -7,12 +7,12 @@ public class WallMakerController : MonoBehaviour
 {
     public GameObject wallPrefeb;
     public SpriteRenderer spriteRenderer;
-    public float velocity;
-    public Vector3 dir;
-    public int moveSpeed;
+    public Vector2 dir;
+    public float moveSpeed;
     public int BPM;
     public GameObject holdPrefeb;
-
+    private Rigidbody2D rb;
+    private bool moving;
     struct Note{
         public float t;
         public int type;
@@ -192,8 +192,9 @@ public class WallMakerController : MonoBehaviour
 
     void Start()
     {
-        gameTime = 0.00000f-4*60/BPM;
-        dir = new Vector3(1, 1, 0);
+        rb = GetComponent<Rigidbody2D>();
+        gameTime = 0.00000f-4*60f/BPM;
+        dir = new Vector2(1, 1);
         FillTheQueue();
         // for(int i=0;i<1000;i++){
         //     Note tmp = new Note();
@@ -202,18 +203,26 @@ public class WallMakerController : MonoBehaviour
         //     notes.Enqueue(tmp);
         //     turns.Enqueue(tmp);
         // }
+        moving = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        gameTime += Time.deltaTime;
+        gameTime += Time.fixedDeltaTime;
 
-        transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
+        //transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
+        if (gameTime >= -4 * 60f / BPM && moving == false){
+            transform.position = new Vector3(0, 0, 0); 
+            rb.velocity = dir.normalized * moveSpeed;
+            moving = true;
+        }else if(moving == false){
+            rb.velocity = Vector2.zero; // 如果還沒到開始移動的時間，則速度為零
+        }
         
         if(gameTime >= turns.Peek().t){
             
-            SwitchDirction(turns.Peek().type);
+            //SwitchDirction(turns.Peek().type);
             if(turns.Peek().type == 1 || Input.GetKeyDown(KeyCode.A)){ //down
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
