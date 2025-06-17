@@ -279,7 +279,7 @@ public class CharacterController : MonoBehaviour
         }
 
 
-        if(Input.anyKeyDown || !autoPlay){   // 打擊判定
+        if(Input.anyKeyDown){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
