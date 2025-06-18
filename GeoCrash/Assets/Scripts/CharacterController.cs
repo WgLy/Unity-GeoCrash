@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     public float moveSpeed;
     public int BPM;
     private Rigidbody2D rb;
+    public WallMakerController wallMakerController;
 
     struct Note{
         public float t;
@@ -287,8 +288,17 @@ public class CharacterController : MonoBehaviour
             }
         }
 
+        if(gameTime>=turns.Peek().t){ // 校正位置
+            transform.position = wallMakerController.locate.Peek();
+            transform.rotation = wallMakerController.angle.Peek();
+            rb.angularVelocity = wallMakerController.spin.Peek();
+            turns.Dequeue();
+            wallMakerController.locate.Dequeue();
+            wallMakerController.angle.Dequeue();
+            wallMakerController.spin.Dequeue();
+        }
 
-        if(Input.anyKeyDown){   // 打擊判定
+        if(Input.anyKeyDown && !autoPlay){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();

@@ -24,6 +24,9 @@ public class WallMakerController : MonoBehaviour
     Queue<Note> notes = new Queue<Note>();
     Queue<Hold> holds = new Queue<Hold>();
     Queue<Note> turns = new Queue<Note>();
+    public Queue<Vector3> locate = new Queue<Vector3>();
+    public Queue<Quaternion> angle = new Queue<Quaternion>();
+    public Queue<float> spin = new Queue<float>();
     public float gameTime;
 
     void FillTheQueue(){
@@ -251,6 +254,9 @@ public class WallMakerController : MonoBehaviour
                     Quaternion.Euler(0f, 0f, 90f)
                 );
             }
+            locate.Enqueue(transform.position);
+            angle.Enqueue(transform.rotation);
+            spin.Enqueue(rb.angularVelocity);
             turns.Dequeue();
         }
 
