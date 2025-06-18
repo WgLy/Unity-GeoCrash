@@ -568,7 +568,7 @@ MonoBehaviour:
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
   spriteRenderer: {fileID: 866960224}
   dir: {x: 0, y: 0}
-  moveSpeed: 10
+  moveSpeed: 13
   BPM: 180
   holdPrefeb: {fileID: 4677104327919309535, guid: 24725cadd4913f048acf0622084f5135, type: 3}
   gameTime: 0
@@ -632,10 +632,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866960222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.61, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1508032230}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -931,11 +932,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508032227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -4.11, y: -1.77, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1571931288}
+  m_Father: {fileID: 866960225}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571931286
@@ -1018,11 +1019,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571931286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1508032230}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
   spriteRenderer: {fileID: 1571931287}
   dir: {x: 0, y: 0}
-  moveSpeed: 10
+  moveSpeed: 13
   BPM: 180
   gameTime: 0
   perfectLimit: 0.04

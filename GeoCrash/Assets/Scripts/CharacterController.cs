@@ -204,7 +204,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        gameTime = 0.00000f-8*60f/BPM;
+        gameTime = 0.00000f-8*60f/BPM; //8
         dir = new Vector2(1, 1);
         isPlayingMusic = false;
         moving = false;
