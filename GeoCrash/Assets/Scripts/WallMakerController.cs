@@ -6,6 +6,7 @@ using System; // Math 類別位於 System 命名空間
 public class WallMakerController : MonoBehaviour
 {
     public GameObject wallPrefeb;
+    public GameObject tapPrefeb;
     public SpriteRenderer spriteRenderer;
     public Vector2 dir;
     public float moveSpeed;
@@ -27,6 +28,7 @@ public class WallMakerController : MonoBehaviour
     public Queue<Vector3> locate = new Queue<Vector3>();
     public Queue<Quaternion> angle = new Queue<Quaternion>();
     public Queue<float> spin = new Queue<float>();
+    public Queue<Vector2> speed = new Queue<Vector2>();
     public float gameTime;
 
     void FillTheQueue(){
@@ -188,6 +190,68 @@ public class WallMakerController : MonoBehaviour
         AddNote(19, 0.0f, 1);
 
         // 主歌B
+        AddNote(19, 6.0f, 2);
+        AddNote(19, 7.0f, 1);
+        AddHold(20, 0.0f, 6.0f, 1);
+        AddNote(20, 0.0f, 2);
+        AddNote(20, 2.0f, 1);
+        AddNote(20, 4.0f, 2);
+        AddNote(20, 6.0f, 1);
+        AddHold(21, 0.0f, 6.0f, 1);
+        AddNote(21, 4.0f, 5);
+        AddNote(21, 6.0f, 5);
+        AddHold(22, 0.0f, 6.0f, 1);
+        AddNote(22, 0.0f, 2);
+        AddNote(22, 2.0f, 1);
+        AddNote(22, 4.0f, 2);
+        AddNote(22, 6.0f, 1);
+        AddHold(23, 0.0f, 6.0f, 1);
+        AddNote(23, 4.0f, 5);
+        AddNote(23, 6.0f, 5);
+
+        //主歌B-2
+        AddNote(23, 7.0f, 5);
+        AddNote(24, 0.0f, 2);
+        AddNote(24, 1.0f, 5);
+        AddNote(24, 1.5f, 1);
+        AddNote(24, 3.0f, 5);
+        AddNote(24, 4.0f, 2);
+        AddNote(24, 5.0f, 5);
+        AddNote(24, 5.5f, 1);
+        AddNote(24, 7.0f, 5);
+        AddNote(25, 0.0f, 2);
+        AddNote(25, 1.0f, 5);
+        AddNote(25, 1.5f, 1);
+        AddNote(25, 3.0f, 5);
+        AddNote(25, 4.0f, 2);
+        AddNote(25, 6.0f, 1);
+        AddNote(25, 7.0f, 2);
+        AddNote(26, 0.0f, 1);
+        AddNote(26, 1.5f, 4);
+        AddNote(26, 3.0f, 3);
+        AddNote(26, 4.0f, 4);
+        AddNote(26, 5.5f, 3);
+        AddNote(26, 7.0f, 2);
+        AddNote(27, 0.0f, 1);
+
+        //副歌
+        AddNote(27, 6.0f, 2);
+        AddNote(27, 6.5f, 1);
+        AddNote(27, 7.0f, 2);
+        AddNote(27, 7.5f, 1);
+        AddNote(28, 0.0f, 2);
+        AddNote(28, 1.5f, 4);
+        AddNote(28, 3.0f, 3);
+        AddNote(28, 3.5f, 1);
+        AddNote(28, 4.0f, 4);
+        AddNote(28, 5.5f, 2);
+        AddNote(28, 7.0f, 3);
+        AddNote(28, 7.5f, 1);
+        AddNote(29, 0.0f, 4);
+        AddNote(29, 1.5f, 2);
+        AddNote(29, 3.0f, 1);
+        AddNote(29, 3.5f, 2);
+
 
         AddNote(0, 4000f, 1);
         AddHold(0, 4000.0f, 5000.5f, 1);
@@ -197,7 +261,7 @@ public class WallMakerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         gameTime = 0.00000f-4*60f/BPM;
-        dir = new Vector2(1, 1);
+        dir = new Vector2(1.0f, 1.0f);
         FillTheQueue();
         // for(int i=0;i<1000;i++){
         //     Note tmp = new Note();
@@ -226,37 +290,46 @@ public class WallMakerController : MonoBehaviour
         if(gameTime >= turns.Peek().t){
             
             //SwitchDirction(turns.Peek().type);
-            if(turns.Peek().type == 1 || Input.GetKeyDown(KeyCode.A)){ //down
+            if(turns.Peek().type == 1){ //down
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position-new Vector3(0,0.6f,0), 
                     Quaternion.identity
                 );
             }
-            if(turns.Peek().type == 2 || Input.GetKeyDown(KeyCode.S)){ //up
+            if(turns.Peek().type == 2){ //up
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0,0.6f,0), 
                     Quaternion.identity
                 );
             }
-            if(turns.Peek().type == 3 || Input.GetKeyDown(KeyCode.D)){ //right
+            if(turns.Peek().type == 3){ //right
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f)
                 );
             }
-            if(turns.Peek().type == 4 || Input.GetKeyDown(KeyCode.F)){ //left
+            if(turns.Peek().type == 4){ //left
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(-0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f)
                 );
             }
+            if(turns.Peek().type == 5){ //tap
+                GameObject newTapPrefeb = Instantiate(
+                    tapPrefeb, 
+                    transform.position+new Vector3(0,0,0), 
+                    Quaternion.identity
+                );
+            }
+            rb.velocity = rb.velocity.normalized * moveSpeed;
             locate.Enqueue(transform.position);
             angle.Enqueue(transform.rotation);
             spin.Enqueue(rb.angularVelocity);
+            speed.Enqueue(rb.velocity);
             turns.Dequeue();
         }
 

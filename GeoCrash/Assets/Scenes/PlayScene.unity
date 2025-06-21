@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 866960223}
   - component: {fileID: 866960227}
   - component: {fileID: 866960226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wallMaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,9 +566,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
+  tapPrefeb: {fileID: 39366328054168284, guid: 356701faca805724581a9771f4700edc, type: 3}
   spriteRenderer: {fileID: 866960224}
   dir: {x: 0, y: 0}
-  moveSpeed: 13
+  moveSpeed: 14
   BPM: 180
   holdPrefeb: {fileID: 4677104327919309535, guid: 24725cadd4913f048acf0622084f5135, type: 3}
   gameTime: 0
@@ -951,7 +952,7 @@ GameObject:
   - component: {fileID: 1571931289}
   - component: {fileID: 1571931291}
   - component: {fileID: 1571931290}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,8 +1045,9 @@ MonoBehaviour:
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
   spriteRenderer: {fileID: 1571931287}
   dir: {x: 0, y: 0}
-  moveSpeed: 13
+  moveSpeed: 14
   BPM: 180
+  wallMakerController: {fileID: 866960223}
   gameTime: 0
   perfectLimit: 0.04
   goodLimit: 0.08
@@ -1218,3 +1220,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24725cadd4913f048acf0622084f5135, type: 3}
+--- !u!1001 &6709826684577161057
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 39366328054168284, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_Name
+      value: tap
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721558373921849139, guid: 356701faca805724581a9771f4700edc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 356701faca805724581a9771f4700edc, type: 3}
