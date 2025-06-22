@@ -16,7 +16,9 @@ public class CharacterController : MonoBehaviour
     public int BPM;
     private Rigidbody2D rb;
     public WallMakerController wallMakerController;
+    public DataSenderController dataSenderController;
 
+    /*
     struct Note{
         public float t;
         public int type;
@@ -25,6 +27,7 @@ public class CharacterController : MonoBehaviour
         public float t_begin,t_end;
         public int type;
     };
+    */
     Queue<Note> notes = new Queue<Note>();
     Queue<Hold> holds = new Queue<Hold>();
     Queue<Note> turns = new Queue<Note>();
@@ -38,7 +41,7 @@ public class CharacterController : MonoBehaviour
     bool canCatchHold;
     public float deviation; // 單位為毫秒
     private bool moving;
-
+    /*
     void FillTheQueue(){
         //        2
         //    4       3 
@@ -269,6 +272,7 @@ public class CharacterController : MonoBehaviour
         AddNote(0, 4000f, 1);
         AddHold(0, 4000.0f, 5000.5f, 1);
     }
+    */
 
     void Start()
     {
@@ -277,14 +281,14 @@ public class CharacterController : MonoBehaviour
         dir = new Vector2(1.0f, 1.0f);
         isPlayingMusic = false;
         moving = false;
-        FillTheQueue();
-        // for(int i=0;i<1000;i++){
-        //     Note tmp = new Note();
-        //     tmp.t = i*60.0f/BPM;
-        //     tmp.type = i%4+1;
-        //     notes.Enqueue(tmp);
-        //     turns.Enqueue(tmp);
-        // }
+        //FillTheQueue();
+        dataSenderController = FindObjectOfType<DataSenderController>();
+
+        notes = new Queue<Note>(dataSenderController.notes);
+        holds = new Queue<Hold>(dataSenderController.holds);
+        turns = new Queue<Note>(dataSenderController.notes);
+        BPM = dataSenderController.BPM;
+        autoPlay = dataSenderController.autoPlay;
     }
 
     // Update is called once per frame
@@ -306,49 +310,7 @@ public class CharacterController : MonoBehaviour
             audioSource.Play();
             isPlayingMusic = true;
         }
-        // if(Input.anyKeyDown){
-        //     GameObject newEffector = Instantiate(effectorPrefeb, transform.position, Quaternion.identity); // copy a new prefeb
-        // }
 
-        // if(notes.Count > 0) if(gameTime >= notes.Peek().t){
-        //     notes.Dequeue();
-        //     GameObject newEffector = Instantiate(effectorPrefeb, transform.position, Quaternion.identity);
-        // }
-
-    /*  wall maker function
-        if(gameTime >= turns.Peek().t){
-            turns.Dequeue();
-            SwitchDirction(turns.Peek().type);
-            if(turns.Peek().type == 1 || Input.GetKeyDown(KeyCode.A)){ //down
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position-new Vector3(0,0.6f,0), 
-                    Quaternion.identity
-                );
-            }
-            if(turns.Peek().type == 2 || Input.GetKeyDown(KeyCode.S)){ //up
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(0,0.6f,0), 
-                    Quaternion.identity
-                );
-            }
-            if(turns.Peek().type == 3 || Input.GetKeyDown(KeyCode.D)){ //right
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
-                );
-            }
-            if(turns.Peek().type == 4 || Input.GetKeyDown(KeyCode.F)){ //left
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(-0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
-                );
-            }
-        }
-        */
         if(autoPlay){ // 自動演奏
             if(gameTime>=notes.Peek().t){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
@@ -399,62 +361,7 @@ public class CharacterController : MonoBehaviour
         }else if(gameTime >= holds.Peek().t_end){
             holds.Dequeue();
         }
-        
-        if(gameTime >= turns.Peek().t){  // 碰撞轉向與製造牆壁
-            //SwitchDirction(turns.Peek().type); // 轉向
-            turns.Dequeue();
-            /*  // 造牆
-            if(turns.Peek().type == 1){ //down
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position-new Vector3(0,0.6f,0), 
-                    Quaternion.identity
-                );
-            }
-            if(turns.Peek().type == 2){ //up
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(0,0.6f,0), 
-                    Quaternion.identity
-                );
-            }
-            if(turns.Peek().type == 3){ //right
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
-                );
-            }
-            if(turns.Peek().type == 4){ //left
-                GameObject newWallPrefeb = Instantiate(
-                    wallPrefeb, 
-                    transform.position+new Vector3(-0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
-                );
-            }
-            */
-        }
     }
-
-
-    /*
-    void SwitchDirction(int dirIndex){  //轉向函式
-        if(dirIndex == 1){ //down
-            if(dir.y==1) Debug.Log("ERROR");
-            dir.y *= -1;
-        }else if(dirIndex == 2){ //up
-            if(dir.y==-1) Debug.Log("ERROR");
-            dir.y *= -1;
-        }else if(dirIndex == 3){ //right
-            if(dir.x==-1) Debug.Log("ERROR");
-            dir.x *= -1;
-        }else if(dirIndex == 4){ //left
-            if(dir.x==1) Debug.Log("ERROR");
-            dir.x *= -1;
-        }
-        
-    }
-    */
 
     void AddNote(int p,float t,int type){  // 加入音符函式
         Note tmp = new Note();

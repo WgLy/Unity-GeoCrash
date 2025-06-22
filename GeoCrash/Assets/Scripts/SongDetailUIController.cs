@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; // 載入其他場景
 using System; // Math 類別位於 System 命名空間
 
-public class ChooserController : MonoBehaviour
+public class SongDetailUIController : MonoBehaviour
 {
     public DataSenderController dataSenderController; 
     public FadingController fadingController;
@@ -13,14 +13,12 @@ public class ChooserController : MonoBehaviour
     float holdingTime_W;
     float holdingTime_S;
     public float gap;
-    public bool isChoosingDifficulty;
     
     // Start is called before the first frame update
     void Start()
     {
-        idealPosition = new Vector3(0, 0, 0);
+        idealPosition = transform.position;
         fadingController.Fade(true, "");
-        isChoosingDifficulty = false;
     }
 
     // Update is called once per frame
@@ -53,7 +51,7 @@ public class ChooserController : MonoBehaviour
             idealPosition += new Vector3(0, -1*gap, 0);
         }
 
-        if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果y
+        if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果
             transform.position -= new Vector3(
                 0, 
                 Math.Max( slideSpeed, Math.Abs(transform.position.y-idealPosition.y)*10 ) * Time.deltaTime, 
@@ -66,38 +64,8 @@ public class ChooserController : MonoBehaviour
                 0
             );
         }else{
-            transform.position = new Vector3(transform.position.x, idealPosition.y, transform.position.z);
+            transform.position = idealPosition;
         }
 
-        if(transform.position.y == idealPosition.y && transform.position.x > idealPosition.x+0.005f){  // 滑動效果x
-            transform.position -= new Vector3(
-                Math.Max( slideSpeed, Math.Abs(transform.position.x-idealPosition.x)*20 ) * Time.deltaTime, 
-                0, 
-                0
-            );
-        }else if(transform.position.y == idealPosition.y && transform.position.x < idealPosition.x-0.005f){
-            transform.position += new Vector3(
-                Math.Max( slideSpeed, Math.Abs(idealPosition.y-transform.position.y)*20 ) * Time.deltaTime, 
-                0, 
-                0
-            );
-        }else if(transform.position.y == idealPosition.y){
-            transform.position = new Vector3(transform.position.x, idealPosition.y, transform.position.z);
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Return)){ // 下一個
-            dataSenderController.songIndex = (int)(transform.position.y / -1.5f) ;
-            dataSenderController.difficulty = (int)(transform.position.x / 2.0f) ; 
-            fadingController.Fade(false, "PlayScene");
-        }
-
-        if(Input.GetKeyDown(KeyCode.A) && idealPosition.x != 0){
-            idealPosition -= new Vector3(2, 0, 0);
-        }
-
-        if(Input.GetKeyDown(KeyCode.D) && idealPosition.x != 4){
-            idealPosition += new Vector3(2, 0, 0);
-        }
     }
 }

@@ -14,14 +14,8 @@ public class WallMakerController : MonoBehaviour
     public GameObject holdPrefeb;
     private Rigidbody2D rb;
     private bool moving;
-    struct Note{
-        public float t;
-        public int type;
-    };
-    struct Hold{
-        public float t_begin,t_end;
-        public int type;
-    };
+    public DataSenderController dataSenderController;
+
     Queue<Note> notes = new Queue<Note>();
     Queue<Hold> holds = new Queue<Hold>();
     Queue<Note> turns = new Queue<Note>();
@@ -31,6 +25,7 @@ public class WallMakerController : MonoBehaviour
     public Queue<Vector2> speed = new Queue<Vector2>();
     public float gameTime;
 
+    /*
     void FillTheQueue(){
         //        2
         //    4       3 
@@ -256,21 +251,20 @@ public class WallMakerController : MonoBehaviour
         AddNote(0, 4000f, 1);
         AddHold(0, 4000.0f, 5000.5f, 1);
     }
-
+    */
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameTime = 0.00000f-4*60f/BPM;
         dir = new Vector2(1.0f, 1.0f);
-        FillTheQueue();
-        // for(int i=0;i<1000;i++){
-        //     Note tmp = new Note();
-        //     tmp.t = i*60.0f/BPM;
-        //     tmp.type = i%4+1;
-        //     notes.Enqueue(tmp);
-        //     turns.Enqueue(tmp);
-        // }
-        moving = false;
+        moving = false; 
+        //FillTheQueue();
+        dataSenderController = FindObjectOfType<DataSenderController>();
+
+        notes = new Queue<Note>(dataSenderController.notes);
+        holds = new Queue<Hold>(dataSenderController.holds);
+        turns = new Queue<Note>(dataSenderController.notes);
+        BPM = dataSenderController.BPM;
     }
 
     // Update is called once per frame

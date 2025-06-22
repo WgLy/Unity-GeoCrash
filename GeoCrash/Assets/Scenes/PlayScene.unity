@@ -662,6 +662,7 @@ MonoBehaviour:
   fadeDuration: 1
   image: {fileID: 686374975}
   initialA: 1
+  nextLoadScene: 
 --- !u!114 &686374975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,6 +824,7 @@ MonoBehaviour:
   moveSpeed: 14
   BPM: 180
   holdPrefeb: {fileID: 4677104327919309535, guid: 24725cadd4913f048acf0622084f5135, type: 3}
+  dataSenderController: {fileID: 0}
   gameTime: 0
 --- !u!212 &866960224
 SpriteRenderer:
@@ -1334,12 +1336,13 @@ MonoBehaviour:
   moveSpeed: 14
   BPM: 180
   wallMakerController: {fileID: 866960223}
+  dataSenderController: {fileID: 0}
   gameTime: 0
   perfectLimit: 0.04
   goodLimit: 0.08
   audioSource: {fileID: 589491246}
   isPlayingMusic: 0
-  autoPlay: 0
+  autoPlay: 1
   deviation: 80
 --- !u!50 &1571931290
 Rigidbody2D:
