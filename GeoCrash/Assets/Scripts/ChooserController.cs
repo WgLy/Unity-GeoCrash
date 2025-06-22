@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // 載入其他場景
 using System; // Math 類別位於 System 命名空間
 
 public class ChooserController : MonoBehaviour
 {
+    public DataSenderController dataSenderController; 
+    public FadingController fadingController;
     Vector3 idealPosition = new Vector3();
     public float slideSpeed;
     float holdingTime_W;
@@ -15,6 +18,7 @@ public class ChooserController : MonoBehaviour
     void Start()
     {
         idealPosition = new Vector3(0, 0, 0);
+        fadingController.Fade(true, "");
     }
 
     // Update is called once per frame
@@ -61,6 +65,12 @@ public class ChooserController : MonoBehaviour
             );
         }else{
             transform.position = idealPosition;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return)){
+            dataSenderController.songIndex = (int)(transform.position.y / -1.5f) ;
+            fadingController.Fade(false, "PlayScene");
+            
         }
     }
 }

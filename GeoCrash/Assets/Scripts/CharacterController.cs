@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
     public GameObject goodEffectorPrefeb;
     public GameObject missEffectorPrefeb;
     public GameObject wallPrefeb;
+    public FadingController fadingController;
     public SpriteRenderer spriteRenderer;
     public Vector2 dir;
     public float moveSpeed;
@@ -277,7 +278,6 @@ public class CharacterController : MonoBehaviour
         isPlayingMusic = false;
         moving = false;
         FillTheQueue();
-        
         // for(int i=0;i<1000;i++){
         //     Note tmp = new Note();
         //     tmp.t = i*60.0f/BPM;
@@ -296,6 +296,7 @@ public class CharacterController : MonoBehaviour
             transform.position = new Vector3(0, 0, 0); 
             rb.velocity = dir.normalized * moveSpeed;
             moving = true;
+            fadingController.Fade(true, "");
         }else if(moving == false){
             rb.velocity = Vector2.zero; // 如果還沒到開始移動的時間，則速度為零
         }//transform.position += dir * moveSpeed * Time.fixedDeltaTime * ((gameTime>=-4*60/BPM)?1:0); // 移動

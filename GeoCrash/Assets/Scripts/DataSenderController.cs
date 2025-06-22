@@ -1,23 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class EnterController : MonoBehaviour
+public class DataSenderController : MonoBehaviour
 {
-    public FadingController fadingController;
+    public int songIndex;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown){
-            fadingController.Fade(false, "MainScene");
-        }
+        
     }
 }
