@@ -124,12 +124,12 @@ public class CharacterController : MonoBehaviour
             if( (!Input.anyKey || !canCatchHold) && !autoPlay ){
                 canCatchHold = false;
                 GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
-                newEffector.GetComponent<EffectorController>().blowSpeed = 2;
-                newEffector.GetComponent<EffectorController>().fadeSpeed = 2;
+                newEffector.GetComponent<EffectorController>().blowSpeed = 1;
+                newEffector.GetComponent<EffectorController>().fadeSpeed = 3;
             }else{
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
-                newEffector.GetComponent<EffectorController>().blowSpeed = 2;
-                newEffector.GetComponent<EffectorController>().fadeSpeed = 2;
+                newEffector.GetComponent<EffectorController>().blowSpeed = 1;
+                newEffector.GetComponent<EffectorController>().fadeSpeed = 3;
             }
         }else if(gameTime >= holds.Peek().t_end){
             holds.Dequeue();

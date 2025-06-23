@@ -89,6 +89,7 @@ public class ChooserController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)){ // 下一個
             dataSenderController.songIndex = (int)(transform.position.y / -1.5f) ;
             dataSenderController.difficulty = (int)(transform.position.x / 2.0f) ; 
+            dataSenderController.FillQFunction();
             fadingController.Fade(false, "PlayScene");
         }
 

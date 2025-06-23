@@ -26,15 +26,20 @@ public class WallMakerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        gameTime = 0.00000f-4*60f/BPM;
-        dir = new Vector2(1.0f, 1.0f);
-        moving = false; 
         dataSenderController = FindObjectOfType<DataSenderController>();
-
         notes = new Queue<Note>(dataSenderController.notes);
         holds = new Queue<Hold>(dataSenderController.holds);
         turns = new Queue<Note>(dataSenderController.notes);
         BPM = dataSenderController.BPM;
+        // 初始校正
+        dir = dataSenderController.InitialStatus.dir;
+        transform.position = dataSenderController.InitialStatus.locate;
+        transform.rotation = dataSenderController.InitialStatus.angle;
+        rb.angularVelocity = dataSenderController.InitialStatus.spin;
+        rb.velocity = dataSenderController.InitialStatus.dir;
+
+        gameTime = 0.00000f-4*60f/BPM;
+        moving = false; 
     }
 
     // Update is called once per frame
