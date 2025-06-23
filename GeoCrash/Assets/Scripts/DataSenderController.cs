@@ -9,6 +9,8 @@ public class DataSenderController : MonoBehaviour
     public int BPM;
     public Queue<Note> notes = new Queue<Note>();
     public Queue<Hold> holds = new Queue<Hold>();
+    public Queue<Effect> effects = new Queue<Effect>();
+    public MovementStatus InitialStatus;
     public bool autoPlay;
     
     // Start is called before the first frame update
@@ -29,6 +31,11 @@ public class DataSenderController : MonoBehaviour
         songIndex = 0;
         difficulty = 1;
         BPM = 180;
+        InitialStatus.locate = new Vector3(0, 0, 0);
+        InitialStatus.angle = Quaternion.identity;
+        InitialStatus.spin = 0.0f;
+        InitialStatus.dir = new Vector2(1, 1);
+        InitialStatus.speed = 13;
         notes.Clear();
         holds.Clear();
         //        2
