@@ -1329,6 +1329,7 @@ MonoBehaviour:
   perfectEffectorPrefeb: {fileID: 9064321964961932091, guid: b3784f29e73816243b57374594c07a08, type: 3}
   goodEffectorPrefeb: {fileID: 9064321964961932091, guid: bead37e5ed02e4749b2a945133f6cdd9, type: 3}
   missEffectorPrefeb: {fileID: 9064321964961932091, guid: 2709fe82b8dacd5419ddd487ed3b5bd2, type: 3}
+  holdEffectorPrefeb: {fileID: 9064321964961932091, guid: d5c32bd96dea9514b980b156903bb016, type: 3}
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
   fadingController: {fileID: 686374974}
   spriteRenderer: {fileID: 1571931287}

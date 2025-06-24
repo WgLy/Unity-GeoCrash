@@ -293,9 +293,7 @@ public class DataSenderController : MonoBehaviour
         //        2
         //    4       3 
         //        1
-        AddNote(0, 0.0f, 5);
-        AddNote(0, 1.5f, 5);
-        AddNote(0, 3.0f, 5);
+        AddHold(0, 1.0f, 3.0f, 1);
         AddNote(0, 3.5f, 5);
         AddNote(0, 4.0f, 5);
         AddNote(0, 5.5f, 5);

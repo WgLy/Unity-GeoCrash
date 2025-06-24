@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
     public GameObject perfectEffectorPrefeb;
     public GameObject goodEffectorPrefeb;
     public GameObject missEffectorPrefeb;
+    public GameObject holdEffectorPrefeb;
+    public GameObject currentHoldEffector;
     public GameObject wallPrefeb;
     public FadingController fadingController;
     public SpriteRenderer spriteRenderer;
@@ -117,21 +119,27 @@ public class CharacterController : MonoBehaviour
             notes.Dequeue();
         }
 
+        if(gameTime >= holds.Peek().t_begin){ // 創造長條特效
+            if(currentHoldEffector == null){
+                currentHoldEffector = Instantiate(holdEffectorPrefeb, transform.position, Quaternion.identity);
+            } 
+            else currentHoldEffector.transform.position = transform.position;
+        }
+
         if(gameTime < holds.Peek().t_begin){ // 長條判定
             canCatchHold = true;
         }
         else if(gameTime >= holds.Peek().t_begin+goodLimit && gameTime < holds.Peek().t_end-goodLimit){
+            
             if( (!Input.anyKey || !canCatchHold) && !autoPlay ){
                 canCatchHold = false;
-                GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
-                newEffector.GetComponent<EffectorController>().blowSpeed = 1;
-                newEffector.GetComponent<EffectorController>().fadeSpeed = 3;
+                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 1);
             }else{
-                GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
-                newEffector.GetComponent<EffectorController>().blowSpeed = 1;
-                newEffector.GetComponent<EffectorController>().fadeSpeed = 3;
+                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0, 1);
             }
-        }else if(gameTime >= holds.Peek().t_end){
+        }
+        if(gameTime >= holds.Peek().t_end){
+            currentHoldEffector.GetComponent<HoldEffectorController>().blowing = true;
             holds.Dequeue();
         }
     }
