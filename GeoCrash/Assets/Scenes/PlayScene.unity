@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 866960223}
   - component: {fileID: 866960227}
   - component: {fileID: 866960226}
+  - component: {fileID: 866960228}
   m_Layer: 7
   m_Name: wallMaker
   m_TagString: Untagged
@@ -940,6 +941,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!70 &866960228
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866960222}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0a5f36ff0d4d38c46a020eef30e016cd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!1 &952601817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1257,7 @@ GameObject:
   - component: {fileID: 1571931289}
   - component: {fileID: 1571931291}
   - component: {fileID: 1571931290}
+  - component: {fileID: 1571931292}
   m_Layer: 7
   m_Name: character
   m_TagString: Untagged
@@ -1330,6 +1348,7 @@ MonoBehaviour:
   goodEffectorPrefeb: {fileID: 9064321964961932091, guid: bead37e5ed02e4749b2a945133f6cdd9, type: 3}
   missEffectorPrefeb: {fileID: 9064321964961932091, guid: 2709fe82b8dacd5419ddd487ed3b5bd2, type: 3}
   holdEffectorPrefeb: {fileID: 9064321964961932091, guid: d5c32bd96dea9514b980b156903bb016, type: 3}
+  currentHoldEffector: {fileID: 0}
   wallPrefeb: {fileID: 769579922965863485, guid: 513782d1e29c893409e086ad069e9125, type: 3}
   fadingController: {fileID: 686374974}
   spriteRenderer: {fileID: 1571931287}
@@ -1392,6 +1411,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!70 &1571931292
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571931286}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0a5f36ff0d4d38c46a020eef30e016cd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &2092425237
 GameObject:
   m_ObjectHideFlags: 0
