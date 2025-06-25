@@ -12,6 +12,7 @@ public class DataSenderController : MonoBehaviour
     public Queue<Effect> effects = new Queue<Effect>();
     public MovementStatus InitialStatus;
     public bool autoPlay;
+    public int initialShape;
     
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.spin = 0.0f;
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
+        initialShape = 1;
         notes.Clear();
         holds.Clear();
         //        2
@@ -288,6 +290,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.spin = 0.0f;
         InitialStatus.dir = new Vector2(1, -1);
         InitialStatus.speed = 13;
+        initialShape = 3;
         notes.Clear();
         holds.Clear();
         //        2

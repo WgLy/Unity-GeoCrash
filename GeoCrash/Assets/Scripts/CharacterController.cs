@@ -34,6 +34,17 @@ public class CharacterController : MonoBehaviour
     bool canCatchHold;
     public float deviation; // 單位為毫秒
     private bool moving;
+    public int shape;
+
+    
+    // 改變形狀
+    public Sprite squareSprite;
+    public Sprite triangleSprite;
+    public Sprite hexagonSprite;
+    public BoxCollider2D squareCollider;
+    public PolygonCollider2D triangleCollider;
+    public PolygonCollider2D hexagonCollider;
+
 
     void Start()
     {
@@ -45,14 +56,16 @@ public class CharacterController : MonoBehaviour
         effects = new Queue<Effect>(dataSenderController.effects);
         BPM = dataSenderController.BPM;
         autoPlay = dataSenderController.autoPlay;
+        shape = dataSenderController.initialShape;
         // 初始校正
         dir = dataSenderController.InitialStatus.dir;
         transform.position = dataSenderController.InitialStatus.locate;
         transform.rotation = dataSenderController.InitialStatus.angle;
         rb.angularVelocity = dataSenderController.InitialStatus.spin;
         rb.velocity = dataSenderController.InitialStatus.dir;
-        
-        
+        // 初始變形
+        ChangeShape(shape);
+
         gameTime = 0.00000f-8*60f/BPM; //8
         
         isPlayingMusic = false;
@@ -142,5 +155,34 @@ public class CharacterController : MonoBehaviour
             currentHoldEffector.GetComponent<HoldEffectorController>().blowing = true;
             holds.Dequeue();
         }
+
+        if(Input.GetKeyDown(KeyCode.Keypad1)){
+            ChangeShape(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Keypad2)){
+            ChangeShape(2);
+        }
+        if(Input.GetKeyDown(KeyCode.Keypad3)){
+            ChangeShape(3);
+        }
+    }
+
+    public void ChangeShape(int targetShape){
+        squareCollider.enabled = false;
+        triangleCollider.enabled = false;
+        hexagonCollider.enabled = false;
+        if(targetShape == 1){
+            spriteRenderer.sprite = squareSprite;
+            squareCollider.enabled = true;
+        }
+        if(targetShape == 2){
+            spriteRenderer.sprite = triangleSprite;
+            triangleCollider.enabled = true;
+        }
+        if(targetShape == 3){
+            spriteRenderer.sprite = hexagonSprite;
+            hexagonCollider.enabled = true;
+        }
+        shape = targetShape;
     }
 }

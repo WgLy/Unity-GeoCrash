@@ -6,6 +6,12 @@ public class EffectorController : MonoBehaviour
 {
     public int blowSpeed,fadeSpeed;
     public SpriteRenderer spriteRenderer;
+    public CharacterController characterController;
+
+    // 改變形狀
+    public Sprite squareSprite;
+    public Sprite triangleSprite;
+    public Sprite hexagonSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +22,9 @@ public class EffectorController : MonoBehaviour
             spriteRenderer.color.b, 1.0f
         );
         // Debug.Log("Create successfully");
+        characterController = FindObjectOfType<CharacterController>();
+        ChangeShape(characterController.shape);
+        Debug.Log(characterController.shape.ToString());
     }
 
     // Update is called once per frame
@@ -37,5 +46,17 @@ public class EffectorController : MonoBehaviour
             newAlpha
         );
         
+    }
+
+    public void ChangeShape(int targetShape){
+        if(targetShape == 1){
+            spriteRenderer.sprite = squareSprite;
+        }
+        if(targetShape == 2){
+            spriteRenderer.sprite = triangleSprite;
+        }
+        if(targetShape == 3){
+            spriteRenderer.sprite = hexagonSprite;
+        }
     }
 }

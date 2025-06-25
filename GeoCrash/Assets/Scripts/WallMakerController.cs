@@ -23,6 +23,15 @@ public class WallMakerController : MonoBehaviour
     public float gameTime;
     MovementStatus temp;
 
+    public int shape;
+    // 改變形狀
+    public Sprite squareSprite;
+    public Sprite triangleSprite;
+    public Sprite hexagonSprite;
+    public BoxCollider2D squareCollider;
+    public PolygonCollider2D triangleCollider;
+    public PolygonCollider2D hexagonCollider;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +40,7 @@ public class WallMakerController : MonoBehaviour
         holds = new Queue<Hold>(dataSenderController.holds);
         turns = new Queue<Note>(dataSenderController.notes);
         BPM = dataSenderController.BPM;
+        shape = dataSenderController.initialShape;
         // 初始校正
         dir = dataSenderController.InitialStatus.dir;
         transform.position = dataSenderController.InitialStatus.locate;
@@ -38,6 +48,8 @@ public class WallMakerController : MonoBehaviour
         rb.angularVelocity = dataSenderController.InitialStatus.spin;
         rb.velocity = dataSenderController.InitialStatus.dir;
 
+        // 初始變形
+        ChangeShape(shape);
         gameTime = 0.00000f-4*60f/BPM;
         moving = false; 
     }
@@ -112,6 +124,24 @@ public class WallMakerController : MonoBehaviour
         }
         if(gameTime >= holds.Peek().t_end){
             holds.Dequeue();
+        }
+    }
+
+    public void ChangeShape(int targetShape){ // 變形
+        squareCollider.enabled = false;
+        triangleCollider.enabled = false;
+        hexagonCollider.enabled = false;
+        if(targetShape == 1){
+            spriteRenderer.sprite = squareSprite;
+            squareCollider.enabled = true;
+        }
+        if(targetShape == 2){
+            spriteRenderer.sprite = triangleSprite;
+            triangleCollider.enabled = true;
+        }
+        if(targetShape == 3){
+            spriteRenderer.sprite = hexagonSprite;
+            hexagonCollider.enabled = true;
         }
     }
 }

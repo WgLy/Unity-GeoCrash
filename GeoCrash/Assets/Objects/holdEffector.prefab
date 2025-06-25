@@ -100,4 +100,8 @@ MonoBehaviour:
   blowSpeed: 5
   fadeSpeed: 5
   spriteRenderer: {fileID: 9064321964961932084}
+  characterController: {fileID: 0}
+  squareSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  triangleSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  hexagonSprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
   blowing: 0
