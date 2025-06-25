@@ -45,9 +45,9 @@ public class DataSenderController : MonoBehaviour
         BPM = 180;
         InitialStatus.locate = new Vector3(0, 0, 0);
         InitialStatus.angle = Quaternion.identity;
-        InitialStatus.spin = 0.0f;
+        InitialStatus.spin = 15.0f;
         InitialStatus.dir = new Vector2(1, 1);
-        InitialStatus.speed = 13;
+        InitialStatus.speed = 33;
         initialShape = 1;
         notes.Clear();
         holds.Clear();
@@ -296,7 +296,7 @@ public class DataSenderController : MonoBehaviour
         //        2
         //    4       3 
         //        1
-        AddHold(0, 1.0f, 3.0f, 1);
+        AddHold(0, 1.0f, 2.0f, 1);
         AddNote(0, 3.5f, 5);
         AddNote(0, 4.0f, 5);
         AddNote(0, 5.5f, 5);

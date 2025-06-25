@@ -47,6 +47,7 @@ public class WallMakerController : MonoBehaviour
         transform.rotation = dataSenderController.InitialStatus.angle;
         rb.angularVelocity = dataSenderController.InitialStatus.spin;
         rb.velocity = dataSenderController.InitialStatus.dir;
+        moveSpeed = dataSenderController.InitialStatus.speed;
 
         // 初始變形
         ChangeShape(shape);
@@ -73,28 +74,28 @@ public class WallMakerController : MonoBehaviour
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position-new Vector3(0,0.6f,0), 
-                    Quaternion.identity
+                    Quaternion.identity * transform.rotation
                 );
             }
             if(turns.Peek().type == 2){ //up
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0,0.6f,0), 
-                    Quaternion.identity
+                    Quaternion.identity * transform.rotation
                 );
             }
             if(turns.Peek().type == 3){ //right
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
+                    Quaternion.Euler(0f, 0f, 90f) * transform.rotation
                 );
             }
             if(turns.Peek().type == 4){ //left
                 GameObject newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(-0.6f,0,0), 
-                    Quaternion.Euler(0f, 0f, 90f)
+                    Quaternion.Euler(0f, 0f, 90f) * transform.rotation
                 );
             }
             if(turns.Peek().type == 5){ //tap

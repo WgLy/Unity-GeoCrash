@@ -62,6 +62,7 @@ public class HoldEffectorController : MonoBehaviour
                 Time.deltaTime*blowSpeed*blowWay, 
                 Time.deltaTime*blowSpeed*blowWay
             );
+            transform.rotation = characterController.transform.rotation;
         }
     }
 

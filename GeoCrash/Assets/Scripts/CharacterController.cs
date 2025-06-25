@@ -63,6 +63,7 @@ public class CharacterController : MonoBehaviour
         transform.rotation = dataSenderController.InitialStatus.angle;
         rb.angularVelocity = dataSenderController.InitialStatus.spin;
         rb.velocity = dataSenderController.InitialStatus.dir;
+        moveSpeed = dataSenderController.InitialStatus.speed;
         // 初始變形
         ChangeShape(shape);
 
@@ -146,9 +147,9 @@ public class CharacterController : MonoBehaviour
             
             if( (!Input.anyKey || !canCatchHold) && !autoPlay ){
                 canCatchHold = false;
-                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 1);
+                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 0.8f);
             }else{
-                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0, 1);
+                currentHoldEffector.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0, 0.8f);
             }
         }
         if(gameTime >= holds.Peek().t_end){
