@@ -19,7 +19,7 @@ public class DataSenderController : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         
-        autoPlay = true;
+        autoPlay = false;
     }
 
     // Update is called once per frame
@@ -45,9 +45,9 @@ public class DataSenderController : MonoBehaviour
         BPM = 180;
         InitialStatus.locate = new Vector3(0, 0, 0);
         InitialStatus.angle = Quaternion.identity;
-        InitialStatus.spin = 15.0f;
+        InitialStatus.spin = 0.0f;
         InitialStatus.dir = new Vector2(1, 1);
-        InitialStatus.speed = 33;
+        InitialStatus.speed = 13;
         initialShape = 1;
         notes.Clear();
         holds.Clear();
@@ -277,8 +277,8 @@ public class DataSenderController : MonoBehaviour
         AddNote(29, 3.0f, 1);
         AddNote(29, 3.5f, 2);
 
-        AddNote(0, 4000f, 1);
-        AddHold(0, 4000.0f, 5000.5f, 1);
+        AddNote(0, 40000f, 0);
+        AddHold(0, 40000.0f, 50000.5f, 0);
     }
 
     void FillTheQueue2(){

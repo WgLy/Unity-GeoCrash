@@ -24,7 +24,6 @@ public class EffectorController : MonoBehaviour
         // Debug.Log("Create successfully");
         characterController = FindObjectOfType<CharacterController>();
         ChangeShape(characterController.shape);
-        Debug.Log(characterController.shape.ToString());
     }
 
     // Update is called once per frame

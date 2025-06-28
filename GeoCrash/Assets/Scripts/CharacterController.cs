@@ -19,6 +19,8 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     public WallMakerController wallMakerController;
     public DataSenderController dataSenderController;
+    public float score;
+    public float max_score;
 
     Queue<Note> notes = new Queue<Note>();
     Queue<Hold> holds = new Queue<Hold>();
@@ -45,6 +47,9 @@ public class CharacterController : MonoBehaviour
     public PolygonCollider2D triangleCollider;
     public PolygonCollider2D hexagonCollider;
 
+    // 結算畫面
+    public EndUIController endUIController;
+    public ScoreController scoreController;
 
     void Start()
     {
@@ -66,6 +71,10 @@ public class CharacterController : MonoBehaviour
         moveSpeed = dataSenderController.InitialStatus.speed;
         // 初始變形
         ChangeShape(shape);
+
+        // 設定分數
+        score = 0;
+        max_score = notes.Count+holds.Count-2;
 
         gameTime = 0.00000f-8*60f/BPM; //8
         
@@ -100,6 +109,7 @@ public class CharacterController : MonoBehaviour
             if(gameTime>=notes.Peek().t){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
+                score += 1;
             }
         }
 
@@ -111,6 +121,7 @@ public class CharacterController : MonoBehaviour
             turns.Dequeue();
             wallMakerController.correction.Dequeue();
         }
+
 /*
         if(gameTime>=effects.Peek().t){ // 播放特效
             if(effects.Peek().type == 1){
@@ -123,9 +134,11 @@ public class CharacterController : MonoBehaviour
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
+                score += 1;
             }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
+                score += 0.5f;
             }
         }
         if(gameTime > notes.Peek().t + goodLimit){
@@ -154,6 +167,7 @@ public class CharacterController : MonoBehaviour
         }
         if(gameTime >= holds.Peek().t_end){
             currentHoldEffector.GetComponent<HoldEffectorController>().blowing = true;
+            if(canCatchHold == true) score += 1;
             holds.Dequeue();
         }
 
@@ -166,6 +180,13 @@ public class CharacterController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad3)){
             ChangeShape(3);
         }
+
+        if(notes.Peek().type == 0){
+            Debug.Log("end");
+            endUIController.Show();
+            scoreController.Move();
+        }
+
     }
 
     public void ChangeShape(int targetShape){
