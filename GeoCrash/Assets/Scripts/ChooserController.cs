@@ -8,6 +8,7 @@ public class ChooserController : MonoBehaviour
 {
     public DataSenderController dataSenderController; 
     public FadingController fadingController;
+    public MapGeneratorController mapGeneratorController;
     Vector3 idealPosition = new Vector3();
     public float slideSpeed;
     float holdingTime_W;
@@ -51,6 +52,12 @@ public class ChooserController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.S)){
             idealPosition += new Vector3(0, -1*gap, 0);
+        }
+        if(idealPosition.y <= -1*mapGeneratorController.sizeOfSongList*gap){ // 循環選譜bottom
+            idealPosition = new Vector3(idealPosition.x, 0, idealPosition.z);
+        }
+        if(idealPosition.y >= gap){ // 循環選譜top
+            idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap, idealPosition.z);
         }
 
         if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果y

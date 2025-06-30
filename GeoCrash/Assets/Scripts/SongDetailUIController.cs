@@ -8,17 +8,20 @@ public class SongDetailUIController : MonoBehaviour
 {
     public DataSenderController dataSenderController; 
     public FadingController fadingController;
+    public MapGeneratorController mapGeneratorController;
     Vector3 idealPosition = new Vector3();
     public float slideSpeed;
     float holdingTime_W;
     float holdingTime_S;
     public float gap;
-    
+    public float initial_y;
+
     // Start is called before the first frame update
     void Start()
     {
         idealPosition = transform.position;
         fadingController.Fade(true, "");
+        initial_y = transform.position.y;
     }
 
     // Update is called once per frame
@@ -50,6 +53,13 @@ public class SongDetailUIController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S)){
             idealPosition += new Vector3(0, -1*gap, 0);
         }
+        if(idealPosition.y <= -1*mapGeneratorController.sizeOfSongList*gap + initial_y){ // 循環選譜bottom
+            idealPosition += new Vector3(0, mapGeneratorController.sizeOfSongList*gap, 0);
+        }
+        if(idealPosition.y >= gap+initial_y-0.001f){ // 循環選譜top
+            idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap+initial_y, idealPosition.z);
+        }
+
 
         if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果
             transform.position -= new Vector3(

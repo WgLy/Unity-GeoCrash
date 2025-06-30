@@ -30,6 +30,14 @@ public struct Effect{
     public int degree;
 };
 
+[System.Serializable]
+struct Song{
+    public string name;
+    public string author;
+    public int BPM;
+    public int difficulty;
+};
+
 public class GameDataStructure : MonoBehaviour
 {
     // Start is called before the first frame update
