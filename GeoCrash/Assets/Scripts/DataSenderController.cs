@@ -19,7 +19,7 @@ public class DataSenderController : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         
-        autoPlay = false;
+        autoPlay = true;
     }
 
     // Update is called once per frame
@@ -252,14 +252,14 @@ public class DataSenderController : MonoBehaviour
         AddNote(25, 7.0f, 2);
 
         AddNote(26, 0.0f, 1);
-        AddNote(26, 1.5f, 4);
-        AddNote(26, 3.0f, 2);
+        AddNote(26, 1.5f, 2);
+        AddNote(26, 3.0f, 4);
         AddNote(26, 4.0f, 3);
         AddNote(26, 5.5f, 1);
         AddNote(26, 7.0f, 2);
         AddNote(27, 0.0f, 1);
 
-        //副歌
+        //副歌-1
         AddNote(27, 6.0f, 2);
         AddNote(27, 6.5f, 1);
         AddNote(27, 7.0f, 2);
@@ -273,9 +273,65 @@ public class DataSenderController : MonoBehaviour
         AddNote(28, 7.0f, 3);
         AddNote(28, 7.5f, 1);
         AddNote(29, 0.0f, 4);
-        AddNote(29, 1.5f, 2);
-        AddNote(29, 3.0f, 1);
-        AddNote(29, 3.5f, 2);
+        AddNote(29, 1.0f, 2);
+        AddNote(29, 2.0f, 1);
+        AddNote(29, 3.0f, 2);
+        AddNote(29, 4.0f, 3);
+        AddNote(29, 4.5f, 4);
+        AddNote(29, 5.5f, 1);
+        //1 ,1
+
+        AddNote(29, 6.5f, 5);
+        AddNote(29, 7.0f, 5);
+        AddNote(29, 7.5f, 5);
+        AddNote(30, 0.0f, 5);
+        AddNote(30, 1.5f, 5);
+        AddNote(30, 3.0f, 5);
+        AddNote(30, 4.0f, 5);
+        AddNote(30, 5.0f, 5);
+        AddNote(30, 5.5f, 5);
+        AddNote(30, 6.5f, 5);
+        AddNote(30, 7.5f, 5);
+        AddNote(31, 0.0f, 5);
+        AddNote(31, 1.0f, 5);
+        AddNote(31, 2.0f, 5);
+        AddNote(31, 3.0f, 5);
+        AddNote(31, 4.0f, 5);
+
+        AddNote(31, 6.0f, 5);
+        AddNote(31, 6.5f, 5);
+        AddNote(31, 7.0f, 5);
+        AddNote(31, 7.5f, 5);
+        AddNote(32, 0.0f, 5);
+        AddNote(32, 1.5f, 5);
+        AddNote(32, 3.0f, 5);
+        AddNote(32, 3.5f, 5);
+        AddNote(32, 4.0f, 5);
+        AddNote(32, 5.5f, 5);
+        AddNote(32, 7.0f, 5);
+        AddNote(32, 7.5f, 5);
+        AddNote(33, 0.0f, 5);
+        AddNote(33, 1.5f, 5);
+        AddNote(33, 3.0f, 5);
+        AddNote(33, 3.5f, 5);
+
+        AddNote(33, 6.5f, 5);
+        AddNote(33, 7.0f, 5);
+        AddNote(33, 7.5f, 5);
+        AddNote(34, 0.0f, 5);
+        AddNote(34, 1.5f, 5);
+        AddNote(34, 3.0f, 5);
+        AddNote(34, 4.0f, 5);
+        AddNote(34, 5.0f, 5);
+        AddNote(34, 5.5f, 5);
+        AddNote(34, 7.0f, 5);
+        AddNote(34, 7.5f, 5);
+        AddNote(35, 0.0f, 5);
+        AddNote(35, 2.0f, 5);
+        AddNote(35, 3.0f, 5);
+        AddNote(35, 4.0f, 5);
+
+
 
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
