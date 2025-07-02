@@ -28,7 +28,6 @@ public class MapGeneratorController : MonoBehaviour
         for(int i=0;i<songList.Count;i++){
             GameObject currentSongTitle = Instantiate(songTitlePrefeb, transform.position, Quaternion.identity);
             currentSongTitle.transform.position = new Vector3(-3, -1.5f*i, 0);
-            Debug.Log("place new title " + i.ToString());
         }
         sizeOfSongList = songList.Count;
     }

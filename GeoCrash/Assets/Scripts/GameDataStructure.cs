@@ -27,7 +27,9 @@ public struct MovementStatus{
 public struct Effect{
     public float t;
     public int type;
-    public int degree;
+    public float degree;
+    public float duriation;
+    public float speed;
 };
 
 [System.Serializable]

@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 348687341}
   - component: {fileID: 348687343}
   - component: {fileID: 348687342}
+  - component: {fileID: 348687344}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -391,6 +392,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &348687344
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348687340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &398387397
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617315718}
   - component: {fileID: 617315717}
+  - component: {fileID: 617315719}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -917,6 +936,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617315719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617315716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeffa680863788441bcedb60ef9ecd36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVirtualCamera: {fileID: 617315717}
 --- !u!1 &654066795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2064,7 @@ MonoBehaviour:
   hexagonCollider: {fileID: 1571931294}
   endUIController: {fileID: 654066797}
   scoreController: {fileID: 398387401}
+  cameraController: {fileID: 617315719}
 --- !u!50 &1571931290
 Rigidbody2D:
   serializedVersion: 4

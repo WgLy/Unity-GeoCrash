@@ -51,6 +51,9 @@ public class CharacterController : MonoBehaviour
     public EndUIController endUIController;
     public ScoreController scoreController;
 
+    // 特效使用
+    public CameraController cameraController;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -185,6 +188,19 @@ public class CharacterController : MonoBehaviour
             Debug.Log("end");
             endUIController.Show();
             scoreController.Move();
+        }
+
+        if(gameTime >= effects.Peek().t){ // 播放特效
+            if(effects.Peek().type == 1){ // 1震動
+                cameraController.ShakeCamera(effects.Peek().degree, effects.Peek().duriation);
+            }
+            if(effects.Peek().type == 2){ // 2變形
+                ChangeShape((int)effects.Peek().degree);
+            }
+            if(effects.Peek().type == 3){ // 3縮放
+                cameraController.ChangeCameraScale((int)effects.Peek().degree, (int)effects.Peek().speed);
+            }
+            effects.Dequeue();
         }
 
     }

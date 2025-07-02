@@ -51,6 +51,27 @@ public class DataSenderController : MonoBehaviour
         initialShape = 1;
         notes.Clear();
         holds.Clear();
+
+        AddEffect(0, 4.0f, 1, 10, 0.2f, 0.0f);
+AddEffect(0, 4.0f, 3, 10.0f, 0.0f, 20.0f);
+        AddEffect(0, 8.0f, 1, 20, 0.2f, 0.0f);
+AddEffect(0, 8.0f, 3, 15.0f, 0.0f, 20.0f);
+        AddEffect(0, 12.0f, 1, 30, 0.2f, 0.0f);
+AddEffect(0, 12.0f, 3, 20.0f, 0.0f, 20.0f);
+        AddEffect(0, 16.0f, 1, 4, 0.2f, 0.0f);
+AddEffect(0, 16.0f, 3, 5.0f, 0.0f, 40.0f);
+        
+        
+
+
+
+        AddEffect(0, 20.0f, 1, 5, 0.2f, 0.0f);
+        AddEffect(0, 24.0f, 1, 6, 0.2f, 0.0f);
+        AddEffect(0, 28.0f, 1, 7, 0.2f, 0.0f);
+        AddEffect(0, 32.0f, 1, 8, 0.2f, 0.0f);
+
+        
+
         //        2
         //    4       3 
         //        1
@@ -654,18 +675,28 @@ public class DataSenderController : MonoBehaviour
         AddHold(0, 4000.0f, 5000.5f, 1);
     }
 
-    void AddNote(int p,float t,int type){  // 加入音符函式
+    void AddNote(int p, float t, int type){  // 加入音符函式
         Note tmp = new Note();
         tmp.t = (t+p*8)*60.0f/BPM;
         tmp.type = type;
         notes.Enqueue(tmp);
     }
 
-    void AddHold(int p,float t_b,float t_e,int type){  // 加入長條函式
+    void AddHold(int p, float t_b, float t_e, int type){  // 加入長條函式
         Hold tmp = new Hold();
         tmp.t_begin = (t_b+p*8)*60.0f/BPM;
         tmp.t_end = (t_e+p*8)*60.0f/BPM;
         tmp.type = type;
         holds.Enqueue(tmp);
+    }
+
+    void AddEffect(int p, float t, int type, float degree, float duriation, float speed){  // 加入特效函式
+        Effect tmp = new Effect();
+        tmp.t = (t+p*8)*60.0f/BPM;
+        tmp.type = type;
+        tmp.degree = degree;
+        tmp.duriation = duriation;
+        tmp.speed = speed;
+        effects.Enqueue(tmp);
     }
 }
