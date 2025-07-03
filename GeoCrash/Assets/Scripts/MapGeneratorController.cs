@@ -12,7 +12,6 @@ public class MapGeneratorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("hi");
         transform.position = new Vector3(0, -3.0f, 0);
         Song tmp = new Song();
         tmp.name = "ForTest";

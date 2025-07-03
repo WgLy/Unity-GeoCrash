@@ -39,6 +39,27 @@ public class DataSenderController : MonoBehaviour
         }
     }
 
+/*
+特效一覽
+震動：
+AddEffect(<小節>, <第幾拍>, 1, <程度>, <持續時間(秒)>, 0.0f);
+變形：
+AddEffect(<小節>, <第幾拍>, 2, <形狀>, 0.0f, 0.0f);
+    <形狀>
+    1:正方形
+    2:三角形
+    3:正六邊形
+縮放：
+AddEffect(<小節>, <第幾拍>, 3, <縮放大小>, 0.0f, <速度>);
+變色：
+AddEffect(<小節>, <第幾拍>, 4, <r>, <g>, <b>);
+傾斜：
+AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速度>);
+    <是否回彈>
+    0:不回彈
+    1:自動回彈
+*/
+
     void FillTheQueue(){
         songIndex = 0;
         difficulty = 1;
@@ -52,25 +73,9 @@ public class DataSenderController : MonoBehaviour
         notes.Clear();
         holds.Clear();
 
-        AddEffect(0, 4.0f, 1, 10, 0.2f, 0.0f);
-AddEffect(0, 4.0f, 3, 10.0f, 0.0f, 20.0f);
-        AddEffect(0, 8.0f, 1, 20, 0.2f, 0.0f);
-AddEffect(0, 8.0f, 3, 15.0f, 0.0f, 20.0f);
-        AddEffect(0, 12.0f, 1, 30, 0.2f, 0.0f);
-AddEffect(0, 12.0f, 3, 20.0f, 0.0f, 20.0f);
-        AddEffect(0, 16.0f, 1, 4, 0.2f, 0.0f);
-AddEffect(0, 16.0f, 3, 5.0f, 0.0f, 40.0f);
-        
-        
-
-
-
-        AddEffect(0, 20.0f, 1, 5, 0.2f, 0.0f);
-        AddEffect(0, 24.0f, 1, 6, 0.2f, 0.0f);
-        AddEffect(0, 28.0f, 1, 7, 0.2f, 0.0f);
-        AddEffect(0, 32.0f, 1, 8, 0.2f, 0.0f);
-
-        
+        AddEffect(0, 4.0f, 5, 10.0f, 0, 1);
+        AddEffect(0, 8.0f, 5, 0.0f, 0, 10);
+        AddEffect(0, 12.0f, 5, 60.0f, 1, 5);
 
         //        2
         //    4       3 

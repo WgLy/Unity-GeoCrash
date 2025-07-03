@@ -53,6 +53,7 @@ public class CharacterController : MonoBehaviour
 
     // 特效使用
     public CameraController cameraController;
+    public BgColorController bgColorController;
 
     void Start()
     {
@@ -199,6 +200,12 @@ public class CharacterController : MonoBehaviour
             }
             if(effects.Peek().type == 3){ // 3縮放
                 cameraController.ChangeCameraScale((int)effects.Peek().degree, (int)effects.Peek().speed);
+            }
+            if(effects.Peek().type == 4){ // 4變色
+                bgColorController.ChangeColor(effects.Peek().degree, effects.Peek().duriation, effects.Peek().speed);
+            }
+            if(effects.Peek().type == 5){ // 5傾斜
+                cameraController.TiltCamera(effects.Peek().degree, effects.Peek().speed, effects.Peek().duriation);
             }
             effects.Dequeue();
         }
