@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class AudioController : MonoBehaviour
 {
     public AudioSource audioSource;
+    public AudioSource tapSoundSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,9 @@ public class AudioController : MonoBehaviour
 
     public void StartMusic(){
         audioSource.Play();
+    }
+
+    public void PlayTapSound(){
+        tapSoundSource.Play();
     }
 }

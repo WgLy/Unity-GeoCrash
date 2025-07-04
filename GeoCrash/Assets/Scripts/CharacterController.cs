@@ -30,7 +30,7 @@ public class CharacterController : MonoBehaviour
 
     public float perfectLimit;
     public float goodLimit;
-    public AudioSource audioSource;
+    public AudioController audioController;
     public bool isPlayingMusic;
     public bool autoPlay;
     bool canCatchHold;
@@ -105,7 +105,7 @@ public class CharacterController : MonoBehaviour
 
 
         if(gameTime >= deviation*0.001 && !isPlayingMusic){ // 播放音樂
-            audioSource.Play();
+            audioController.StartMusic();
             isPlayingMusic = true;
         }
 
@@ -114,6 +114,7 @@ public class CharacterController : MonoBehaviour
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
                 score += 1;
+                audioController.PlayTapSound();
             }
         }
 
