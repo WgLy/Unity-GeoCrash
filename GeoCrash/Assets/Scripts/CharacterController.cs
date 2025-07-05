@@ -140,10 +140,13 @@ public class CharacterController : MonoBehaviour
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
                 score += 1;
-            }else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
+                audioController.PlayTapSound();
+            }
+            else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
                 score += 0.5f;
+                audioController.PlayTapSound();
             }
         }
         if(gameTime > notes.Peek().t + goodLimit){

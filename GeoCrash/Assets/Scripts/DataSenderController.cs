@@ -19,7 +19,7 @@ public class DataSenderController : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         
-        autoPlay = true;
+        autoPlay = false;
     }
 
     // Update is called once per frame
@@ -73,9 +73,10 @@ AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速�
         notes.Clear();
         holds.Clear();
 
-        AddEffect(0, 4.0f, 5, 10.0f, 0, 1);
-        AddEffect(0, 8.0f, 5, 0.0f, 0, 10);
-        AddEffect(0, 12.0f, 5, 60.0f, 1, 5);
+        for (int i=0;i<1000;i++)
+        {
+            //AddEffect(0, i*2f, 1, 5, 0.1f, 0.0f);
+        }
 
         //        2
         //    4       3 

@@ -1947,7 +1947,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.8792453, g: 0.8792453, b: 0.8792453, a: 0}
+  m_BackGroundColor: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   audioController: {fileID: 589491248}
   isPlayingMusic: 0
   autoPlay: 1
-  deviation: 0
+  deviation: -30
   shape: 0
   squareSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   triangleSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
