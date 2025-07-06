@@ -39,28 +39,53 @@ public class DataSenderController : MonoBehaviour
         }
     }
 
-/*
-特效一覽
-震動：
-AddEffect(<小節>, <第幾拍>, 1, <程度>, <持續時間(秒)>, 0.0f);
-變形：
-AddEffect(<小節>, <第幾拍>, 2, <形狀>, 0.0f, 0.0f);
-    <形狀>
-    1:正方形
-    2:三角形
-    3:正六邊形
-縮放：
-AddEffect(<小節>, <第幾拍>, 3, <縮放大小>, 0.0f, <速度>);
-變色：
-AddEffect(<小節>, <第幾拍>, 4, <r>, <g>, <b>);
-傾斜：
-AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速度>);
-    <是否回彈>
-    0:不回彈
-    1:自動回彈
-*/
+    /*
+    特效一覽
+    震動：
+    AddEffect(<小節>, <第幾拍>, 1, <程度>, <持續時間(秒)>, 0.0f);
+    變形：
+    AddEffect(<小節>, <第幾拍>, 2, <形狀>, 0.0f, 0.0f);
+        <形狀>
+        1:正方形
+        2:三角形
+        3:正六邊形
+    縮放：
+    AddEffect(<小節>, <第幾拍>, 3, <縮放大小>, 0.0f, <速度>);
+    變色：
+    AddEffect(<小節>, <第幾拍>, 4, <r>, <g>, <b>);
+    傾斜：
+    AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速度>);
+        <是否回彈>
+        0:不回彈
+        1:自動回彈
+    */
 
-    void FillTheQueue(){
+    void FillTheSettingQueue()
+    {
+        songIndex = -1;
+        difficulty = 0;
+        BPM = 60;
+        InitialStatus.locate = new Vector3(7, 0, 0);
+        InitialStatus.angle = Quaternion.identity;
+        InitialStatus.spin = 0.0f;
+        InitialStatus.dir = new Vector2(0, 1);
+        InitialStatus.speed = 3;
+        initialShape = 1;
+        notes.Clear();
+        holds.Clear();
+
+        for (int i = 0; i < 1000; i++)
+        {
+            AddNote(0, i * 2 - 1, 2);
+            AddNote(0, i * 2, 1);
+        }
+
+        //        2
+        //    4       3 
+        //        1
+    }
+
+        void FillTheQueue(){
         songIndex = 0;
         difficulty = 1;
         BPM = 180;
