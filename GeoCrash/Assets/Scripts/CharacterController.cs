@@ -80,7 +80,7 @@ public class CharacterController : MonoBehaviour
         score = 0;
         max_score = notes.Count+holds.Count-2;
 
-        gameTime = 0.00000f-8*60f/BPM; //8
+        gameTime = 0.00000f-8*60.0f/BPM; //8
         
         isPlayingMusic = false;
         moving = false;
@@ -94,7 +94,7 @@ public class CharacterController : MonoBehaviour
     {
         gameTime += Time.fixedDeltaTime; // 讓時間流動
 
-        if (gameTime >= -4 * 60f / BPM && moving == false){
+        if (gameTime >= -4 * 60.0f / BPM && moving == false){
             transform.position = new Vector3(0, 0, 0); 
             rb.velocity = dir.normalized * moveSpeed;
             moving = true;
@@ -104,7 +104,7 @@ public class CharacterController : MonoBehaviour
         }//transform.position += dir * moveSpeed * Time.fixedDeltaTime * ((gameTime>=-4*60/BPM)?1:0); // 移動
 
 
-        if(gameTime >= deviation*0.001 && !isPlayingMusic){ // 播放音樂
+        if(gameTime >= deviation*0.001f+dataSenderController.songDeviation*0.001f && !isPlayingMusic){ // 播放音樂
             audioController.StartMusic();
             isPlayingMusic = true;
         }
@@ -189,10 +189,11 @@ public class CharacterController : MonoBehaviour
             ChangeShape(3);
         }
 
-        if(notes.Peek().type == 0){
+        if(notes.Peek().type == 0){ // 遊玩結束
             Debug.Log("end");
             endUIController.Show();
             scoreController.Move();
+            audioController.StopAllSound();
         }
 
         if(gameTime >= effects.Peek().t){ // 播放特效

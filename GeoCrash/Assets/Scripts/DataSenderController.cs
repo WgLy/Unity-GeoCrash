@@ -13,13 +13,15 @@ public class DataSenderController : MonoBehaviour
     public MovementStatus InitialStatus;
     public bool autoPlay;
     public int initialShape;
+    public int songDeviation;
     
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         
-        autoPlay = false;
+        autoPlay = true;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class DataSenderController : MonoBehaviour
                 FillTheQueue();
             }
             if(songIndex == 1){
-                FillTheQueue2();
+                FillTheQueue_NaughyCute();
             }
         }
     }
@@ -42,50 +44,25 @@ public class DataSenderController : MonoBehaviour
     /*
     特效一覽
     震動：
-    AddEffect(<小節>, <第幾拍>, 1, <程度>, <持續時間(秒)>, 0.0f);
+    AddEffect(<小節>, <第幾拍>, 1, <程度>, <持續時間(秒)>, 0.0f); // 震動
     變形：
-    AddEffect(<小節>, <第幾拍>, 2, <形狀>, 0.0f, 0.0f);
+    AddEffect(<小節>, <第幾拍>, 2, <形狀>, 0.0f, 0.0f); // 變形
         <形狀>
         1:正方形
         2:三角形
         3:正六邊形
     縮放：
-    AddEffect(<小節>, <第幾拍>, 3, <縮放大小>, 0.0f, <速度>);
+    AddEffect(<小節>, <第幾拍>, 3, <縮放大小>, 0.0f, <速度>); // 縮放
     變色：
-    AddEffect(<小節>, <第幾拍>, 4, <r>, <g>, <b>);
+    AddEffect(<小節>, <第幾拍>, 4, <r>, <g>, <b>); // 變色
     傾斜：
-    AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速度>);
+    AddEffect(<小節>, <第幾拍>, 5, <傾斜目標角度>, <是否回彈>, <速度>); // 傾斜
         <是否回彈>
         0:不回彈
         1:自動回彈
     */
 
-    void FillTheSettingQueue()
-    {
-        songIndex = -1;
-        difficulty = 0;
-        BPM = 60;
-        InitialStatus.locate = new Vector3(7, 0, 0);
-        InitialStatus.angle = Quaternion.identity;
-        InitialStatus.spin = 0.0f;
-        InitialStatus.dir = new Vector2(0, 1);
-        InitialStatus.speed = 3;
-        initialShape = 1;
-        notes.Clear();
-        holds.Clear();
-
-        for (int i = 0; i < 1000; i++)
-        {
-            AddNote(0, i * 2 - 1, 2);
-            AddNote(0, i * 2, 1);
-        }
-
-        //        2
-        //    4       3 
-        //        1
-    }
-
-        void FillTheQueue(){
+    void FillTheQueue(){
         songIndex = 0;
         difficulty = 1;
         BPM = 180;
@@ -95,6 +72,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
         initialShape = 1;
+        songDeviation = -40;
         notes.Clear();
         holds.Clear();
 
@@ -464,10 +442,11 @@ public class DataSenderController : MonoBehaviour
 
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
+        AddEffect(0, 40000, 1, 1, 1, 0.0f);
     }
 
     void FillTheQueue2(){
-        songIndex = 1;
+        songIndex = 5;
         difficulty = 1;
         BPM = 180;
         InitialStatus.locate = new Vector3(0, 0, 0);
@@ -476,6 +455,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.dir = new Vector2(1, -1);
         InitialStatus.speed = 13;
         initialShape = 3;
+        songDeviation = 0;
         notes.Clear();
         holds.Clear();
         //        2
@@ -706,24 +686,231 @@ public class DataSenderController : MonoBehaviour
         AddHold(0, 4000.0f, 5000.5f, 1);
     }
 
+    void FillTheQueue_NaughyCute(){
+        songIndex = 1;
+        difficulty = 1;
+        BPM = 103;
+        InitialStatus.locate = new Vector3(0, 0, 0);
+        InitialStatus.angle = Quaternion.identity;
+        InitialStatus.spin = 0.0f;
+        InitialStatus.dir = new Vector2(1, 1);
+        InitialStatus.speed = 13;
+        initialShape = 1;
+        songDeviation = -400; // 問題：測試系統測出-200左右的值
+        notes.Clear();
+        holds.Clear();
+
+        AddEffect(0, 0, 3, 6, 0.0f, 5);//縮放
+        AddEffect(0, 0, 5, 20, 0, 2); // 傾斜
+        AddEffect(0, 0, 4, 0, 0, 1);
+        AddEffect(1, 0, 3, 5, 0.0f, 5);//縮放
+        AddEffect(1, 0, 5, -20, 0, 4); // 傾斜
+        AddEffect(1, 0, 4, 0, 0, 0);
+        AddEffect(2, 0, 3, 6, 0.0f, 5);//縮放
+        AddEffect(2, 0, 5, 20, 0, 4); // 傾斜
+        AddEffect(2, 0, 4, 0, 0, 1);
+        AddEffect(3, 0, 3, 5, 0.0f, 5);//縮放
+        AddEffect(3, 0, 5, 0, 0, 2); // 傾斜
+        AddEffect(3, 0, 4, 0, 0, 0);
+
+        AddHold(4, 0.0f, 1.0f, 1);
+        AddNote(4, 2.00f, 2);
+        AddNote(4, 2.25f, 1);
+        AddNote(4, 2.50f, 2);
+        AddNote(4, 2.75f, 3);
+        AddNote(4, 3.00f, 4);
+        AddNote(4, 3.25f, 3);
+        AddNote(4, 3.50f, 1);
+        AddNote(4, 3.75f, 2);
+
+        AddHold(5, 0.0f, 1.0f, 1);
+        AddNote(5, 2.00f, 4);
+        AddNote(5, 2.25f, 3);
+        AddNote(5, 2.50f, 4);
+        AddNote(5, 2.75f, 1);
+        AddNote(5, 3.00f, 2);
+        AddNote(5, 3.25f, 1);
+        AddNote(5, 3.50f, 2);
+        AddNote(5, 3.75f, 1);
+
+        AddHold(6, 0.0f, 1.0f, 1);
+        AddNote(6, 2.00f, 2);
+        AddNote(6, 2.25f, 1);
+        AddNote(6, 2.50f, 2);
+        AddNote(6, 2.75f, 3);
+        AddNote(6, 3.00f, 4);
+        AddNote(6, 3.25f, 3);
+        AddNote(6, 3.50f, 1);
+        AddNote(6, 3.75f, 2);
+
+        AddHold(7, 0.0f, 1.0f, 1);
+        AddNote(7, 2.00f, 4);
+        AddNote(7, 2.25f, 3);
+        AddNote(7, 2.50f, 4);
+        AddNote(7, 2.75f, 1);
+        AddNote(7, 3.00f, 2);
+        AddNote(7, 3.25f, 1);
+        AddNote(7, 3.50f, 2);
+        AddNote(7, 3.75f, 1);
+
+        AddNote(8, 0.00f, 3);
+        AddNote(8, 0.50f, 4);
+        AddNote(8, 1.00f, 2);
+        AddNote(8, 1.50f, 1);
+        AddNote(8, 2.00f, 2);
+        AddNote(8, 2.50f, 1);
+        AddNote(8, 3.00f, 2);
+        AddNote(8, 3.25f, 1);
+        AddNote(8, 3.75f, 2);
+
+        AddHold(9, 0.0f, 0.5f, 1);
+        AddHold(9, 1.0f, 1.5f, 1);
+        AddHold(9, 2.0f, 2.5f, 1);
+        AddHold(9, 3.0f, 3.5f, 1);
+        AddNote(9, 3.5f, 3);
+        AddNote(9, 3.75f, 4);
+        
+        AddNote(10, 0.00f, 3);
+        AddNote(10, 0.50f, 4);
+        AddNote(10, 1.00f, 1);
+        AddNote(10, 1.50f, 2);
+        AddNote(10, 2.00f, 1);
+        AddNote(10, 2.50f, 2);
+        AddNote(10, 3.00f, 1);
+        AddNote(10, 3.25f, 2);
+        AddNote(10, 3.75f, 1);
+
+        AddHold(11, 0.0f, 0.5f, 1);
+        AddHold(11, 1.0f, 1.5f, 1);
+        AddHold(11, 2.0f, 2.5f, 1);
+        AddHold(11, 3.0f, 3.5f, 1);
+        //(1, 1)
+
+        AddNote(12, 0.00f, 3);
+        AddNote(12, 0.50f, 4);
+        AddNote(12, 1.00f, 2);
+        AddNote(12, 1.50f, 1);
+        AddNote(12, 2.00f, 2);
+        AddNote(12, 2.50f, 1);
+        AddNote(12, 3.00f, 2);
+        AddNote(12, 3.25f, 1);
+        AddNote(12, 3.75f, 2);
+
+        AddHold(13, 0.0f, 0.5f, 1);
+        AddHold(13, 1.0f, 1.5f, 1);
+        AddHold(13, 2.0f, 2.50f, 1);
+        AddHold(13, 2.75f, 3.5f, 1);
+        AddNote(13, 3.5f, 3);
+        AddNote(13, 3.75f, 4);
+        
+        AddNote(14, 0.00f, 3);
+        AddNote(14, 0.50f, 4);
+        AddNote(14, 1.00f, 1);
+        AddNote(14, 1.50f, 2);
+        AddNote(14, 2.00f, 1);
+        AddNote(14, 2.50f, 2);
+        AddNote(14, 3.00f, 1);
+        AddNote(14, 3.25f, 2);
+        AddNote(14, 3.75f, 1);
+
+        AddHold(15, 0.0f, 0.5f, 1);
+        AddHold(15, 1.0f, 1.5f, 1);
+        AddHold(15, 2.0f, 2.5f, 1);
+        AddHold(15, 3.0f, 3.5f, 1);
+        //(1, 1)
+
+        AddNote(16, 0.00f, 3);
+        AddNote(16, 0.50f, 4);
+        AddNote(16, 1.00f, 2);
+        AddNote(16, 1.50f, 1);
+        AddNote(16, 2.00f, 2);
+        AddNote(16, 2.50f, 1);
+        AddNote(16, 3.00f, 2);
+        AddNote(16, 3.25f, 1);
+        AddNote(16, 3.75f, 2);
+
+        AddNote(17, 0.50f, 3);
+        AddNote(17, 1.00f, 4);
+        AddNote(17, 1.50f, 3);
+        AddHold(17, 2.0f, 3.0f, 1);
+        AddEffect(17, 2.0f, 5, 40, 1, 5); // 傾斜
+        
+        AddNote(18, 0.00f, 5);
+        AddNote(18, 0.50f, 4);
+        AddNote(18, 1.00f, 1);
+        AddNote(18, 1.50f, 2);
+        AddNote(18, 2.00f, 1);
+        AddNote(18, 2.50f, 2);
+        AddNote(18, 3.00f, 1);
+        AddNote(18, 3.25f, 2);
+        AddNote(18, 3.75f, 1);
+
+        AddNote(19, 0.50f, 2);
+        AddNote(19, 1.00f, 1);
+        AddNote(19, 1.50f, 5);
+        AddHold(19, 2.0f, 3.0f, 1);
+        AddEffect(19, 2.0f, 5, -40, 1, 5); // 傾斜
+        //(1, 1)
+
+        AddNote(20, 0.00f, 3);
+        AddNote(20, 0.50f, 4);
+        AddNote(20, 1.00f, 2);
+        AddNote(20, 1.50f, 1);
+        AddNote(20, 2.00f, 2);
+        AddNote(20, 2.50f, 1);
+        AddNote(20, 3.00f, 2);
+        AddNote(20, 3.25f, 1);
+        AddNote(20, 3.75f, 2);
+
+        AddEffect(21, 0.0f, 3, 8, 0.0f, 1); // 縮放
+        AddHold(21, 0.0f, 0.25f, 1);
+        AddHold(21, 0.5f, 0.75f, 1);
+        AddHold(21, 1.0f, 1.25f, 1);
+        AddHold(21, 1.5f, 1.75f, 1);
+        AddHold(21, 2.0f, 2.25f, 1);
+        AddHold(21, 2.5f, 2.75f, 1);
+        AddEffect(21, 3.5f, 3, 5, 0.0f, 5); // 縮放
+        AddNote(21, 3.5f, 3);
+        AddNote(21, 3.75f, 4);
+        
+        AddNote(22, 0.00f, 3);
+        AddNote(22, 0.50f, 4);
+        AddNote(22, 1.00f, 1);
+        AddNote(22, 1.50f, 2);
+        AddNote(22, 2.00f, 1);
+        AddNote(22, 2.50f, 2);
+        AddNote(22, 3.00f, 1);
+        AddNote(22, 3.25f, 2);
+        AddNote(22, 3.75f, 1);
+
+        AddHold(23, 0.0f, 3.5f, 1);
+        AddNote(23, 1.00f, 5);
+        AddNote(23, 2.00f, 5);
+        AddNote(23, 3.00f, 5);
+        //(1, 1)
+        AddNote(0, 40000f, 1);
+        AddHold(0, 40000.0f, 50000.5f, 1);
+        AddEffect(0, 40000, 1, 1, 1, 0.0f);
+    }
+
     void AddNote(int p, float t, int type){  // 加入音符函式
         Note tmp = new Note();
-        tmp.t = (t+p*8)*60.0f/BPM;
+        tmp.t = (t+p*4)*60.0f/BPM;
         tmp.type = type;
         notes.Enqueue(tmp);
     }
 
     void AddHold(int p, float t_b, float t_e, int type){  // 加入長條函式
         Hold tmp = new Hold();
-        tmp.t_begin = (t_b+p*8)*60.0f/BPM;
-        tmp.t_end = (t_e+p*8)*60.0f/BPM;
+        tmp.t_begin = (t_b+p*4)*60.0f/BPM;
+        tmp.t_end = (t_e+p*4)*60.0f/BPM;
         tmp.type = type;
         holds.Enqueue(tmp);
     }
 
     void AddEffect(int p, float t, int type, float degree, float duriation, float speed){  // 加入特效函式
         Effect tmp = new Effect();
-        tmp.t = (t+p*8)*60.0f/BPM;
+        tmp.t = (t+p*4)*60.0f/BPM;
         tmp.type = type;
         tmp.degree = degree;
         tmp.duriation = duriation;

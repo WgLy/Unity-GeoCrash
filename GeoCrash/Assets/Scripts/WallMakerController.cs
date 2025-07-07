@@ -32,6 +32,8 @@ public class WallMakerController : MonoBehaviour
     public PolygonCollider2D triangleCollider;
     public PolygonCollider2D hexagonCollider;
 
+    public GameObject randomPointPrefeb;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,7 +53,7 @@ public class WallMakerController : MonoBehaviour
 
         // 初始變形
         ChangeShape(shape);
-        gameTime = 0.00000f-4*60f/BPM;
+        gameTime = 0.00000f-4*60.0f/BPM;
         moving = false; 
     }
 
@@ -61,7 +63,7 @@ public class WallMakerController : MonoBehaviour
         gameTime += Time.fixedDeltaTime; // 讓時間流動
 
         //transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
-        if (gameTime >= -4 * 60f / BPM && moving == false){
+        if (gameTime >= -4 * 60.0f / BPM && moving == false){
             transform.position = new Vector3(0, 0, 0); 
             rb.velocity = dir.normalized * moveSpeed;
             moving = true;
@@ -125,6 +127,16 @@ public class WallMakerController : MonoBehaviour
         }
         if(gameTime >= holds.Peek().t_end){
             holds.Dequeue();
+        }
+
+        if(moving && UnityEngine.Random.Range(1, 500) == 1){ // 造雜點
+        
+            Vector2 randomPos2D = UnityEngine.Random.insideUnitCircle * 5f;
+            GameObject newPointShape = Instantiate(
+                randomPointPrefeb,
+                randomPos2D + new Vector2(transform.position.x, transform.position.y),
+                Quaternion.identity
+            );
         }
     }
 
