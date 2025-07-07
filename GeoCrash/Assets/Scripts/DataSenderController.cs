@@ -21,7 +21,7 @@ public class DataSenderController : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         
-        autoPlay = true;
+        autoPlay = false;
     }
 
     // Update is called once per frame
@@ -763,10 +763,12 @@ public class DataSenderController : MonoBehaviour
         AddNote(8, 3.25f, 1);
         AddNote(8, 3.75f, 2);
 
+        AddEffect(9, 0, 4, 0, 0, 1); // 變色
         AddHold(9, 0.0f, 0.5f, 1);
         AddHold(9, 1.0f, 1.5f, 1);
         AddHold(9, 2.0f, 2.5f, 1);
         AddHold(9, 3.0f, 3.5f, 1);
+        AddEffect(9, 3.5f, 4, 0, 0, 0); // 變色
         AddNote(9, 3.5f, 3);
         AddNote(9, 3.75f, 4);
         
@@ -780,10 +782,12 @@ public class DataSenderController : MonoBehaviour
         AddNote(10, 3.25f, 2);
         AddNote(10, 3.75f, 1);
 
+        AddEffect(11, 0, 4, 0, 0, 1); // 變色
         AddHold(11, 0.0f, 0.5f, 1);
         AddHold(11, 1.0f, 1.5f, 1);
         AddHold(11, 2.0f, 2.5f, 1);
         AddHold(11, 3.0f, 3.5f, 1);
+        AddEffect(11, 3.5f, 4, 0, 0, 0); // 變色
         //(1, 1)
 
         AddNote(12, 0.00f, 3);
@@ -796,10 +800,12 @@ public class DataSenderController : MonoBehaviour
         AddNote(12, 3.25f, 1);
         AddNote(12, 3.75f, 2);
 
+        AddEffect(13, 0, 4, 0, 0, 1); // 變色
         AddHold(13, 0.0f, 0.5f, 1);
         AddHold(13, 1.0f, 1.5f, 1);
         AddHold(13, 2.0f, 2.50f, 1);
         AddHold(13, 2.75f, 3.5f, 1);
+        AddEffect(13, 3.5f, 4, 0, 0, 0); // 變色
         AddNote(13, 3.5f, 3);
         AddNote(13, 3.75f, 4);
         
@@ -813,10 +819,12 @@ public class DataSenderController : MonoBehaviour
         AddNote(14, 3.25f, 2);
         AddNote(14, 3.75f, 1);
 
+        AddEffect(15, 0, 4, 0, 0, 1); // 變色
         AddHold(15, 0.0f, 0.5f, 1);
         AddHold(15, 1.0f, 1.5f, 1);
         AddHold(15, 2.0f, 2.5f, 1);
         AddHold(15, 3.0f, 3.5f, 1);
+        AddEffect(15, 3.5f, 4, 0, 0, 0); // 變色
         //(1, 1)
 
         AddNote(16, 0.00f, 3);
@@ -887,9 +895,232 @@ public class DataSenderController : MonoBehaviour
         AddNote(23, 1.00f, 5);
         AddNote(23, 2.00f, 5);
         AddNote(23, 3.00f, 5);
+        //(1, 1) HOld and points, enter center
+
+        AddNote(24, 0.00f, 2);
+        AddNote(24, 0.00f, 5);
+        AddNote(24, 1.00f, 1);
+        AddNote(24, 1.00f, 5);
+        AddNote(24, 2.00f, 2);
+        AddNote(24, 2.00f, 5);
+        AddNote(24, 3.00f, 1);
+        AddNote(24, 3.00f, 5);
+
+        AddNote(25, 0.00f, 2);
+        AddNote(25, 0.00f, 5);
+
+        AddNote(26, 0.00f, 1);
+        AddNote(26, 0.00f, 5);
+        AddNote(26, 1.00f, 2);
+        AddNote(26, 1.00f, 5);
+        AddNote(26, 2.00f, 1);
+        AddNote(26, 2.00f, 5);
+        AddNote(26, 3.00f, 2);
+        AddNote(26, 3.00f, 5);
+
+        AddNote(27, 0.00f, 1);
+        AddNote(27, 0.00f, 5);
+
+        AddNote(28, 0.00f, 2);
+        AddNote(28, 0.50f, 1);
+        AddNote(28, 0.50f, 5);
+        AddNote(28, 1.00f, 2);
+        AddNote(28, 1.50f, 1);
+        AddNote(28, 1.50f, 5);
+        AddNote(28, 2.00f, 2);
+        AddNote(28, 2.50f, 1);
+        AddNote(28, 2.50f, 5);
+        AddNote(28, 3.00f, 2);
+        AddNote(28, 3.50f, 1);
+        AddNote(28, 3.50f, 5);
+
+        AddNote(29, 0.00f, 2);
+
+        AddNote(29, 0.50f, 1);
+        AddNote(29, 0.75f, 2);
+        AddNote(29, 1.00f, 1);
+        AddNote(29, 1.50f, 2);
+        AddNote(29, 1.75f, 1);
+        AddNote(29, 2.00f, 2);
+        AddNote(29, 2.50f, 1);
+        AddNote(29, 2.75f, 2);
+        AddNote(29, 3.00f, 1);
+        AddNote(29, 3.50f, 2);
+        AddNote(29, 3.75f, 1);
+
+        AddNote(30, 0.00f, 2);
+        AddNote(30, 0.50f, 1);
+        AddNote(30, 0.50f, 5);
+        AddNote(30, 1.00f, 2);
+        AddNote(30, 1.50f, 1);
+        AddNote(30, 1.50f, 5);
+        AddNote(30, 2.00f, 2);
+        AddNote(30, 2.50f, 1);
+        AddNote(30, 2.50f, 5);
+        AddNote(30, 3.00f, 2);
+        AddNote(30, 3.50f, 1);
+        AddNote(30, 3.50f, 5);
+
+        AddNote(31, 0.00f, 2);
+
+        AddNote(31, 0.50f, 1);
+        AddNote(31, 0.75f, 2);
+        AddNote(31, 1.00f, 1);
+        AddNote(31, 1.50f, 2);
+        AddNote(31, 1.75f, 1);
+        AddNote(31, 2.00f, 2);
+        AddNote(31, 2.50f, 1);
+        AddNote(31, 2.75f, 2);
+        AddNote(31, 3.00f, 1);
+        AddNote(31, 3.50f, 2);
+        AddNote(31, 3.75f, 1);
+        //(1, 1) pass center
+
+        AddNote(32, 0.00f, 3);
+        AddNote(32, 0.50f, 4);
+        AddNote(32, 1.00f, 3);
+        AddNote(32, 1.50f, 4);
+        AddNote(32, 2.00f, 3);
+        AddNote(32, 2.50f, 4);
+        AddNote(32, 3.00f, 3);
+        AddNote(32, 3.25f, 4);
+        AddNote(32, 3.75f, 3);
+
+        AddEffect(33, 0, 4, 0, 0, 1); // 變色
+        AddHold(33, 0.0f, 0.5f, 1);
+        AddNote(33, 1.0f, 5);
+        AddNote(33, 1.5f, 5);
+        AddHold(33, 2.0f, 2.5f, 1);
+        AddNote(33, 3.0f, 5);
+        AddNote(33, 3.5f, 5);
+        AddEffect(33, 3.5f, 4, 0, 0, 0); // 變色
+        
+        AddNote(34, 0.00f, 4);
+        AddNote(34, 0.50f, 2);
+        AddNote(34, 1.00f, 1);
+        AddNote(34, 1.50f, 2);
+        AddNote(34, 2.00f, 1);
+        AddNote(34, 2.50f, 2);
+        AddNote(34, 3.00f, 1);
+        AddNote(34, 3.25f, 2);
+        AddNote(34, 3.75f, 1);
+
+        AddEffect(35, 0, 4, 0, 0, 1); // 變色
+        AddEffect(35, 0.0f, 1, 5, 2.04f, 0.0f); // 震動
+        AddHold(35, 0.0f, 3.5f, 1);
+        AddEffect(35, 3.5f, 4, 0, 0, 0); // 變色
+        AddNote(35, 3.5f, 3);
+        AddNote(35, 3.75f, 4);
         //(1, 1)
-        AddNote(0, 40000f, 1);
-        AddHold(0, 40000.0f, 50000.5f, 1);
+
+        AddNote(36, 0.00f, 3);
+        AddNote(36, 0.50f, 4);
+        AddNote(36, 1.00f, 2);
+        AddNote(36, 1.50f, 1);
+        AddNote(36, 2.00f, 2);
+        AddNote(36, 2.50f, 1);
+        AddNote(36, 3.00f, 2);
+        AddNote(36, 3.25f, 1);
+        AddNote(36, 3.75f, 2);
+
+        AddEffect(37, 0.0f, 3, 8, 0.0f, 1); // 縮放
+        AddHold(37, 0.0f, 0.25f, 1);
+        AddHold(37, 0.5f, 0.75f, 1);
+        AddHold(37, 1.0f, 1.25f, 1);
+        AddHold(37, 1.5f, 1.75f, 1);
+        AddHold(37, 2.0f, 2.25f, 1);
+        AddHold(37, 2.5f, 2.75f, 1);
+        AddEffect(37, 3.5f, 3, 5, 0.0f, 5); // 縮放
+        
+        AddNote(38, 0.00f, 3);
+        AddNote(38, 0.50f, 4);
+        AddNote(38, 1.00f, 1);
+        AddNote(38, 1.50f, 2);
+        AddNote(38, 2.00f, 1);
+        AddNote(38, 2.50f, 2);
+        AddNote(38, 3.00f, 1);
+        AddNote(38, 3.25f, 2);
+        AddNote(38, 3.75f, 1);
+
+        AddHold(39, 0.0f, 3.5f, 1);
+        AddNote(39, 1.00f, 5);
+        AddNote(39, 2.00f, 5);
+        AddNote(39, 3.00f, 5);
+        //(1, 1)
+
+        AddNote(40, 0.00f, 2);
+        AddNote(40, 0.50f, 1);
+        AddNote(40, 1.00f, 3);
+        AddNote(40, 1.50f, 4);
+        AddNote(40, 2.00f, 2);
+        AddNote(40, 2.50f, 1);
+        AddNote(40, 3.00f, 3);
+        AddNote(40, 3.25f, 4);
+        AddNote(40, 3.75f, 2);
+
+        AddNote(41, 0.50f, 3);
+        AddNote(41, 1.00f, 4);
+        AddNote(41, 1.50f, 3);
+        AddHold(41, 2.0f, 3.0f, 1);
+        AddEffect(41, 2.0f, 5, 30, 1, 5); // 傾斜
+        //(-1, 1)
+
+        AddNote(42, 0.00f, 4);
+        AddNote(42, 0.50f, 1);
+        AddNote(42, 1.00f, 5);
+        AddNote(42, 1.50f, 2);
+        AddNote(42, 2.00f, 3);
+        AddNote(42, 2.50f, 4);
+        AddNote(42, 3.00f, 5);
+        AddNote(42, 3.25f, 3);
+        AddNote(42, 3.75f, 1);
+
+        AddNote(43, 0.50f, 2);
+        AddNote(43, 1.00f, 1);
+        AddNote(43, 1.50f, 5);
+        AddHold(43, 2.0f, 3.0f, 1);
+        AddEffect(43, 2.0f, 5, -30, 1, 5); // 傾斜
+        //(-1, 1)
+
+        AddNote(44, 0.00f, 4);
+        AddNote(44, 0.50f, 3);
+        AddNote(44, 1.00f, 2);
+        AddNote(44, 1.50f, 1);
+        AddNote(44, 2.00f, 2);
+        AddNote(44, 2.50f, 1);
+        AddNote(44, 3.00f, 2);
+        AddNote(44, 3.25f, 1);
+        AddNote(44, 3.75f, 2);
+
+        AddEffect(45, 0.0f, 3, 8, 0.0f, 1); // 縮放
+        AddHold(45, 0.0f, 0.25f, 1);
+        AddHold(45, 0.5f, 0.75f, 1);
+        AddHold(45, 1.0f, 1.25f, 1);
+        AddHold(45, 1.5f, 1.75f, 1);
+        AddHold(45, 2.0f, 2.25f, 1);
+        AddHold(45, 2.5f, 2.75f, 1);
+        AddEffect(45, 3.5f, 3, 5, 0.0f, 5); // 縮放
+        AddNote(45, 3.5f, 5);
+        AddNote(45, 3.75f, 4);
+        
+        AddNote(46, 0.00f, 3);
+        AddNote(46, 0.50f, 4);
+        AddNote(46, 1.00f, 1);
+        AddNote(46, 1.50f, 2);
+        AddNote(46, 2.00f, 1);
+        AddNote(46, 2.50f, 2);
+        AddNote(46, 3.00f, 1);
+        AddNote(46, 3.25f, 2);
+        AddNote(46, 3.75f, 1);
+
+        AddHold(47, 0.0f, 3.5f, 1);
+        AddNote(47, 1.00f, 5);
+        AddNote(47, 2.00f, 5);
+        AddNote(47, 3.00f, 5);
+        
+        
+        AddNote(0, 40000f, 0);
+        AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 1, 1, 1, 0.0f);
     }
 
