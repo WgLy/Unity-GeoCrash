@@ -37,6 +37,12 @@ public class HoldEffectorController : MonoBehaviour
     void Update()
     {
         if(blowing){
+            transform.localScale = new Vector3(
+                1.7f, 
+                1.7f, 
+                1.7f
+            );
+            
             transform.localScale += new Vector3(
                 Time.deltaTime*blowSpeed, 
                 Time.deltaTime*blowSpeed, 

@@ -55,6 +55,14 @@ public class CharacterController : MonoBehaviour
     public CameraController cameraController;
     public BgColorController bgColorController;
 
+    // 暫停保存狀態
+    public MovementStatus stopStatus;
+    public bool stopping;
+    public float stoppingTime;
+
+    // wall shine
+    public Color origionColor;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -85,14 +93,22 @@ public class CharacterController : MonoBehaviour
         isPlayingMusic = false;
         moving = false;
         
-
+        // 暫停保存狀態
+        stopStatus.dir = dir;
+        stopStatus.locate = transform.position;
+        stopStatus.angle = transform.rotation;
+        stopStatus.spin = rb.angularVelocity;
+        stopStatus.dir = rb.velocity;
+        stopStatus.speed = moveSpeed;
+        stoppingTime = 0;
         
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        gameTime += Time.fixedDeltaTime; // 讓時間流動
+        if(!stopping) gameTime += Time.fixedDeltaTime; // 讓時間流動
+        stoppingTime += Time.fixedDeltaTime;
 
         if (gameTime >= -4 * 60.0f / BPM && moving == false){
             transform.position = new Vector3(0, 0, 0); 
@@ -118,13 +134,17 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if(gameTime>=turns.Peek().t){ // 校正位置
+        if(gameTime>=turns.Peek().t){ // 校正位置 + change wall shine
             transform.position = wallMakerController.correction.Peek().locate;
             transform.rotation = wallMakerController.correction.Peek().angle;
             rb.angularVelocity = wallMakerController.correction.Peek().spin;
             rb.velocity = wallMakerController.correction.Peek().dir;
             turns.Dequeue();
             wallMakerController.correction.Dequeue();
+
+            wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = origionColor;
+            wallMakerController.shineWall.Dequeue();
+
         }
 
 /*
@@ -164,7 +184,7 @@ public class CharacterController : MonoBehaviour
         if(gameTime < holds.Peek().t_begin){ // 長條判定
             canCatchHold = true;
         }
-        else if(gameTime >= holds.Peek().t_begin+goodLimit && gameTime < holds.Peek().t_end-goodLimit){
+        else if(gameTime >= holds.Peek().t_begin && gameTime < holds.Peek().t_end){
             
             if( (!Input.anyKey || !canCatchHold) && !autoPlay ){
                 canCatchHold = false;
@@ -175,6 +195,7 @@ public class CharacterController : MonoBehaviour
         }
         if(gameTime >= holds.Peek().t_end){
             currentHoldEffector.GetComponent<HoldEffectorController>().blowing = true;
+            currentHoldEffector = null;
             if(canCatchHold == true) score += 1;
             holds.Dequeue();
         }
@@ -213,6 +234,35 @@ public class CharacterController : MonoBehaviour
                 cameraController.TiltCamera(effects.Peek().degree, effects.Peek().speed, effects.Peek().duriation);
             }
             effects.Dequeue();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){ // 暫停與啟動
+            if(stopping == false && stoppingTime >= 0.1f){
+                stopping = true;
+                stopStatus.dir = dir;
+                stopStatus.locate = transform.position;
+                stopStatus.angle = transform.rotation;
+                stopStatus.spin = rb.angularVelocity;
+                stopStatus.dir = rb.velocity;
+                stopStatus.speed = moveSpeed;
+                rb.angularVelocity = 0.0f;
+                rb.velocity = new Vector2(0, 0);
+                stoppingTime = 0;
+            }else if(stopping == true && stoppingTime >= 0.1f){
+                stopping = false;
+                dir = stopStatus.dir;
+                transform.position = stopStatus.locate;
+                transform.rotation = stopStatus.angle;
+                rb.angularVelocity = stopStatus.spin;
+                rb.velocity = stopStatus.dir;
+                moveSpeed = stopStatus.speed;
+                stoppingTime = 0;
+            }
+        }
+
+        if(wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color != new Color(1, 1, 0, 1)){
+            origionColor = wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color;
+            wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = new Color(1, 1, 0, 1);
         }
 
     }

@@ -34,6 +34,21 @@ public class WallMakerController : MonoBehaviour
 
     public GameObject randomPointPrefeb;
 
+    
+        
+    // 暫停保存狀態
+    public MovementStatus stopStatus;
+    public bool stopping;
+    public float stoppingTime;
+
+    //tmp
+    GameObject newCircleShape;
+    public GameObject circlePrefeb;
+
+    // 亮光提示
+    public Queue<GameObject> shineWall = new Queue<GameObject>();
+    public GameObject newWallPrefeb;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,12 +70,14 @@ public class WallMakerController : MonoBehaviour
         ChangeShape(shape);
         gameTime = 0.00000f-4*60.0f/BPM;
         moving = false; 
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        gameTime += Time.fixedDeltaTime; // 讓時間流動
+        if(!stopping) gameTime += Time.fixedDeltaTime; // 讓時間流動
+        stoppingTime += Time.fixedDeltaTime;
 
         //transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
         if (gameTime >= -4 * 60.0f / BPM && moving == false){
@@ -73,35 +90,35 @@ public class WallMakerController : MonoBehaviour
         
         if(gameTime >= turns.Peek().t){ // 造牆
             if(turns.Peek().type == 1){ //down
-                GameObject newWallPrefeb = Instantiate(
+                newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position-new Vector3(0,0.6f,0), 
                     Quaternion.identity * transform.rotation
                 );
             }
             if(turns.Peek().type == 2){ //up
-                GameObject newWallPrefeb = Instantiate(
+                newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0,0.6f,0), 
                     Quaternion.identity * transform.rotation
                 );
             }
             if(turns.Peek().type == 3){ //right
-                GameObject newWallPrefeb = Instantiate(
+                newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f) * transform.rotation
                 );
             }
             if(turns.Peek().type == 4){ //left
-                GameObject newWallPrefeb = Instantiate(
+                newWallPrefeb = Instantiate(
                     wallPrefeb, 
                     transform.position+new Vector3(-0.6f,0,0), 
                     Quaternion.Euler(0f, 0f, 90f) * transform.rotation
                 );
             }
             if(turns.Peek().type == 5){ //tap
-                GameObject newTapPrefeb = Instantiate(
+                newWallPrefeb = Instantiate(
                     tapPrefeb, 
                     transform.position+new Vector3(0,0,0), 
                     Quaternion.identity
@@ -115,6 +132,8 @@ public class WallMakerController : MonoBehaviour
             temp.dir = rb.velocity;
             correction.Enqueue(temp);
             turns.Dequeue();
+
+            shineWall.Enqueue(newWallPrefeb);
         }
 
 
@@ -129,7 +148,7 @@ public class WallMakerController : MonoBehaviour
             holds.Dequeue();
         }
 
-        if(moving && UnityEngine.Random.Range(1, 500) == 1){ // 造雜點
+        if(moving && UnityEngine.Random.Range(1, 500) == 1 && stopping == false){ // 造雜點
         
             Vector2 randomPos2D = UnityEngine.Random.insideUnitCircle * 5f;
             GameObject newPointShape = Instantiate(
@@ -138,6 +157,39 @@ public class WallMakerController : MonoBehaviour
                 Quaternion.identity
             );
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){ // 暫停與啟動
+            if(stopping == false && stoppingTime >= 0.1f){
+                stopping = true;
+                stopStatus.dir = dir;
+                stopStatus.locate = transform.position;
+                stopStatus.angle = transform.rotation;
+                stopStatus.spin = rb.angularVelocity;
+                stopStatus.dir = rb.velocity;
+                stopStatus.speed = moveSpeed;
+                rb.angularVelocity = 0.0f;
+                rb.velocity = new Vector2(0, 0);
+                stoppingTime = 0;
+            }else if(stopping == true && stoppingTime >= 0.1f){
+                stopping = false;
+                dir = stopStatus.dir;
+                transform.position = stopStatus.locate;
+                transform.rotation = stopStatus.angle;
+                rb.angularVelocity = stopStatus.spin;
+                rb.velocity = stopStatus.dir;
+                moveSpeed = stopStatus.speed;
+                stoppingTime = 0;
+            }
+        }
+
+        // 造輔助線
+        
+        GameObject newCircleShape = Instantiate(
+            circlePrefeb,
+            transform.position,
+            Quaternion.identity
+        );
+        
     }
 
     public void ChangeShape(int targetShape){ // 變形
@@ -158,4 +210,3 @@ public class WallMakerController : MonoBehaviour
         }
     }
 }
-

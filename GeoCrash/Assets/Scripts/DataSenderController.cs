@@ -696,7 +696,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
         initialShape = 1;
-        songDeviation = -400; // 問題：測試系統測出-200左右的值
+        songDeviation = -420; // 問題：測試系統測出-200左右的值
         notes.Clear();
         holds.Clear();
 
@@ -1114,9 +1114,6 @@ public class DataSenderController : MonoBehaviour
         AddNote(46, 3.75f, 1);
 
         AddHold(47, 0.0f, 3.5f, 1);
-        AddNote(47, 1.00f, 5);
-        AddNote(47, 2.00f, 5);
-        AddNote(47, 3.00f, 5);
         
         
         AddNote(0, 40000f, 0);

@@ -869,6 +869,8 @@ MonoBehaviour:
   audioSource: {fileID: 589491246}
   NaughyCuteSource: {fileID: 589491250}
   tapSoundSource: {fileID: 589491249}
+  stopping: 0
+  stoppingTime: 0
 --- !u!82 &589491249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -879,7 +881,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1671a33a12b698145a58e089e7eeac66, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 35c07a2e3536a1f4da313c59350936c6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1653,6 +1655,15 @@ MonoBehaviour:
   triangleCollider: {fileID: 866960230}
   hexagonCollider: {fileID: 866960229}
   randomPointPrefeb: {fileID: 6042812318427684024, guid: d15a7624c31e47e4ea77eb7bf9ed6de1, type: 3}
+  stopStatus:
+    locate: {x: 0, y: 0, z: 0}
+    angle: {x: 0, y: 0, z: 0, w: 0}
+    spin: 0
+    dir: {x: 0, y: 0}
+    speed: 0
+  stopping: 0
+  stoppingTime: 0
+  circlePrefeb: {fileID: 2262693677068550216, guid: b4cd418f10a1c6846ae469d9d4829cc6, type: 3}
 --- !u!212 &866960224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2265,6 +2276,14 @@ MonoBehaviour:
   scoreController: {fileID: 398387401}
   cameraController: {fileID: 617315719}
   bgColorController: {fileID: 1848272012}
+  stopStatus:
+    locate: {x: 0, y: 0, z: 0}
+    angle: {x: 0, y: 0, z: 0, w: 0}
+    spin: 0
+    dir: {x: 0, y: 0}
+    speed: 0
+  stopping: 0
+  stoppingTime: 0
 --- !u!50 &1571931290
 Rigidbody2D:
   serializedVersion: 4
