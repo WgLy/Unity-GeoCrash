@@ -63,6 +63,12 @@ public class CharacterController : MonoBehaviour
     // wall shine
     public Color origionColor;
 
+    // 暫停UI
+    public StopUIController stopUIController_continuer;
+    public StopUIController stopUIController_replaier;
+    public StopUIController stopUIController_quiter;
+    public StopUIController stopUIController_banner;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -248,6 +254,10 @@ public class CharacterController : MonoBehaviour
                 rb.angularVelocity = 0.0f;
                 rb.velocity = new Vector2(0, 0);
                 stoppingTime = 0;
+                stopUIController_banner.Show();
+                stopUIController_continuer.Show();
+                stopUIController_replaier.Show();
+                stopUIController_quiter.Show();
             }else if(stopping == true && stoppingTime >= 0.1f){
                 stopping = false;
                 dir = stopStatus.dir;
@@ -260,7 +270,7 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if(wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color != new Color(1, 1, 0, 1)){
+        if(wallMakerController.shineWall.Count > 0 && wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color != new Color(1, 1, 0, 1)){
             origionColor = wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color;
             wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = new Color(1, 1, 0, 1);
         }
