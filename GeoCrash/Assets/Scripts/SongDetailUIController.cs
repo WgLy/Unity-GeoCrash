@@ -20,7 +20,6 @@ public class SongDetailUIController : MonoBehaviour
     void Start()
     {
         idealPosition = transform.position;
-        fadingController.Fade(true, "");
         initial_y = transform.position.y;
     }
 

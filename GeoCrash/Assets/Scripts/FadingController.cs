@@ -27,7 +27,6 @@ public class FadingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         /* for test
         if(Input.GetKeyDown(KeyCode.F)){
             Fade(fadeDuration, false);
@@ -36,6 +35,7 @@ public class FadingController : MonoBehaviour
             Fade(fadeDuration, true);
         }
         */
+        Debug.Log(inverseFading.ToString());
 
         if(fading){
             tempColor = image.color;

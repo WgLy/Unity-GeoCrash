@@ -219,11 +219,11 @@ public class CharacterController : MonoBehaviour
             ChangeShape(3);
         }
 
-        if(notes.Peek().type == 0){ // 遊玩結束
+        if(notes.Peek().type == 0 && holds.Peek().type == 0 && effects.Peek().type == 0){ // 遊玩結束
             Debug.Log("end");
-            endUIController.Show();
-            scoreController.Move();
+            fadingController.Fade(false, "EndScene");
             audioController.StopAllSound();
+            dataSenderController.finalScore = int.Parse(scoreController.myText.text);
         }
 
         if(gameTime >= effects.Peek().t){ // 播放特效

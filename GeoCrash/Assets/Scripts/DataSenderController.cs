@@ -14,6 +14,9 @@ public class DataSenderController : MonoBehaviour
     public bool autoPlay;
     public int initialShape;
     public int songDeviation;
+
+    //結束用
+    public int finalScore;
     
 
     // Start is called before the first frame update
@@ -1118,7 +1121,7 @@ public class DataSenderController : MonoBehaviour
         
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
-        AddEffect(0, 40000, 1, 1, 1, 0.0f);
+        AddEffect(0, 40000, 0, 1, 1, 0.0f);
     }
 
     void AddNote(int p, float t, int type){  // 加入音符函式
