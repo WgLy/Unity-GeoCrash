@@ -41,6 +41,9 @@ public class DataSenderController : MonoBehaviour
             if(songIndex == 1){
                 FillTheQueue_NaughyCute();
             }
+            if(songIndex == 2){
+                FillTheQueue_NCS();
+            }
         }
     }
 
@@ -75,7 +78,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
         initialShape = 1;
-        songDeviation = -40;
+        songDeviation = -50;
         notes.Clear();
         holds.Clear();
 
@@ -91,361 +94,361 @@ public class DataSenderController : MonoBehaviour
         AddNote(0, 1.5f, 1);
         AddNote(0, 3.0f, 2);
         AddNote(0, 3.5f, 1);
-        AddNote(0, 4.0f, 2);
-        AddNote(0, 5.5f, 1);
-        AddNote(0, 7.0f, 2);
-        AddNote(0, 7.5f, 1);
         AddNote(1, 0.0f, 2);
         AddNote(1, 1.5f, 1);
         AddNote(1, 3.0f, 2);
         AddNote(1, 3.5f, 1);
-        AddNote(1, 6.0f, 2);
-        AddNote(1, 6.5f, 1);
-        AddNote(1, 7.0f, 2);
-        AddNote(2, 0.0f, 1);
-        AddNote(2, 1.5f, 2);
-        AddNote(2, 3.0f, 1);
-        AddNote(2, 4.0f, 2);
-        AddNote(2, 5.0f, 1);
-        AddNote(2, 5.5f, 2);
+        AddNote(2, 0.0f, 2);
+        AddNote(2, 1.5f, 1);
+        AddNote(2, 3.0f, 2);
+        AddNote(2, 3.5f, 1);
+        AddNote(2, 6.0f, 2);
         AddNote(2, 6.5f, 1);
-        AddNote(2, 7.5f, 2);
-        AddNote(3, 0.0f, 1);
-        AddNote(3, 2.0f, 2);
-        AddNote(3, 3.0f, 1);
-        AddNote(3, 4.0f, 2);
-        AddNote(3, 6.0f, 1);
-        AddNote(3, 6.5f, 2);
-        AddNote(3, 7.0f, 1);
-        AddNote(3, 7.5f, 3);
+        AddNote(2, 7.0f, 2);
+        AddNote(4, 0.0f, 1);
+        AddNote(4, 1.5f, 2);
+        AddNote(4, 3.0f, 1);
+        AddNote(4, 4.0f, 2);
+        AddNote(4, 5.0f, 1);
+        AddNote(4, 5.5f, 2);
+        AddNote(4, 6.5f, 1);
+        AddNote(4, 7.5f, 2);
+        AddNote(6, 0.0f, 1);
+        AddNote(6, 2.0f, 2);
+        AddNote(6, 3.0f, 1);
+        AddNote(6, 4.0f, 2);
+        AddNote(6, 6.0f, 1);
+        AddNote(6, 6.5f, 2);
+        AddNote(6, 7.0f, 1);
+        AddNote(6, 7.5f, 3);
 
-        AddNote(4, 0.0f, 4);
-        AddNote(5, 0.0f, 3);
-        AddNote(6, 0.0f, 2);
-        AddNote(7, 0.0f, 1);
-        AddNote(7, 2.0f, 2);
-        AddNote(7, 4.0f, 1);
-        AddNote(7, 4.5f, 2);
-        AddNote(7, 5.0f, 1);
-        AddNote(7, 5.5f, 2);
-        AddNote(7, 6.0f, 1);
-        AddNote(7, 6.5f, 2);
-        AddNote(7, 7.0f, 1);
-        AddNote(7, 7.5f, 2);
-
-        // 前奏B
-        AddNote(8, 0.0f, 1);
-        AddNote(8, 1.0f, 2);
-        AddHold(8, 2.0f, 3.0f, 1);
-        AddNote(8, 3.5f, 1);
-        AddNote(8, 4.5f, 2);
-        AddNote(8, 5.0f, 1);
-        AddNote(8, 5.5f, 2);
-        AddNote(8, 6.0f, 1);
-        AddNote(8, 6.5f, 2);
-        AddNote(8, 7.0f, 1);
-        AddNote(8, 7.5f, 2);
-
-        AddNote(9, 0.0f, 1);
-        AddNote(9, 1.0f, 2);
-        AddHold(9, 2.0f, 3.0f, 1);
-        AddNote(9, 3.5f, 1);
-        AddNote(9, 4.5f, 2);
-        AddNote(9, 5.0f, 1);
-        AddNote(9, 5.5f, 2);
-        AddNote(9, 6.0f, 1);
-        AddNote(9, 6.5f, 2);
-        AddNote(9, 7.0f, 1);
-        AddNote(9, 7.5f, 2);
-
-        AddNote(10, 0.0f, 1);
-        AddNote(10, 1.0f, 2);
-        AddHold(10, 2.0f, 3.0f, 1);
-        AddNote(10, 3.5f, 1);
-        AddNote(10, 4.5f, 2);
-        AddNote(10, 5.0f, 1);
-        AddNote(10, 5.5f, 2);
-        AddNote(10, 6.0f, 1);
-        AddNote(10, 6.5f, 2);
-        AddNote(10, 7.0f, 1);
-        AddNote(10, 7.5f, 4);
-
-        AddNote(11, 0.0f, 3);
-        AddNote(11, 0.5f, 4);
-        AddNote(11, 1.5f, 3);
-        AddNote(11, 2.0f, 4);
-        AddNote(11, 3.0f, 3);
-        AddNote(11, 3.5f, 4);
-        AddNote(11, 4.5f, 3);
-        AddNote(11, 5.0f, 4);
-        AddHold(11, 6.0f, 7.0f, 1);
-
-        // 主歌A
-        AddNote(12, 0.0f, 3);
-        AddNote(12, 1.0f, 2);
-        AddNote(12, 3.0f, 1);
-        AddNote(12, 4.5f, 4);
-        AddNote(12, 5.0f, 3);
-        AddNote(12, 5.5f, 2);
-        AddNote(12, 6.0f, 1);
-        AddNote(12, 7.0f, 4);
-
-        AddNote(13, 0.0f, 3);
-        AddNote(13, 1.0f, 2);
-        AddNote(13, 3.0f, 1);
-        AddNote(13, 4.5f, 4);
-        AddNote(13, 5.0f, 3);
-        AddNote(13, 5.5f, 2);
-        AddNote(13, 6.0f, 1);
-        AddNote(13, 7.0f, 4);
-
-        AddNote(14, 0.0f, 3);
-        AddNote(14, 1.0f, 2);
-        AddNote(14, 3.0f, 1);
-        AddNote(14, 4.5f, 4);
-        AddNote(14, 5.0f, 3);
+        AddNote(8, 0.0f, 4);
+        AddNote(10, 0.0f, 3);
+        AddNote(12, 0.0f, 2);
+        AddNote(14, 0.0f, 1);
+        AddNote(14, 2.0f, 2);
+        AddNote(14, 4.0f, 1);
+        AddNote(14, 4.5f, 2);
+        AddNote(14, 5.0f, 1);
         AddNote(14, 5.5f, 2);
         AddNote(14, 6.0f, 1);
-        AddNote(14, 7.0f, 4);
+        AddNote(14, 6.5f, 2);
+        AddNote(14, 7.0f, 1);
+        AddNote(14, 7.5f, 2);
 
-        AddNote(15, 0.0f, 3);
-        AddNote(15, 3.0f, 2);
-        AddNote(15, 4.0f, 1);
-        AddNote(15, 6.0f, 2);
-
-        //主歌A-2
-        AddNote(16, 0.0f, 4);
-        AddNote(16, 1.0f, 3);
-        AddNote(16, 3.0f, 1);
-        AddNote(16, 4.5f, 4);
-        AddNote(16, 5.0f, 3);
+        // 前奏B
+        AddNote(16, 0.0f, 1);
+        AddNote(16, 1.0f, 2);
+        AddHold(16, 2.0f, 3.0f, 1);
+        AddNote(16, 3.5f, 1);
+        AddNote(16, 4.5f, 2);
+        AddNote(16, 5.0f, 1);
         AddNote(16, 5.5f, 2);
         AddNote(16, 6.0f, 1);
-        AddNote(16, 7.0f, 2);
+        AddNote(16, 6.5f, 2);
+        AddNote(16, 7.0f, 1);
+        AddNote(16, 7.5f, 2);
 
-        AddNote(17, 0.0f, 4);
-        AddNote(17, 1.0f, 3);
-        AddNote(17, 4.0f, 1);
-        AddNote(17, 5.0f, 2);
-        AddNote(17, 6.0f, 1);
-        AddNote(17, 7.0f, 2);
-
-        AddNote(18, 0.0f, 4);
-        AddNote(18, 1.5f, 3);
-        AddNote(18, 3.0f, 1);
-        AddNote(18, 4.5f, 4);
-        AddNote(18, 5.0f, 3);
+        AddNote(18, 0.0f, 1);
+        AddNote(18, 1.0f, 2);
+        AddHold(18, 2.0f, 3.0f, 1);
+        AddNote(18, 3.5f, 1);
+        AddNote(18, 4.5f, 2);
+        AddNote(18, 5.0f, 1);
         AddNote(18, 5.5f, 2);
         AddNote(18, 6.0f, 1);
-        AddNote(18, 7.0f, 2);
+        AddNote(18, 6.5f, 2);
+        AddNote(18, 7.0f, 1);
+        AddNote(18, 7.5f, 2);
 
-        AddNote(19, 0.0f, 1);
+        AddNote(20, 0.0f, 1);
+        AddNote(20, 1.0f, 2);
+        AddHold(20, 2.0f, 3.0f, 1);
+        AddNote(20, 3.5f, 1);
+        AddNote(20, 4.5f, 2);
+        AddNote(20, 5.0f, 1);
+        AddNote(20, 5.5f, 2);
+        AddNote(20, 6.0f, 1);
+        AddNote(20, 6.5f, 2);
+        AddNote(20, 7.0f, 1);
+        AddNote(20, 7.5f, 4);
+
+        AddNote(22, 0.0f, 3);
+        AddNote(22, 0.5f, 4);
+        AddNote(22, 1.5f, 3);
+        AddNote(22, 2.0f, 4);
+        AddNote(22, 3.0f, 3);
+        AddNote(22, 3.5f, 4);
+        AddNote(22, 4.5f, 3);
+        AddNote(22, 5.0f, 4);
+        AddHold(22, 6.0f, 7.0f, 1);
+
+        // 主歌A
+        AddNote(24, 0.0f, 3);
+        AddNote(24, 1.0f, 2);
+        AddNote(24, 3.0f, 1);
+        AddNote(24, 4.5f, 4);
+        AddNote(24, 5.0f, 3);
+        AddNote(24, 5.5f, 2);
+        AddNote(24, 6.0f, 1);
+        AddNote(24, 7.0f, 4);
+
+        AddNote(26, 0.0f, 3);
+        AddNote(26, 1.0f, 2);
+        AddNote(26, 3.0f, 1);
+        AddNote(26, 4.5f, 4);
+        AddNote(26, 5.0f, 3);
+        AddNote(26, 5.5f, 2);
+        AddNote(26, 6.0f, 1);
+        AddNote(26, 7.0f, 4);
+
+        AddNote(28, 0.0f, 3);
+        AddNote(28, 1.0f, 2);
+        AddNote(28, 3.0f, 1);
+        AddNote(28, 4.5f, 4);
+        AddNote(28, 5.0f, 3);
+        AddNote(28, 5.5f, 2);
+        AddNote(28, 6.0f, 1);
+        AddNote(28, 7.0f, 4);
+
+        AddNote(30, 0.0f, 3);
+        AddNote(30, 3.0f, 2);
+        AddNote(30, 4.0f, 1);
+        AddNote(30, 6.0f, 2);
+
+        //主歌A-2
+        AddNote(32, 0.0f, 4);
+        AddNote(32, 1.0f, 3);
+        AddNote(32, 3.0f, 1);
+        AddNote(32, 4.5f, 4);
+        AddNote(32, 5.0f, 3);
+        AddNote(32, 5.5f, 2);
+        AddNote(32, 6.0f, 1);
+        AddNote(32, 7.0f, 2);
+
+        AddNote(34, 0.0f, 4);
+        AddNote(34, 1.0f, 3);
+        AddNote(34, 4.0f, 1);
+        AddNote(34, 5.0f, 2);
+        AddNote(34, 6.0f, 1);
+        AddNote(34, 7.0f, 2);
+
+        AddNote(36, 0.0f, 4);
+        AddNote(36, 1.5f, 3);
+        AddNote(36, 3.0f, 1);
+        AddNote(36, 4.5f, 4);
+        AddNote(36, 5.0f, 3);
+        AddNote(36, 5.5f, 2);
+        AddNote(36, 6.0f, 1);
+        AddNote(36, 7.0f, 2);
+
+        AddNote(38, 0.0f, 1);
 
         // 主歌B
-        AddNote(19, 6.0f, 2);
-        AddNote(19, 7.0f, 1);
-        AddHold(20, 0.0f, 6.0f, 1);
-        AddNote(20, 0.0f, 2);
-        AddNote(20, 2.0f, 1);
-        AddNote(20, 4.0f, 2);
-        AddNote(20, 6.0f, 1);
-        AddHold(21, 0.0f, 6.0f, 1);
-        AddNote(21, 4.0f, 5);
-        AddNote(21, 6.0f, 5);
-        AddHold(22, 0.0f, 6.0f, 1);
-        AddNote(22, 0.0f, 2);
-        AddNote(22, 2.0f, 1);
-        AddNote(22, 4.0f, 2);
-        AddNote(22, 6.0f, 1);
-        AddHold(23, 0.0f, 6.0f, 1);
-        AddNote(23, 4.0f, 5);
-        AddNote(23, 6.0f, 5);
+        AddNote(38, 6.0f, 2);
+        AddNote(38, 7.0f, 1);
+        AddHold(40, 0.0f, 6.0f, 1);
+        AddNote(40, 0.0f, 2);
+        AddNote(40, 2.0f, 1);
+        AddNote(40, 4.0f, 2);
+        AddNote(40, 6.0f, 1);
+        AddHold(42, 0.0f, 6.0f, 1);
+        AddNote(42, 4.0f, 5);
+        AddNote(42, 6.0f, 5);
+        AddHold(44, 0.0f, 6.0f, 1);
+        AddNote(44, 0.0f, 2);
+        AddNote(44, 2.0f, 1);
+        AddNote(44, 4.0f, 2);
+        AddNote(44, 6.0f, 1);
+        AddHold(46, 0.0f, 6.0f, 1);
+        AddNote(46, 4.0f, 5);
+        AddNote(46, 6.0f, 5);
 
         //主歌B-2
-        AddNote(23, 7.0f, 5);
+        AddNote(46, 7.0f, 5);
 
-        AddNote(24, 0.0f, 2);
-        AddNote(24, 1.0f, 5);
-        AddNote(24, 1.5f, 1);
-        AddNote(24, 3.0f, 5);
+        AddNote(48, 0.0f, 2);
+        AddNote(48, 1.0f, 5);
+        AddNote(48, 1.5f, 1);
+        AddNote(48, 3.0f, 5);
 
-        AddNote(24, 4.0f, 2);
-        AddNote(24, 5.0f, 5);
-        AddNote(24, 5.5f, 1);
-        AddNote(24, 7.0f, 5);
+        AddNote(48, 4.0f, 2);
+        AddNote(48, 5.0f, 5);
+        AddNote(48, 5.5f, 1);
+        AddNote(48, 7.0f, 5);
 
-        AddNote(25, 0.0f, 2);
-        AddNote(25, 1.0f, 5);
-        AddNote(25, 1.5f, 1);
-        AddNote(25, 3.0f, 5);
+        AddNote(50, 0.0f, 2);
+        AddNote(50, 1.0f, 5);
+        AddNote(50, 1.5f, 1);
+        AddNote(50, 3.0f, 5);
         
-        AddNote(25, 4.0f, 2);
+        AddNote(50, 4.0f, 2);
         
-        AddNote(25, 6.0f, 1);
-        AddNote(25, 7.0f, 2);
+        AddNote(50, 6.0f, 1);
+        AddNote(50, 7.0f, 2);
 
-        AddNote(26, 0.0f, 1);
-        AddNote(26, 1.5f, 2);
-        AddNote(26, 3.0f, 4);
-        AddNote(26, 4.0f, 3);
-        AddNote(26, 5.5f, 1);
-        AddNote(26, 7.0f, 2);
-        AddNote(27, 0.0f, 1);
+        AddNote(52, 0.0f, 1);
+        AddNote(52, 1.5f, 2);
+        AddNote(52, 3.0f, 4);
+        AddNote(52, 4.0f, 3);
+        AddNote(52, 5.5f, 1);
+        AddNote(52, 7.0f, 2);
+        AddNote(54, 0.0f, 1);
 
         //副歌-1
-        AddNote(27, 6.0f, 2);
-        AddNote(27, 6.5f, 1);
-        AddNote(27, 7.0f, 2);
-        AddNote(27, 7.5f, 1);
-        AddNote(28, 0.0f, 2);
-        AddNote(28, 1.5f, 4);
-        AddNote(28, 3.0f, 3);
-        AddNote(28, 3.5f, 1);
-        AddNote(28, 4.0f, 4);
-        AddNote(28, 5.5f, 2);
-        AddNote(28, 7.0f, 3);
-        AddNote(28, 7.5f, 1);
-        AddNote(29, 0.0f, 4);
-        AddNote(29, 1.0f, 2);
-        AddNote(29, 2.0f, 5);
-        AddNote(29, 3.0f, 3);
-        AddNote(29, 4.0f, 4);
-        AddNote(29, 4.5f, 3);
-        AddNote(29, 5.5f, 5);
+        AddNote(54, 6.0f, 2);
+        AddNote(54, 6.5f, 1);
+        AddNote(54, 7.0f, 2);
+        AddNote(54, 7.5f, 1);
+        AddNote(56, 0.0f, 2);
+        AddNote(56, 1.5f, 4);
+        AddNote(56, 3.0f, 3);
+        AddNote(56, 3.5f, 1);
+        AddNote(56, 4.0f, 4);
+        AddNote(56, 5.5f, 2);
+        AddNote(56, 7.0f, 3);
+        AddNote(56, 7.5f, 1);
+        AddNote(58, 0.0f, 4);
+        AddNote(58, 1.0f, 2);
+        AddNote(58, 2.0f, 5);
+        AddNote(58, 3.0f, 3);
+        AddNote(58, 4.0f, 4);
+        AddNote(58, 4.5f, 3);
+        AddNote(58, 5.5f, 5);
         //-1 ,-1
 
-        AddNote(29, 6.5f, 5);
-        AddNote(29, 7.0f, 5);
-        AddNote(29, 7.5f, 5);
-        AddNote(30, 0.0f, 5);
-        AddNote(30, 1.5f, 4);
-        AddNote(30, 3.0f, 3);
-        AddNote(30, 4.0f, 4);
-        AddNote(30, 5.0f, 3);
-        AddNote(30, 5.5f, 1);
-        AddNote(30, 6.5f, 2);
-        AddNote(30, 7.5f, 5);
-        AddNote(31, 0.0f, 1);
-        AddNote(31, 1.0f, 5);
-        AddNote(31, 2.0f, 2);
-        AddNote(31, 3.0f, 5);
-        AddNote(31, 4.0f, 1);
+        AddNote(58, 6.5f, 5);
+        AddNote(58, 7.0f, 5);
+        AddNote(58, 7.5f, 5);
+        AddNote(60, 0.0f, 5);
+        AddNote(60, 1.5f, 4);
+        AddNote(60, 3.0f, 3);
+        AddNote(60, 4.0f, 4);
+        AddNote(60, 5.0f, 3);
+        AddNote(60, 5.5f, 1);
+        AddNote(60, 6.5f, 2);
+        AddNote(60, 7.5f, 5);
+        AddNote(62, 0.0f, 1);
+        AddNote(62, 1.0f, 5);
+        AddNote(62, 2.0f, 2);
+        AddNote(62, 3.0f, 5);
+        AddNote(62, 4.0f, 1);
         //(-1, 1)
 
-        AddNote(31, 6.0f, 4);
-        AddNote(31, 6.5f, 3);
-        AddNote(31, 7.0f, 2);
-        AddNote(31, 7.5f, 1);
-        AddNote(32, 0.0f, 2);
-        AddNote(32, 1.5f, 1);
-        AddNote(32, 3.0f, 2);
-        AddNote(32, 3.5f, 1);
-        AddNote(32, 4.0f, 2);
-        AddNote(32, 5.5f, 1);
-        AddNote(32, 7.0f, 2);
-        AddNote(32, 7.5f, 1);
-        AddNote(33, 0.0f, 2);
-        AddNote(33, 1.5f, 1);
-        AddNote(33, 3.0f, 2);
-        AddNote(33, 3.5f, 1);
+        AddNote(62, 6.0f, 4);
+        AddNote(62, 6.5f, 3);
+        AddNote(62, 7.0f, 2);
+        AddNote(62, 7.5f, 1);
+        AddNote(64, 0.0f, 2);
+        AddNote(64, 1.5f, 1);
+        AddNote(64, 3.0f, 2);
+        AddNote(64, 3.5f, 1);
+        AddNote(64, 4.0f, 2);
+        AddNote(64, 5.5f, 1);
+        AddNote(64, 7.0f, 2);
+        AddNote(64, 7.5f, 1);
+        AddNote(66, 0.0f, 2);
+        AddNote(66, 1.5f, 1);
+        AddNote(66, 3.0f, 2);
+        AddNote(66, 3.5f, 1);
         // (-1, 1)
 
-        AddNote(33, 6.0f, 2);
-        AddNote(33, 6.5f, 4);
-        AddNote(33, 7.0f, 1);
-        AddNote(34, 0.0f, 2);
-        AddNote(34, 1.5f, 3);
-        AddNote(34, 3.0f, 1);
-        AddNote(34, 4.0f, 2);
-        AddNote(34, 5.0f, 1);
-        AddNote(34, 5.5f, 2);
-        AddNote(34, 7.0f, 5);
-        AddNote(34, 7.5f, 1);
-        AddNote(35, 0.0f, 5);
-        AddNote(35, 2.0f, 2);
-        AddNote(35, 3.0f, 5);
-        AddNote(35, 4.0f, 1);
+        AddNote(66, 6.0f, 2);
+        AddNote(66, 6.5f, 4);
+        AddNote(66, 7.0f, 1);
+        AddNote(68, 0.0f, 2);
+        AddNote(68, 1.5f, 3);
+        AddNote(68, 3.0f, 1);
+        AddNote(68, 4.0f, 2);
+        AddNote(68, 5.0f, 1);
+        AddNote(68, 5.5f, 2);
+        AddNote(68, 7.0f, 5);
+        AddNote(68, 7.5f, 1);
+        AddNote(70, 0.0f, 5);
+        AddNote(70, 2.0f, 2);
+        AddNote(70, 3.0f, 5);
+        AddNote(70, 4.0f, 1);
         // (-1, 1)
 
         //副歌-2
-        AddNote(36 -1, 6.0f, 2);
-        AddNote(36 -1, 6.5f, 1);
-        AddNote(36 -1, 7.0f, 2);
-        AddNote(36 -1, 7.5f, 1);
-        AddNote(37 -1, 0.0f, 2);
-        AddNote(37 -1, 1.5f, 4);
-        AddNote(37 -1, 3.0f, 3);
-        AddNote(37 -1, 3.5f, 1);
-        AddNote(37 -1, 4.0f, 4);
-        AddNote(37 -1, 5.5f, 2);
-        AddNote(37 -1, 7.0f, 3);
-        AddNote(37 -1, 7.5f, 1);
-        AddNote(38 -1, 0.0f, 4);
-        AddNote(38 -1, 1.0f, 2);
-        AddNote(38 -1, 2.0f, 5);
-        AddNote(38 -1, 3.0f, 3);
-        AddNote(38 -1, 4.0f, 4);
-        AddNote(38 -1, 4.5f, 3);
-        AddNote(38 -1, 5.5f, 5);
+        AddNote(72 -2, 6.0f, 2);
+        AddNote(72 -2, 6.5f, 1);
+        AddNote(72 -2, 7.0f, 2);
+        AddNote(72 -2, 7.5f, 1);
+        AddNote(74 -2, 0.0f, 2);
+        AddNote(74 -2, 1.5f, 4);
+        AddNote(74 -2, 3.0f, 3);
+        AddNote(74 -2, 3.5f, 1);
+        AddNote(74 -2, 4.0f, 4);
+        AddNote(74 -2, 5.5f, 2);
+        AddNote(74 -2, 7.0f, 3);
+        AddNote(74 -2, 7.5f, 1);
+        AddNote(76 -2, 0.0f, 4);
+        AddNote(76 -2, 1.0f, 2);
+        AddNote(76 -2, 2.0f, 5);
+        AddNote(76 -2, 3.0f, 3);
+        AddNote(76 -2, 4.0f, 4);
+        AddNote(76 -2, 4.5f, 3);
+        AddNote(76 -2, 5.5f, 5);
         //-1 ,-1 
 
-        AddNote(38 -1, 6.5f, 5);
-        AddNote(38 -1, 7.0f, 5);
-        AddNote(38 -1, 7.5f, 5);
-        AddNote(39 -1, 0.0f, 5);
-        AddNote(39 -1, 1.5f, 4);
-        AddNote(39 -1, 3.0f, 3);
-        AddNote(39 -1, 4.0f, 4);
-        AddNote(39 -1, 5.0f, 3);
-        AddNote(39 -1, 5.5f, 1);
-        AddNote(39 -1, 6.5f, 2);
-        AddNote(39 -1, 7.5f, 5);
-        AddNote(40 -1, 0.0f, 1);
-        AddNote(40 -1, 1.0f, 5);
-        AddNote(40 -1, 2.0f, 2);
-        AddNote(40 -1, 3.0f, 5);
-        AddNote(40 -1, 4.0f, 1);
+        AddNote(76 -2, 6.5f, 5);
+        AddNote(76 -2, 7.0f, 5);
+        AddNote(76 -2, 7.5f, 5);
+        AddNote(78 -2, 0.0f, 5);
+        AddNote(78 -2, 1.5f, 4);
+        AddNote(78 -2, 3.0f, 3);
+        AddNote(78 -2, 4.0f, 4);
+        AddNote(78 -2, 5.0f, 3);
+        AddNote(78 -2, 5.5f, 1);
+        AddNote(78 -2, 6.5f, 2);
+        AddNote(78 -2, 7.5f, 5);
+        AddNote(80 -2, 0.0f, 1);
+        AddNote(80 -2, 1.0f, 5);
+        AddNote(80 -2, 2.0f, 2);
+        AddNote(80 -2, 3.0f, 5);
+        AddNote(80 -2, 4.0f, 1);
         //(-1, 1)
 
-        AddNote(40 -1, 6.0f, 4);
-        AddNote(40 -1, 6.5f, 3);
-        AddNote(40 -1, 7.0f, 2);
-        AddNote(40 -1, 7.5f, 1);
-        AddNote(41 -1, 0.0f, 2);
-        AddNote(41 -1, 1.5f, 1);
-        AddNote(41 -1, 3.0f, 2);
-        AddNote(41 -1, 3.5f, 1);
-        AddNote(41 -1, 4.0f, 2);
-        AddNote(41 -1, 5.5f, 1);
-        AddNote(41 -1, 7.0f, 2);
-        AddNote(41 -1, 7.5f, 1);
-        AddNote(42 -1, 0.0f, 2);
-        AddNote(42 -1, 1.5f, 1);
-        AddNote(42 -1, 3.0f, 2);
-        AddNote(42 -1, 3.5f, 1);
+        AddNote(80 -2, 6.0f, 4);
+        AddNote(80 -2, 6.5f, 3);
+        AddNote(80 -2, 7.0f, 2);
+        AddNote(80 -2, 7.5f, 1);
+        AddNote(82 -2, 0.0f, 2);
+        AddNote(82 -2, 1.5f, 1);
+        AddNote(82 -2, 3.0f, 2);
+        AddNote(82 -2, 3.5f, 1);
+        AddNote(82 -2, 4.0f, 2);
+        AddNote(82 -2, 5.5f, 1);
+        AddNote(82 -2, 7.0f, 2);
+        AddNote(82 -2, 7.5f, 1);
+        AddNote(84 -2, 0.0f, 2);
+        AddNote(84 -2, 1.5f, 1);
+        AddNote(84 -2, 3.0f, 2);
+        AddNote(84 -2, 3.5f, 1);
         // (-1, 1)
 
-        AddNote(42 -1, 6.0f, 2);
-        AddNote(42 -1, 6.5f, 4);
-        AddNote(42 -1, 7.0f, 1);
-        AddNote(43 -1, 0.0f, 2);
-        AddNote(43 -1, 1.5f, 3);
-        AddNote(43 -1, 3.0f, 1);
-        AddNote(43 -1, 4.0f, 2);
-        AddNote(43 -1, 5.0f, 1);
-        AddNote(43 -1, 5.5f, 2);
-        AddNote(43 -1, 7.0f, 5);
-        AddNote(43 -1, 7.5f, 4);
-        AddNote(44 -1, 0.0f, 5);
-        AddNote(44 -1, 2.0f, 1);
-        AddNote(44 -1, 3.0f, 5);
-        AddNote(44 -1, 4.0f, 2);
+        AddNote(84 -2, 6.0f, 2);
+        AddNote(84 -2, 6.5f, 4);
+        AddNote(84 -2, 7.0f, 1);
+        AddNote(86 -2, 0.0f, 2);
+        AddNote(86 -2, 1.5f, 3);
+        AddNote(86 -2, 3.0f, 1);
+        AddNote(86 -2, 4.0f, 2);
+        AddNote(86 -2, 5.0f, 1);
+        AddNote(86 -2, 5.5f, 2);
+        AddNote(86 -2, 7.0f, 5);
+        AddNote(86 -2, 7.5f, 4);
+        AddNote(88 -2, 0.0f, 5);
+        AddNote(88 -2, 2.0f, 1);
+        AddNote(88 -2, 3.0f, 5);
+        AddNote(88 -2, 4.0f, 2);
         // (1, -1)
 
 
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
-        AddEffect(0, 40000, 1, 1, 1, 0.0f);
+        AddEffect(0, 40000, 0, 1, 1, 0.0f);
     }
 
     void FillTheQueue2(){
@@ -1120,6 +1123,59 @@ public class DataSenderController : MonoBehaviour
         
         
         AddNote(0, 40000f, 0);
+        AddHold(0, 40000.0f, 50000.5f, 0);
+        AddEffect(0, 40000, 0, 1, 1, 0.0f);
+    }
+
+    void FillTheQueue_NCS(){
+        songIndex = 2;
+        difficulty = 1;
+        BPM = 128;
+        InitialStatus.locate = new Vector3(0, 0, 0);
+        InitialStatus.angle = Quaternion.identity;
+        InitialStatus.spin = 0.0f;
+        InitialStatus.dir = new Vector2(1, 1);
+        InitialStatus.speed = 13;
+        initialShape = 1;
+        songDeviation = -300; // 問題：測試系統測出-200左右的值
+        notes.Clear();
+        holds.Clear();
+
+        AddEffect(0, 0.0f, 4, 0, 1, 0); // 變色
+        AddEffect(0, 0.0f, 3, 5, 0.0f, 100); // 縮放
+        AddEffect(0, 0.0f+0.1f, 3, 7, 0.0f, 5); // 縮放
+
+        AddEffect(0, 2.0f, 4, 1, 0, 0); // 變色
+        AddEffect(0, 2.0f, 3, 5, 0.0f, 100); // 縮放
+        AddEffect(0, 2.0f+0.1f, 3, 7, 0.0f, 5); // 縮放
+
+        AddEffect(1, 0.0f, 4, 0, 0, 1); // 變色
+        AddEffect(1, 0.0f, 3, 5, 0.0f, 100); // 縮放
+        AddEffect(1, 0.0f+0.1f, 3, 7, 0.0f, 5); // 縮放
+
+        AddEffect(1, 2.0f, 4, 0, 0, 0); // 變色
+        AddEffect(1, 2.0f, 3, 5, 0.0f, 100); // 縮放
+        AddEffect(1, 2.0f+0.1f, 3, 7, 0.0f, 5); // 縮放
+
+        
+        AddNote(2, 0.0f, 5);
+        AddNote(2, 0.5f, 5);
+        AddNote(2, 1.0f, 5);
+        AddNote(2, 1.5f, 5);
+        AddNote(2, 2.0f, 5);
+        AddNote(2, 2.5f, 5);
+        AddNote(2, 3.0f, 5);
+        AddNote(2, 3.5f, 5);
+        AddNote(3, 0.0f, 5);
+        AddNote(3, 0.5f, 5);
+        AddNote(3, 1.0f, 5);
+        AddNote(3, 1.5f, 5);
+        AddNote(3, 2.0f, 5);
+        AddNote(3, 2.5f, 5);
+        AddNote(3, 3.0f, 5);
+        AddNote(3, 3.5f, 5);
+
+        AddNote(0, 40000f, 1);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
     }
