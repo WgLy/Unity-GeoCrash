@@ -68,6 +68,7 @@ public class CharacterController : MonoBehaviour
     public StopUIController stopUIController_replaier;
     public StopUIController stopUIController_quiter;
     public StopUIController stopUIController_banner;
+    public bool activeEscape;
 
     void Start()
     {
@@ -108,6 +109,8 @@ public class CharacterController : MonoBehaviour
         stopStatus.speed = moveSpeed;
         stoppingTime = 0;
         
+        // 暫停UI
+        activeEscape = false;
     }
 
     // Update is called once per frame
@@ -242,7 +245,7 @@ public class CharacterController : MonoBehaviour
             effects.Dequeue();
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)){ // 暫停與啟動
+        if(Input.GetKeyDown(KeyCode.Escape) || activeEscape){ // 暫停與啟動
             if(stopping == false && stoppingTime >= 0.1f){
                 stopping = true;
                 stopStatus.dir = dir;
@@ -258,6 +261,7 @@ public class CharacterController : MonoBehaviour
                 stopUIController_continuer.Show();
                 stopUIController_replaier.Show();
                 stopUIController_quiter.Show();
+                activeEscape = false;
             }else if(stopping == true && stoppingTime >= 0.1f){
                 stopping = false;
                 dir = stopStatus.dir;
@@ -267,6 +271,23 @@ public class CharacterController : MonoBehaviour
                 rb.velocity = stopStatus.dir;
                 moveSpeed = stopStatus.speed;
                 stoppingTime = 0;
+                stopUIController_banner.UnShow();
+                stopUIController_continuer.UnShow();
+                stopUIController_replaier.UnShow();
+                stopUIController_quiter.UnShow();
+                activeEscape = false;
+            }
+        }
+
+        if(stopping==true && Input.GetKeyDown(KeyCode.Return)){
+            if(stopUIController_banner.currentIndex == 0){
+                fadingController.Fade(false, "MainScene");
+            }
+            if(stopUIController_banner.currentIndex == 1){
+                fadingController.Fade(false, "PlayScene");
+            }
+            if(stopUIController_banner.currentIndex == 2){
+                activeEscape = true;
             }
         }
 

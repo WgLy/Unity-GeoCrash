@@ -871,6 +871,7 @@ MonoBehaviour:
   tapSoundSource: {fileID: 589491249}
   stopping: 0
   stoppingTime: 0
+  characterController: {fileID: 1571931289}
 --- !u!82 &589491249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1853,6 +1854,7 @@ MonoBehaviour:
   stoppingTime: 0
   circlePrefeb: {fileID: 2262693677068550216, guid: b4cd418f10a1c6846ae469d9d4829cc6, type: 3}
   newWallPrefeb: {fileID: 0}
+  characterController: {fileID: 1571931289}
 --- !u!212 &866960224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2572,6 +2574,7 @@ MonoBehaviour:
   stopUIController_replaier: {fileID: 810968496}
   stopUIController_quiter: {fileID: 1575063943}
   stopUIController_banner: {fileID: 1456977530}
+  activeEscape: 0
 --- !u!50 &1571931290
 Rigidbody2D:
   serializedVersion: 4

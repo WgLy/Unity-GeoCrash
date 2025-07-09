@@ -92,4 +92,7 @@ public class StopUIController : MonoBehaviour
     public void Show(){
         this.gameObject.SetActive(true); // 啟用整個 GameObject
     }
+    public void UnShow(){
+        this.gameObject.SetActive(false); // 啟用整個 GameObject
+    }
 }

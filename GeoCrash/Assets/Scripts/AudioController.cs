@@ -15,6 +15,8 @@ public class AudioController : MonoBehaviour
     public bool stopping;
     public float stoppingTime;
 
+    public CharacterController characterController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class AudioController : MonoBehaviour
     {
 
         stoppingTime += Time.fixedDeltaTime;
-        if(Input.GetKeyDown(KeyCode.Escape)){ // 暫停與啟動
+        if(Input.GetKeyDown(KeyCode.Escape) || characterController.activeEscape){ // 暫停與啟動
             if(stopping == false && stoppingTime >= 0.1f){
                 stopping = true;
                 if (audioSource.isPlaying) audioSource.Pause();

@@ -49,6 +49,9 @@ public class WallMakerController : MonoBehaviour
     public Queue<GameObject> shineWall = new Queue<GameObject>();
     public GameObject newWallPrefeb;
 
+    // 暫停UI
+    public CharacterController characterController;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -158,7 +161,7 @@ public class WallMakerController : MonoBehaviour
             );
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape)){ // 暫停與啟動
+        if(Input.GetKeyDown(KeyCode.Escape) || characterController.activeEscape){ // 暫停與啟動
             if(stopping == false && stoppingTime >= 0.1f){
                 stopping = true;
                 stopStatus.dir = dir;
