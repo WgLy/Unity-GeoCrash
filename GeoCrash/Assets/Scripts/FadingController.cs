@@ -14,9 +14,13 @@ public class FadingController : MonoBehaviour
     public float initialA;
     public string nextLoadScene;
 
+    //for test
+    public DataSenderController dataSenderController;
+
     // Start is called before the first frame update
     void Start()
     {
+        dataSenderController = FindObjectOfType<DataSenderController>();
         tempColor = image.color;
         tempColor.a = initialA;
         image.color = tempColor;
@@ -35,7 +39,7 @@ public class FadingController : MonoBehaviour
             Fade(fadeDuration, true);
         }
         */
-        Debug.Log(inverseFading.ToString());
+        //Debug.Log(inverseFading.ToString());
 
         if(fading){
             tempColor = image.color;

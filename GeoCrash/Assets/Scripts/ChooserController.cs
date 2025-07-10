@@ -19,9 +19,12 @@ public class ChooserController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dataSenderController = FindObjectOfType<DataSenderController>();
         idealPosition = new Vector3(0, 0, 0);
         fadingController.Fade(true, "");
         isChoosingDifficulty = false;
+        dataSenderController.songIndex = -1;
+        dataSenderController.difficulty = -1;
     }
 
     // Update is called once per frame
@@ -106,6 +109,10 @@ public class ChooserController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.D) && idealPosition.x != 4){
             idealPosition += new Vector3(2, 0, 0);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            fadingController.Fade(false, "SettingScene");
         }
     }
 }

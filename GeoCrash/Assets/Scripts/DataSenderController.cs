@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DataSenderController : MonoBehaviour
 {
+    // 處理單例
+    public static DataSenderController Instance { get; private set; }
+
+
+    // 基礎數值
     public int songIndex;
     public int difficulty;
     public int BPM;
@@ -18,32 +23,53 @@ public class DataSenderController : MonoBehaviour
     //結束用
     public int finalScore;
     
+    // 設定用
+    public bool[] SettingIsOn = new bool[6];
+    public bool isWallShine;
+    public bool isLineShine;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // by Gemini
+        {
+            // 銷毀新建立的這個物件，確保只有一個實例
+            Debug.LogWarning("Duplicate DataSenderController found, destroying this one.");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            // 如果 Instance 不存在，或者它就是自己，則將自己設為唯一的實例
+            Instance = this;
+            // 確保這個物件在場景切換時不會被銷毀
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        
         autoPlay = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        autoPlay = SettingIsOn[0];
+        isWallShine = SettingIsOn[2];
+        isLineShine = SettingIsOn[4];
+
     }
 
     public void FillQFunction(){
-        if(Input.GetKeyDown(KeyCode.Return)){
-            if(songIndex == 0){
-                FillTheQueue();
-            }
-            if(songIndex == 1){
-                FillTheQueue_NaughyCute();
-            }
-            if(songIndex == 2){
-                FillTheQueue_NCS();
-            }
+        if(songIndex == 0){
+            FillTheQueue();
+        }
+        if(songIndex == 1){
+            FillTheQueue_NaughyCute();
+        }
+        if(songIndex == 2){
+            FillTheQueue_NCS();
         }
     }
 
@@ -81,6 +107,7 @@ public class DataSenderController : MonoBehaviour
         songDeviation = -50;
         notes.Clear();
         holds.Clear();
+        effects.Clear();
 
         for (int i=0;i<1000;i++)
         {
@@ -464,6 +491,7 @@ public class DataSenderController : MonoBehaviour
         songDeviation = 0;
         notes.Clear();
         holds.Clear();
+        effects.Clear();
         //        2
         //    4       3 
         //        1
@@ -705,6 +733,7 @@ public class DataSenderController : MonoBehaviour
         songDeviation = -420; // 問題：測試系統測出-200左右的值
         notes.Clear();
         holds.Clear();
+        effects.Clear();
 
         AddEffect(0, 0, 3, 6, 0.0f, 5);//縮放
         AddEffect(0, 0, 5, 20, 0, 2); // 傾斜
@@ -1140,6 +1169,7 @@ public class DataSenderController : MonoBehaviour
         songDeviation = -300; // 問題：測試系統測出-200左右的值
         notes.Clear();
         holds.Clear();
+        effects.Clear();
 
         AddEffect(0, 0.0f, 4, 0, 1, 0); // 變色
         AddEffect(0, 0.0f, 3, 5, 0.0f, 100); // 縮放

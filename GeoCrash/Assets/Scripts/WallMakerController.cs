@@ -186,12 +186,14 @@ public class WallMakerController : MonoBehaviour
         }
 
         // 造輔助線
+        if(dataSenderController.isLineShine){
+            GameObject newCircleShape = Instantiate(
+                circlePrefeb,
+                transform.position,
+                Quaternion.identity
+            );
+        }
         
-        GameObject newCircleShape = Instantiate(
-            circlePrefeb,
-            transform.position,
-            Quaternion.identity
-        );
         
     }
 

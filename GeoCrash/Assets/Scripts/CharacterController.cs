@@ -150,9 +150,11 @@ public class CharacterController : MonoBehaviour
             rb.velocity = wallMakerController.correction.Peek().dir;
             turns.Dequeue();
             wallMakerController.correction.Dequeue();
-
-            wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = origionColor;
-            wallMakerController.shineWall.Dequeue();
+            if(dataSenderController.isWallShine){
+                wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = origionColor;
+                wallMakerController.shineWall.Dequeue();
+            }
+            
 
         }
 
@@ -291,7 +293,7 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if(wallMakerController.shineWall.Count > 0 && wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color != new Color(1, 1, 0, 1)){
+        if(wallMakerController.shineWall.Count > 0 && wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color != new Color(1, 1, 0, 1) && dataSenderController.isWallShine){
             origionColor = wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color;
             wallMakerController.shineWall.Peek().GetComponent<SpriteRenderer>().color = new Color(1, 1, 0, 1);
         }

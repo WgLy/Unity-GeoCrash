@@ -408,6 +408,8 @@ MonoBehaviour:
   autoPlay: 0
   initialShape: 0
   songDeviation: 0
+  finalScore: 0
+  SettingIsOn: 010001000100
 --- !u!4 &325341059
 Transform:
   m_ObjectHideFlags: 0

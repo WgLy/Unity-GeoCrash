@@ -30,7 +30,7 @@ public class AudioController : MonoBehaviour
     {
 
         stoppingTime += Time.fixedDeltaTime;
-        if(Input.GetKeyDown(KeyCode.Escape) || characterController.activeEscape){ // 暫停與啟動
+        if(Input.GetKeyDown(KeyCode.Escape) || (characterController!=null&&characterController.activeEscape)){ // 暫停與啟動
             if(stopping == false && stoppingTime >= 0.1f){
                 stopping = true;
                 if (audioSource.isPlaying) audioSource.Pause();
