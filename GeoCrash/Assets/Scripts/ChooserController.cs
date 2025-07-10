@@ -63,13 +63,13 @@ public class ChooserController : MonoBehaviour
             idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap, idealPosition.z);
         }
 
-        if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果y
+        if(transform.position.y > idealPosition.y+0.05f){  // 滑動效果y
             transform.position -= new Vector3(
                 0, 
                 Math.Max( slideSpeed, Math.Abs(transform.position.y-idealPosition.y)*10 ) * Time.deltaTime, 
                 0
             );
-        }else if(transform.position.y < idealPosition.y-0.005f){
+        }else if(transform.position.y < idealPosition.y-0.05f){
             transform.position += new Vector3(
                 0, 
                 Math.Max( slideSpeed, Math.Abs(idealPosition.y-transform.position.y)*10 ) * Time.deltaTime, 
