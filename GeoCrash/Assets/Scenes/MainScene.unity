@@ -409,7 +409,7 @@ MonoBehaviour:
   initialShape: 0
   songDeviation: 0
   finalScore: 0
-  SettingIsOn: 010001000100
+  SettingIsOn: 000101000100
   isWallShine: 0
   isLineShine: 0
 --- !u!4 &325341059
