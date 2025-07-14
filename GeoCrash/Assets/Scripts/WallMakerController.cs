@@ -92,6 +92,7 @@ public class WallMakerController : MonoBehaviour
         }
         
         if(gameTime >= turns.Peek().t){ // 造牆
+            //正方形
             if(turns.Peek().type == 1){ //down
                 newWallPrefeb = Instantiate(
                     wallPrefeb, 
@@ -120,6 +121,7 @@ public class WallMakerController : MonoBehaviour
                     Quaternion.Euler(0f, 0f, 90f) * transform.rotation
                 );
             }
+            //通用
             if(turns.Peek().type == 5){ //tap
                 newWallPrefeb = Instantiate(
                     tapPrefeb, 
@@ -127,6 +129,73 @@ public class WallMakerController : MonoBehaviour
                     Quaternion.identity
                 );
             }
+            //三角形
+            if(turns.Peek().type == 6){ //右上
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.34f,0.2f,0), 
+                    Quaternion.Euler(0f, 0f, 120f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 7){ //下
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.0f,-0.4f,0), 
+                    Quaternion.Euler(0f, 0f, 0f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 8){ //左上
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(-0.34f,0.2f,0), 
+                    Quaternion.Euler(0f, 0f, 240f) * transform.rotation
+                );
+            }
+
+            //六邊形
+            if(turns.Peek().type == 9){ //下
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.0f,-0.54f,0), 
+                    Quaternion.Euler(0f, 0f, 0f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 10){ //上
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.0f,0.54f,0), 
+                    Quaternion.Euler(0f, 0f, 0f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 11){ //右上
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.48f,0.26f,0), 
+                    Quaternion.Euler(0f, 0f, -60f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 12){ //左下
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(-0.48f,-0.26f,0), 
+                    Quaternion.Euler(0f, 0f, -60f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 13){ //右下
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(0.48f,-0.26f,0), 
+                    Quaternion.Euler(0f, 0f, 60f) * transform.rotation
+                );
+            }
+            if(turns.Peek().type == 14){ //左上
+                newWallPrefeb = Instantiate(
+                    wallPrefeb, 
+                    transform.position+new Vector3(-0.48f,0.26f,0), 
+                    Quaternion.Euler(0f, 0f, 60f) * transform.rotation
+                );
+            }
+
             rb.velocity = rb.velocity.normalized * moveSpeed;
             
             temp.locate = transform.position;

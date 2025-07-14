@@ -1165,7 +1165,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.spin = 0.0f;
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
-        initialShape = 1;
+        initialShape = 3;
         songDeviation = -300; 
         notes.Clear();
         holds.Clear();
@@ -1188,22 +1188,122 @@ public class DataSenderController : MonoBehaviour
         AddEffect(1, 2.0f+0.1f, 3, 7, 0.0f, 5); // 縮放
 
         
-        AddNote(2, 0.0f, 5);
-        AddNote(2, 0.5f, 5);
-        AddNote(2, 1.0f, 5);
-        AddNote(2, 1.5f, 5);
-        AddNote(2, 2.0f, 5);
-        AddNote(2, 2.5f, 5);
-        AddNote(2, 3.0f, 5);
-        AddNote(2, 3.5f, 5);
-        AddNote(3, 0.0f, 5);
-        AddNote(3, 0.5f, 5);
-        AddNote(3, 1.0f, 5);
-        AddNote(3, 1.5f, 5);
-        AddNote(3, 2.0f, 5);
-        AddNote(3, 2.5f, 5);
-        AddNote(3, 3.0f, 5);
-        AddNote(3, 3.5f, 5);
+        AddNote(2, 0.0f, 11);
+        AddNote(2, 0.5f, 12);
+        AddNote(2, 1.0f, 11);
+        AddNote(2, 1.5f, 12);
+        AddNote(2, 2.0f, 13);
+        AddNote(2, 2.5f, 14);
+        AddNote(2, 3.0f, 13);
+        AddNote(2, 3.5f, 14);
+        AddNote(3, 0.0f, 11);
+        AddNote(3, 0.5f, 12);
+        AddNote(3, 1.0f, 11);
+        AddNote(3, 1.5f, 12);
+        AddNote(3, 2.0f, 13);
+        AddNote(3, 2.5f, 14);
+        AddNote(3, 3.0f, 13);
+        AddNote(3, 3.5f, 14);
+
+        AddNote(4, 0.0f, 10);
+        AddNote(4, 0.5f, 9);
+        AddNote(4, 1.0f, 10);
+        AddNote(4, 1.5f, 9);
+        AddNote(4, 2.0f, 13);
+        AddNote(4, 2.5f, 14);
+        AddNote(4, 3.0f, 13);
+        AddNote(4, 3.5f, 14);
+        AddNote(5, 0.0f, 10);
+        AddNote(5, 0.5f, 9);
+        AddNote(5, 1.0f, 10);
+        AddNote(5, 1.5f, 9);
+        AddNote(5, 2.0f, 13);
+        AddNote(5, 2.5f, 14);
+        AddNote(5, 3.0f, 13);
+        AddNote(5, 3.5f, 14);
+
+        AddNote(6, 0.0f, 10);
+        AddNote(6, 0.5f, 5);
+        AddNote(6, 1.0f, 9);
+        AddNote(6, 1.5f, 5);
+        AddNote(6, 2.0f, 10);
+        AddNote(6, 2.5f, 5);
+        AddNote(6, 3.0f, 9);
+        AddNote(6, 3.5f, 5);
+        AddHold(7, 0.0f, 1.5f, 1);
+        AddNote(7, 2.0f, 5);
+        AddNote(7, 3.0f, 5);
+
+        // main1
+        AddNote(8, 0.0f, 10);
+        AddNote(8, 0.75f, 9);
+        AddNote(8, 1.0f, 10);
+        AddNote(8, 1.25f, 9);
+        AddNote(8, 1.5f, 10);
+        AddNote(8, 1.75f, 9);
+
+        AddNote(9, 0.0f, 10);
+        AddNote(9, 0.75f, 9);
+        AddNote(9, 1.0f, 10);
+        AddNote(9, 1.25f, 9);
+        AddNote(9, 1.5f, 10);
+        AddNote(9, 1.75f, 9);
+
+        AddNote(10, 0.0f, 10);
+        AddNote(10, 0.75f, 9);
+        AddNote(10, 1.0f, 10);
+        AddNote(10, 1.25f, 9);
+        AddNote(10, 1.5f, 10);
+        AddNote(10, 1.75f, 9);
+
+        AddNote(11, 0.0f, 10);
+        AddNote(11, 0.75f, 9);
+        AddNote(11, 1.0f, 10);
+        AddNote(11, 1.25f, 9);
+        AddNote(11, 1.5f, 10);
+        AddNote(11, 1.75f, 9);
+
+        AddNote(12, 0.0f, 10);
+        AddNote(12, 0.75f, 11);
+        AddNote(12, 1.0f, 13);
+        AddNote(12, 1.25f, 14);
+        AddNote(12, 1.5f, 12);
+        AddNote(12, 1.75f, 9);
+
+        AddNote(13, 0.0f, 10);
+        AddNote(13, 0.75f, 11);
+        AddNote(13, 1.0f, 13);
+        AddNote(13, 1.25f, 14);
+        AddNote(13, 1.5f, 12);
+        AddNote(13, 1.75f, 9);
+
+        AddNote(14, 0.0f, 10);
+        AddNote(14, 0.75f, 11);
+        AddNote(14, 1.0f, 13);
+        AddNote(14, 1.25f, 14);
+        AddNote(14, 1.5f, 12);
+        AddNote(14, 1.75f, 9);
+
+        AddNote(15, 0.0f, 10);
+        AddNote(15, 0.75f, 11);
+        AddNote(15, 1.0f, 13);
+        AddNote(15, 1.25f, 14);
+        AddNote(15, 1.5f, 12);
+        AddNote(15, 1.75f, 9);
+        
+        // bridge
+        AddEffect(16, 0.0f, 3, 6, 0.0f, 5); // 縮放
+        AddHold(16, 0.0f, 0.5f, 1);
+        AddEffect(16, 0.0f, 3, 5, 0.0f, 5); // 縮放
+        AddHold(16, 1.0f, 1.5f, 1);
+        AddEffect(16, 0.0f, 3, 4.5f, 0.0f, 5); // 縮放
+        AddHold(16, 2.0f, 2.5f, 1);
+        AddEffect(16, 0.0f, 3, 3, 0.0f, 5); // 縮放
+        AddHold(16, 3.0f, 3.5f, 1);
+
+        // main2
+
+
 
         AddNote(0, 40000f, 1);
         AddHold(0, 40000.0f, 50000.5f, 0);
