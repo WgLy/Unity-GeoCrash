@@ -55,18 +55,18 @@ public class SongDetailUIController : MonoBehaviour
         if(idealPosition.y <= -1*mapGeneratorController.sizeOfSongList*gap + initial_y){ // 循環選譜bottom
             idealPosition += new Vector3(0, mapGeneratorController.sizeOfSongList*gap, 0);
         }
-        if(idealPosition.y >= gap+initial_y-0.001f){ // 循環選譜top
+        if(idealPosition.y >= gap+initial_y-0.01f){ // 循環選譜top
             idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap+initial_y, idealPosition.z);
         }
 
 
-        if(transform.position.y > idealPosition.y+0.005f){  // 滑動效果
+        if(transform.position.y > idealPosition.y+0.05f){  // 滑動效果
             transform.position -= new Vector3(
                 0, 
                 Math.Max( slideSpeed, Math.Abs(transform.position.y-idealPosition.y)*10 ) * Time.deltaTime, 
                 0
             );
-        }else if(transform.position.y < idealPosition.y-0.005f){
+        }else if(transform.position.y < idealPosition.y-0.05f){
             transform.position += new Vector3(
                 0, 
                 Math.Max( slideSpeed, Math.Abs(idealPosition.y-transform.position.y)*10 ) * Time.deltaTime, 

@@ -15,16 +15,18 @@ public class ChooserController : MonoBehaviour
     float holdingTime_S;
     public float gap;
     public bool isChoosingDifficulty;
+    public float initial_y;
     
     // Start is called before the first frame update
     void Start()
     {
         dataSenderController = FindObjectOfType<DataSenderController>();
-        idealPosition = new Vector3(0, 0, 0);
+        idealPosition = new Vector3(5.5f, -3, 0);
         fadingController.Fade(true, "");
         isChoosingDifficulty = false;
         dataSenderController.songIndex = -1;
         dataSenderController.difficulty = -1;
+        initial_y = transform.position.y;
     }
 
     // Update is called once per frame
@@ -56,11 +58,11 @@ public class ChooserController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S)){
             idealPosition += new Vector3(0, -1*gap, 0);
         }
-        if(idealPosition.y <= -1*mapGeneratorController.sizeOfSongList*gap){ // 循環選譜bottom
-            idealPosition = new Vector3(idealPosition.x, 0, idealPosition.z);
+        if(idealPosition.y <= -1*mapGeneratorController.sizeOfSongList*gap + initial_y){ // 循環選譜bottom
+            idealPosition = new Vector3(idealPosition.x, 0 + initial_y, idealPosition.z);
         }
-        if(idealPosition.y >= gap){ // 循環選譜top
-            idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap, idealPosition.z);
+        if(idealPosition.y >= gap + initial_y){ // 循環選譜top
+            idealPosition = new Vector3(idealPosition.x, -1*(mapGeneratorController.sizeOfSongList-1)*gap + initial_y, idealPosition.z);
         }
 
         if(transform.position.y > idealPosition.y+0.05f){  // 滑動效果y
@@ -79,13 +81,13 @@ public class ChooserController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, idealPosition.y, transform.position.z);
         }
 
-        if(transform.position.y == idealPosition.y && transform.position.x > idealPosition.x+0.005f){  // 滑動效果x
+        if(transform.position.y == idealPosition.y && transform.position.x > idealPosition.x+0.05f){  // 滑動效果x
             transform.position -= new Vector3(
                 Math.Max( slideSpeed, Math.Abs(transform.position.x-idealPosition.x)*20 ) * Time.deltaTime, 
                 0, 
                 0
             );
-        }else if(transform.position.y == idealPosition.y && transform.position.x < idealPosition.x-0.005f){
+        }else if(transform.position.y == idealPosition.y && transform.position.x < idealPosition.x-0.05f){
             transform.position += new Vector3(
                 Math.Max( slideSpeed, Math.Abs(idealPosition.y-transform.position.y)*20 ) * Time.deltaTime, 
                 0, 
@@ -97,17 +99,17 @@ public class ChooserController : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.Return)){ // 下一個
-            dataSenderController.songIndex = (int)(idealPosition.y / -1.5f) ;
-            dataSenderController.difficulty = (int)(idealPosition.x / 2.0f) ; 
+            dataSenderController.songIndex = (int)((idealPosition.y-initial_y) / -1.5f) ;
+            dataSenderController.difficulty = (int)((idealPosition.x-3.5f) / 2.0f) ; 
             dataSenderController.FillQFunction();
             fadingController.Fade(false, "PlayScene");
         }
 
-        if(Input.GetKeyDown(KeyCode.A) && idealPosition.x != 0){
+        if(Input.GetKeyDown(KeyCode.A) && idealPosition.x >= 3.6f){
             idealPosition -= new Vector3(2, 0, 0);
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && idealPosition.x != 4){
+        if(Input.GetKeyDown(KeyCode.D) && idealPosition.x <= 7.4f){
             idealPosition += new Vector3(2, 0, 0);
         }
 
