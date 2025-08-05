@@ -1201,6 +1201,7 @@ MonoBehaviour:
   slideSpeed: 10
   gap: 1.5
   isChoosingDifficulty: 0
+  initial_y: 0
 --- !u!4 &1172172794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3081810326565631950, guid: 02f561cb85b1bc74ab6fe0e4088dbe26, type: 3}

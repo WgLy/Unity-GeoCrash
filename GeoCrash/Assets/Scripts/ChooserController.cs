@@ -21,7 +21,7 @@ public class ChooserController : MonoBehaviour
     void Start()
     {
         dataSenderController = FindObjectOfType<DataSenderController>();
-        idealPosition = new Vector3(5.5f, -3, 0);
+        idealPosition = new Vector3(0, 0, 0);
         fadingController.Fade(true, "");
         isChoosingDifficulty = false;
         dataSenderController.songIndex = -1;
