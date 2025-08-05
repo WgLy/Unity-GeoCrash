@@ -22,6 +22,9 @@ public class DataSenderController : MonoBehaviour
 
     //結束用
     public int finalScore;
+    public int perfect_num;
+    public int good_num;
+    public int miss_num;
     
     // 設定用
     public bool[] SettingIsOn = new bool[6];

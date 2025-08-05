@@ -19,8 +19,13 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D rb;
     public WallMakerController wallMakerController;
     public DataSenderController dataSenderController;
+
+    //分數計算
     public float score;
     public float max_score;
+    public int perfect_num;
+    public int good_num;
+    public int miss_num;
 
     Queue<Note> notes = new Queue<Note>();
     Queue<Hold> holds = new Queue<Hold>();
@@ -171,17 +176,20 @@ public class CharacterController : MonoBehaviour
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
                 score += 1;
+                perfect_num++;
                 audioController.PlayTapSound();
             }
             else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
                 GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
                 score += 0.5f;
+                good_num++;
                 audioController.PlayTapSound();
             }
         }
         if(gameTime > notes.Peek().t + goodLimit){
             GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
+            miss_num++;
             notes.Dequeue();
         }
 
@@ -226,6 +234,9 @@ public class CharacterController : MonoBehaviour
             fadingController.Fade(false, "EndScene");
             audioController.StopAllSound();
             dataSenderController.finalScore = int.Parse(scoreController.myText.text);
+            dataSenderController.perfect_num = perfect_num;
+            dataSenderController.good_num = good_num;
+            dataSenderController.miss_num = miss_num;
         }
 
         if(gameTime >= effects.Peek().t){ // 播放特效

@@ -11,6 +11,7 @@ public class ScoreController : MonoBehaviour
     public CharacterController characterController;
     public RectTransform uiElementRectTransform;
 
+
     // Start is called before the first frame update
     void Start()
     {
