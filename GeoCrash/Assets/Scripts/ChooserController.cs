@@ -105,11 +105,11 @@ public class ChooserController : MonoBehaviour
             fadingController.Fade(false, "PlayScene");
         }
 
-        if(Input.GetKeyDown(KeyCode.A) && idealPosition.x >= 3.6f){
+        if(Input.GetKeyDown(KeyCode.A) && idealPosition.x >= 0.1f){
             idealPosition -= new Vector3(2, 0, 0);
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && idealPosition.x <= 7.4f){
+        if(Input.GetKeyDown(KeyCode.D) && idealPosition.x <= 3.9f){
             idealPosition += new Vector3(2, 0, 0);
         }
 

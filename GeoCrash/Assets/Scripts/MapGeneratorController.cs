@@ -19,7 +19,7 @@ public class MapGeneratorController : MonoBehaviour
         tmp.BPM = 180;
         tmp.difficulty = 0;
         songList.Add(tmp);
-        for(int i=1;i<10;i++){
+        for(int i=1;i<3;i++){
             tmp.difficulty = i;
             songList.Add(tmp);
         }

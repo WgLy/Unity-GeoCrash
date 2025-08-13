@@ -476,6 +476,7 @@ public class DataSenderController : MonoBehaviour
         // (1, -1)
 
 
+        AddNote(87, 0f, 0);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
@@ -1154,6 +1155,7 @@ public class DataSenderController : MonoBehaviour
         AddHold(47, 0.0f, 3.5f, 1);
         
         
+        AddNote(49, 0.0f, 0);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
@@ -1225,6 +1227,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(5, 3.0f, 13);
         AddNote(5, 3.5f, 14);
 
+        AddEffect(6, 0.0f, 3, 4, 0.0f, 1); // 縮放
         AddNote(6, 0.0f, 10);
         AddNote(6, 0.5f, 5);
         AddNote(6, 1.0f, 9);
@@ -1236,8 +1239,10 @@ public class DataSenderController : MonoBehaviour
         AddHold(7, 0.0f, 1.5f, 1);
         AddNote(7, 2.0f, 5);
         AddNote(7, 3.0f, 5);
+        AddEffect(7, 3.5f, 3, 5, 0.0f, 100); // 縮放
 
         // main1
+        AddEffect(8, 0.0f, 4, 1, 0, 0); // 變色
         AddNote(8, 0.0f, 10);
         AddNote(8, 0.75f, 9);
         AddNote(8, 1.0f, 10);
@@ -1245,6 +1250,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(8, 1.5f, 10);
         AddNote(8, 1.75f, 9);
 
+        AddEffect(9, 0.0f, 4, 0, 1, 0); // 變色
         AddNote(9, 0.0f, 10);
         AddNote(9, 0.75f, 9);
         AddNote(9, 1.0f, 10);
@@ -1252,6 +1258,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(9, 1.5f, 10);
         AddNote(9, 1.75f, 9);
 
+        AddEffect(10, 0.0f, 4, 0, 0, 1); // 變色
         AddNote(10, 0.0f, 10);
         AddNote(10, 0.75f, 9);
         AddNote(10, 1.0f, 10);
@@ -1259,6 +1266,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(10, 1.5f, 10);
         AddNote(10, 1.75f, 9);
 
+        AddEffect(11, 0.0f, 4, 0, 0, 0); // 變色
         AddNote(11, 0.0f, 10);
         AddNote(11, 0.75f, 9);
         AddNote(11, 1.0f, 10);
@@ -1266,6 +1274,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(11, 1.5f, 10);
         AddNote(11, 1.75f, 9);
 
+        AddEffect(12, 0.0f, 4, 1, 0, 0); // 變色
         AddNote(12, 0.0f, 10);
         AddNote(12, 0.75f, 11);
         AddNote(12, 1.0f, 13);
@@ -1273,6 +1282,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(12, 1.5f, 12);
         AddNote(12, 1.75f, 9);
 
+        AddEffect(13, 0.0f, 4, 0, 1, 0); // 變色
         AddNote(13, 0.0f, 10);
         AddNote(13, 0.75f, 11);
         AddNote(13, 1.0f, 13);
@@ -1280,6 +1290,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(13, 1.5f, 12);
         AddNote(13, 1.75f, 9);
 
+        AddEffect(14, 0.0f, 4, 0, 0, 1); // 變色
         AddNote(14, 0.0f, 10);
         AddNote(14, 0.75f, 11);
         AddNote(14, 1.0f, 13);
@@ -1287,6 +1298,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(14, 1.5f, 12);
         AddNote(14, 1.75f, 9);
 
+        AddEffect(15, 0.0f, 4, 0, 0, 0); // 變色
         AddNote(15, 0.0f, 10);
         AddNote(15, 0.75f, 11);
         AddNote(15, 1.0f, 13);
@@ -1330,9 +1342,9 @@ public class DataSenderController : MonoBehaviour
         AddNote(21, 1.25f, 1);
         AddNote(21, 1.5f, 2);
         AddNote(21, 1.75f, 1);
-
         AddNote(21, 3.0f, 3);
         AddNote(21, 3.5f, 2);
+
         AddNote(22, 0.0f, 1);
         AddNote(22, 0.75f, 2);
         AddNote(22, 1.0f, 1);
@@ -1353,6 +1365,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(24, 0.0f, 2);
         //(1, -1)
 
+        AddEffect(25, 3.0f, 1, 7, 0.3f, 0.0f); // 震動
         AddNote(26, 0.0f, 1);
         AddNote(26, 0.75f, 2);
         AddNote(26, 1.0f, 3);
@@ -1389,41 +1402,49 @@ public class DataSenderController : MonoBehaviour
         AddNote(29, 3.0f, 2);
         AddNote(29, 3.5f, 4);
 
-        AddNote(30, 0.0f, 5);//bug
-        AddNote(30, 0.75f, 5);
-        AddNote(30, 1.0f, 5);
-        AddNote(30, 1.25f, 5);
-        AddNote(30, 1.5f, 5);
-        AddNote(30, 1.75f, 2);
-        AddNote(30, 3.0f, 3);
-        AddNote(30, 3.5f, 1);
+        //(1, -1)
+        AddNote(30, 0.0f, 3);
+        AddNote(30, 0.75f, 1);
+        AddNote(30, 1.0f, 2);
+        AddNote(30, 1.25f, 4);
+        AddNote(30, 1.5f, 3);
+        AddNote(30, 1.75f, 1);
+        AddNote(30, 3.0f, 2);
+        AddNote(30, 3.5f, 4);
         
-        AddNote(31, 0.0f, 4);
-        AddNote(31, 0.75f, 2);
-        AddNote(31, 1.0f, 1);
-        AddNote(31, 1.25f, 3);
-        AddNote(31, 1.5f, 4);
-        AddNote(31, 1.75f, 2);
+        AddNote(31, 0.0f, 3);
+        AddNote(31, 0.75f, 4);
+        AddNote(31, 1.0f, 3);
+        AddNote(31, 1.25f, 1);
+        AddNote(31, 1.5f, 2);
+        AddNote(31, 1.75f, 4);
         AddNote(31, 3.0f, 3);
         AddNote(31, 3.5f, 4);
 
         AddNote(32, 0.0f, 3);
-        AddNote(32, 0.75f, 4);
-        AddNote(32, 1.0f, 1);
+        AddNote(32, 0.75f, 1);
+        AddNote(32, 1.0f, 4);
         AddNote(32, 1.25f, 2);
-        AddNote(32, 1.5f, 1);
-        AddNote(32, 1.75f, 2);
-        AddNote(32, 3.0f, 1);
-        AddNote(32, 3.5f, 2);
+        AddNote(32, 1.5f, 5);
+        AddNote(32, 1.75f, 1);
+        AddNote(32, 3.0f, 2);
+        AddNote(32, 3.5f, 3);
 
-        AddNote(33, 0.0f, 1);
-        AddNote(33, 0.75f, 2);
-        AddNote(33, 1.0f, 3);
-        AddNote(33, 1.25f, 4);
-        AddNote(33, 1.5f, 1);
-        AddNote(33, 1.75f, 2);
-        AddNote(33, 3.0f, 3);
-        AddNote(33, 3.5f, 1);
+        AddNote(33, 0.0f, 4);
+        AddNote(33, 0.75f, 1);
+        AddNote(33, 1.0f, 2);
+        AddNote(33, 1.25f, 3);
+        AddNote(33, 1.5f, 4);
+        AddNote(33, 1.75f, 3);
+        AddNote(33, 3.0f, 4);
+        AddNote(33, 3.5f, 5);
+        
+        for(int i=34;i<=40;i++){
+            for(int j=0;j<=3;j++){
+                AddEffect(i, 0.0f+j, 3, 6f, 0.0f, 100); // 縮放
+                AddEffect(i, 0.1f+j, 3, 5, 0.0f, 7); // 縮放
+            }
+        }
         
         AddNote(34, 0.0f, 1);
         AddNote(34, 0.75f, 2);
@@ -1457,101 +1478,114 @@ public class DataSenderController : MonoBehaviour
         AddHold(37, 2.0f, 2.5f, 0);
         AddHold(37, 3.0f, 3.5f, 0);
 
-        AddNote(38, 0.0f, 5);
-        AddNote(38, 0.75f, 5);
-        AddNote(38, 1.0f, 5);
-        AddNote(38, 1.25f, 5);
-        AddNote(38, 1.5f, 5);
-        AddNote(38, 1.75f, 5);
-        AddNote(38, 3.0f, 5);
-        AddNote(38, 3.5f, 5);
+        AddNote(38, 0.0f, 1);
+        AddNote(38, 0.75f, 2);
+        AddNote(38, 1.0f, 3);
+        AddNote(38, 1.25f, 4);
+        AddNote(38, 1.5f, 1);
+        AddNote(38, 1.75f, 2);
+        AddNote(38, 3.0f, 3);
+        AddNote(38, 3.5f, 1);
         
-        AddNote(39, 0.0f, 5);
-        AddNote(39, 0.75f, 5);
-        AddNote(39, 1.0f, 5);
-        AddNote(39, 1.25f, 5);
-        AddNote(39, 1.5f, 5);
-        AddNote(39, 1.75f, 5);
-        AddNote(39, 3.0f, 5);
-        AddNote(39, 3.5f, 5);
+        AddNote(39, 0.0f, 4);
+        AddNote(39, 0.75f, 2);
+        AddNote(39, 1.0f, 1);
+        AddNote(39, 1.25f, 3);
+        AddNote(39, 1.5f, 4);
+        AddNote(39, 1.75f, 2);
+        AddNote(39, 3.0f, 3);
+        AddNote(39, 3.5f, 4);
 
-        AddNote(40, 0.0f, 5);
-        AddNote(40, 0.75f, 5);
-        AddNote(40, 1.0f, 5);
-        AddNote(40, 1.25f, 5);
-        AddNote(40, 1.5f, 5);
-        AddNote(40, 1.75f, 5);
-        AddNote(40, 3.0f, 5);
-        AddNote(40, 3.5f, 5);
+        AddNote(40, 0.0f, 3);
+        AddNote(40, 0.75f, 4);
+        AddNote(40, 1.0f, 1);
+        AddNote(40, 1.25f, 2);
+        AddNote(40, 1.5f, 1);
+        AddNote(40, 1.75f, 2);
+        AddNote(40, 3.0f, 1);
+        AddNote(40, 3.5f, 2);
 
-        AddHold(41, 0.0f, 0.5f, 0);
-        AddHold(41, 1.0f, 1.5f, 0);
-        AddHold(41, 2.0f, 2.5f, 0);
-        AddHold(41, 3.0f, 3.5f, 0);
+        AddEffect(41, 0.0f, 3, 6, 0.0f, 5); // 縮放
+        AddEffect(41, 0.0f, 2, 3, 0.0f, 0.0f); // 變形
+        AddHold(41, 0.0f, 0.5f, 1);
+        AddEffect(41, 1.0f, 3, 5, 0.0f, 5); // 縮放
+        AddEffect(41, 1.0f, 2, 2, 0.0f, 0.0f); // 變形
+        AddHold(41, 1.0f, 1.5f, 1);
+        AddEffect(41, 2.0f, 3, 4.5f, 0.0f, 5); // 縮放
+        AddEffect(41, 2.0f, 2, 1, 0.0f, 0.0f); // 變形
+        AddHold(41, 2.0f, 2.5f, 1);
+        AddEffect(41, 3.0f, 3, 3, 0.0f, 5); // 縮放
+        AddEffect(41, 3.0f, 2, 3, 0.0f, 0.0f); // 變形
+        AddHold(41, 3.0f, 3.5f, 1);
+        AddEffect(41, 3.75f, 3, 6, 0.0f, 7); // 縮放
         //mute
 
-        AddNote(44, 0.0f, 5);
-        AddNote(44, 0.5f, 5);
-        AddNote(44, 1.0f, 5);
-        AddNote(44, 1.5f, 5);
-        AddNote(44, 2.0f, 5);
-        AddNote(44, 2.5f, 5);
-        AddNote(44, 3.0f, 5);
-        AddNote(44, 3.5f, 5);
+        AddEffect(44, 0.0f, 4, 0.5f, 0, 0); // 變色
+        AddNote(44, 0.0f, 11);
+        AddNote(44, 0.5f, 13);
+        AddNote(44, 1.0f, 14);
+        AddNote(44, 1.5f, 12);
+        AddNote(44, 2.0f, 11);
+        AddNote(44, 2.5f, 13);
+        AddNote(44, 3.0f, 14);
+        AddNote(44, 3.5f, 12);
 
-        AddNote(45, 0.0f, 5);
-        AddNote(45, 0.5f, 5);
-        AddNote(45, 1.0f, 5);
-        AddNote(45, 1.5f, 5);
-        AddNote(45, 2.0f, 5);
-        AddNote(45, 2.5f, 5);
-        AddNote(45, 3.0f, 5);
-        AddNote(45, 3.5f, 5);
+        AddNote(45, 0.0f, 11);
+        AddNote(45, 0.5f, 13);
+        AddNote(45, 1.0f, 14);
+        AddNote(45, 1.5f, 12);
+        AddNote(45, 2.0f, 11);
+        AddNote(45, 2.5f, 13);
+        AddNote(45, 3.0f, 14);
+        AddNote(45, 3.5f, 12);
 
-        AddNote(46, 0.0f, 5);
-        AddNote(46, 0.5f, 5);
-        AddNote(46, 1.0f, 5);
-        AddNote(46, 1.5f, 5);
-        AddNote(46, 2.0f, 5);
-        AddNote(46, 2.5f, 5);
-        AddNote(46, 3.0f, 5);
-        AddNote(46, 3.5f, 5);
+        AddEffect(46, 0.0f, 4, 0, 0.5f, 0); // 變色
+        AddNote(46, 0.0f, 11);
+        AddNote(46, 0.5f, 13);
+        AddNote(46, 1.0f, 14);
+        AddNote(46, 1.5f, 12);
+        AddNote(46, 2.0f, 11);
+        AddNote(46, 2.5f, 13);
+        AddNote(46, 3.0f, 14);
+        AddNote(46, 3.5f, 12);
 
-        AddNote(47, 0.0f, 5);
-        AddNote(47, 0.5f, 5);
-        AddNote(47, 1.0f, 5);
-        AddNote(47, 1.5f, 5);
-        AddNote(47, 2.0f, 5);
-        AddNote(47, 2.5f, 5);
-        AddNote(47, 3.0f, 5);
-        AddNote(47, 3.5f, 5);
+        AddNote(47, 0.0f, 11);
+        AddNote(47, 0.5f, 13);
+        AddNote(47, 1.0f, 14);
+        AddNote(47, 1.5f, 12);
+        AddNote(47, 2.0f, 11);
+        AddNote(47, 2.5f, 13);
+        AddNote(47, 3.0f, 14);
+        AddNote(47, 3.5f, 12);
 
-        AddNote(48, 0.0f, 5);
-        AddNote(48, 0.5f, 5);
-        AddNote(48, 1.0f, 5);
-        AddNote(48, 1.5f, 5);
-        AddNote(48, 2.0f, 5);
-        AddNote(48, 2.5f, 5);
-        AddNote(48, 3.0f, 5);
-        AddNote(48, 3.5f, 5);
+        AddEffect(48, 0.0f, 4, 0, 0, 0.5f); // 變色
+        AddNote(48, 0.0f, 9);
+        AddNote(48, 0.5f, 10);
+        AddNote(48, 1.0f, 9);
+        AddNote(48, 1.5f, 10);
+        AddNote(48, 2.0f, 9);
+        AddNote(48, 2.5f, 10);
+        AddNote(48, 3.0f, 9);
+        AddNote(48, 3.5f, 10);
 
-        AddNote(49, 0.0f, 5);
-        AddNote(49, 0.5f, 5);
-        AddNote(49, 1.0f, 5);
-        AddNote(49, 1.5f, 5);
-        AddNote(49, 2.0f, 5);
-        AddNote(49, 2.5f, 5);
-        AddNote(49, 3.0f, 5);
-        AddNote(49, 3.5f, 5);
+        AddNote(49, 0.0f, 9);
+        AddNote(49, 0.5f, 10);
+        AddNote(49, 1.0f, 9);
+        AddNote(49, 1.5f, 10);
+        AddNote(49, 2.0f, 9);
+        AddNote(49, 2.5f, 10);
+        AddNote(49, 3.0f, 9);
+        AddNote(49, 3.5f, 10);
 
-        AddNote(50, 0.0f, 5);
-        AddNote(50, 0.5f, 5);
-        AddNote(50, 1.0f, 5);
-        AddNote(50, 1.5f, 5);
-        AddNote(50, 2.0f, 5);
-        AddNote(50, 2.5f, 5);
-        AddNote(50, 3.0f, 5);
-        AddNote(50, 3.5f, 5);
+        AddEffect(50, 0.0f, 4, 0, 0, 0); // 變色
+        AddNote(50, 0.0f, 11);
+        AddNote(50, 0.5f, 13);
+        AddNote(50, 1.0f, 14);
+        AddNote(50, 1.5f, 12);
+        AddNote(50, 2.0f, 11);
+        AddNote(50, 2.5f, 13);
+        AddNote(50, 3.0f, 14);
+        AddNote(50, 3.5f, 12);
 
         AddNote(51, 0.0f, 5);
         AddNote(51, 0.5f, 5);
@@ -1562,241 +1596,389 @@ public class DataSenderController : MonoBehaviour
         AddHold(51, 3.0f, 3.5f, 0);
         
         //sing
-        
-        AddNote(52, 0.00f, 5);
-        AddNote(52, 0.25f, 5);
-        AddNote(52, 0.50f, 5);
-        AddNote(52, 0.75f, 5);
-        AddNote(52, 1.00f, 5);
-        AddNote(52, 1.25f, 5);
-        AddNote(52, 1.50f, 5);
-        AddNote(52, 1.75f, 5);
-        AddNote(52, 2.00f, 5);
-        AddNote(52, 2.25f, 5);
-        AddNote(52, 2.50f, 5);
-        AddNote(52, 2.75f, 5);
-        AddNote(52, 3.00f, 5);
-        AddNote(52, 3.25f, 5);
-        AddNote(52, 3.50f, 5);
-        AddNote(52, 3.75f, 5);
+        AddEffect(52, 0.0f, 3, 6, 0.0f, 5); // 縮放
+        AddNote(52, 0.00f, 11);
+        AddNote(52, 0.25f, 13);
+        AddNote(52, 0.50f, 14);
+        AddNote(52, 0.75f, 12);
+        AddNote(52, 1.00f, 11);
+        AddNote(52, 1.25f, 13);
+        AddNote(52, 1.50f, 14);
+        AddNote(52, 1.75f, 12);
+        AddNote(52, 2.00f, 11);
+        AddNote(52, 2.25f, 13);
+        AddNote(52, 2.50f, 14);
+        AddNote(52, 2.75f, 12);
+        AddNote(52, 3.00f, 11);
+        AddNote(52, 3.25f, 13);
+        AddNote(52, 3.50f, 14);
+        AddNote(52, 3.75f, 12);
 
-        AddNote(53, 0.00f, 5);
-        AddNote(53, 0.25f, 5);
-        AddNote(53, 0.50f, 5);
-        AddNote(53, 0.75f, 5);
-        AddNote(53, 1.00f, 5);
-        AddNote(53, 1.25f, 5);
-        AddNote(53, 1.50f, 5);
-        AddNote(53, 1.75f, 5);
-        AddNote(53, 2.00f, 5);
-        AddNote(53, 2.25f, 5);
-        AddNote(53, 2.50f, 5);
-        AddNote(53, 2.75f, 5);
-        AddNote(53, 3.00f, 5);
-        AddNote(53, 3.25f, 5);
-        AddNote(53, 3.50f, 5);
-        AddNote(53, 3.75f, 5);
+        AddNote(53, 0.00f, 11);
+        AddNote(53, 0.25f, 13);
+        AddNote(53, 0.50f, 14);
+        AddNote(53, 0.75f, 12);
+        AddNote(53, 1.00f, 11);
+        AddNote(53, 1.25f, 13);
+        AddNote(53, 1.50f, 14);
+        AddNote(53, 1.75f, 12);
+        AddNote(53, 2.00f, 11);
+        AddNote(53, 2.25f, 13);
+        AddNote(53, 2.50f, 14);
+        AddNote(53, 2.75f, 12);
+        AddNote(53, 3.00f, 11);
+        AddNote(53, 3.25f, 13);
+        AddNote(53, 3.50f, 14);
+        AddNote(53, 3.75f, 12);
 
-        AddNote(54, 0.00f, 5);
-        AddNote(54, 0.25f, 5);
-        AddNote(54, 0.50f, 5);
-        AddNote(54, 0.75f, 5);
-        AddNote(54, 1.00f, 5);
-        AddNote(54, 1.25f, 5);
-        AddNote(54, 1.50f, 5);
-        AddNote(54, 1.75f, 5);
-        AddNote(54, 2.00f, 5);
-        AddNote(54, 2.25f, 5);
-        AddNote(54, 2.50f, 5);
-        AddNote(54, 2.75f, 5);
-        AddNote(54, 3.00f, 5);
-        AddNote(54, 3.25f, 5);
-        AddNote(54, 3.50f, 5);
-        AddNote(54, 3.75f, 5);
+        AddNote(54, 0.00f, 11);
+        AddNote(54, 0.25f, 13);
+        AddNote(54, 0.50f, 14);
+        AddNote(54, 0.75f, 12);
+        AddNote(54, 1.00f, 11);
+        AddNote(54, 1.25f, 13);
+        AddNote(54, 1.50f, 14);
+        AddNote(54, 1.75f, 12);
+        AddNote(54, 2.00f, 11);
+        AddNote(54, 2.25f, 13);
+        AddNote(54, 2.50f, 14);
+        AddNote(54, 2.75f, 12);
+        AddNote(54, 3.00f, 11);
+        AddNote(54, 3.25f, 13);
+        AddNote(54, 3.50f, 14);
+        AddNote(54, 3.75f, 12);
 
-        AddNote(55, 0.00f, 5);
-        AddNote(55, 0.25f, 5);
-        AddNote(55, 0.50f, 5);
-        AddNote(55, 0.75f, 5);
-        AddNote(55, 1.00f, 5);
-        AddNote(55, 1.25f, 5);
-        AddNote(55, 1.50f, 5);
-        AddNote(55, 1.75f, 5);
-        AddNote(55, 2.00f, 5);
-        AddNote(55, 2.25f, 5);
-        AddNote(55, 2.50f, 5);
-        AddNote(55, 2.75f, 5);
-        AddNote(55, 3.00f, 5);
-        AddNote(55, 3.25f, 5);
-        AddNote(55, 3.50f, 5);
-        AddNote(55, 3.75f, 5);
+        AddNote(55, 0.00f, 11);
+        AddNote(55, 0.25f, 13);
+        AddNote(55, 0.50f, 14);
+        AddNote(55, 0.75f, 12);
+        AddNote(55, 1.00f, 11);
+        AddNote(55, 1.25f, 13);
+        AddNote(55, 1.50f, 14);
+        AddNote(55, 1.75f, 12);
+        AddNote(55, 2.00f, 11);
+        AddNote(55, 2.25f, 13);
+        AddNote(55, 2.50f, 14);
+        AddNote(55, 2.75f, 12);
+        AddNote(55, 3.00f, 11);
+        AddNote(55, 3.25f, 13);
+        AddNote(55, 3.50f, 14);
+        AddNote(55, 3.75f, 12);
 
-        AddNote(56, 0.00f, 5);
-        AddNote(56, 0.25f, 5);
-        AddNote(56, 0.50f, 5);
-        AddNote(56, 0.75f, 5);
-        AddNote(56, 1.00f, 5);
-        AddNote(56, 1.25f, 5);
-        AddNote(56, 1.50f, 5);
-        AddNote(56, 1.75f, 5);
-        AddNote(56, 2.00f, 5);
-        AddNote(56, 2.25f, 5);
-        AddNote(56, 2.50f, 5);
-        AddNote(56, 2.75f, 5);
-        AddNote(56, 3.00f, 5);
-        AddNote(56, 3.25f, 5);
-        AddNote(56, 3.50f, 5);
-        AddNote(56, 3.75f, 5);
+        //(1,-1)
+        AddEffect(55, 0.0f, 3, 7, 0.0f, 5); // 縮放
+        AddEffect(55, 3.90f, 2, 1, 0.0f, 0.0f); // 變形
+        AddNote(56, 0.00f, 1);
+        AddNote(56, 0.25f, 2);
+        AddNote(56, 0.50f, 1);
+        AddNote(56, 0.75f, 2);
+        AddNote(56, 1.00f, 3);
+        AddNote(56, 1.25f, 4);
+        AddNote(56, 1.50f, 3);
+        AddNote(56, 1.75f, 4);
+        AddNote(56, 2.00f, 1);
+        AddNote(56, 2.25f, 2);
+        AddNote(56, 2.50f, 1);
+        AddNote(56, 2.75f, 2);
+        AddNote(56, 3.00f, 3);
+        AddNote(56, 3.25f, 4);
+        AddNote(56, 3.50f, 3);
+        AddNote(56, 3.75f, 1);
 
-        AddNote(57, 0.00f, 5);
-        AddNote(57, 0.25f, 5);
-        AddNote(57, 0.50f, 5);
-        AddNote(57, 0.75f, 5);
-        AddNote(57, 1.00f, 5);
-        AddNote(57, 1.25f, 5);
-        AddNote(57, 1.50f, 5);
-        AddNote(57, 1.75f, 5);
-        AddNote(57, 2.00f, 5);
-        AddNote(57, 2.25f, 5);
-        AddNote(57, 2.50f, 5);
-        AddNote(57, 2.75f, 5);
-        AddNote(57, 3.00f, 5);
-        AddNote(57, 3.25f, 5);
-        AddNote(57, 3.50f, 5);
-        AddNote(57, 3.75f, 5);
+        AddNote(57, 0.00f, 2);
+        AddNote(57, 0.25f, 1);
+        AddNote(57, 0.50f, 2);
+        AddNote(57, 0.75f, 1);
+        AddNote(57, 1.00f, 2);
+        AddNote(57, 1.25f, 4);
+        AddNote(57, 1.50f, 3);
+        AddNote(57, 1.75f, 4);
+        AddNote(57, 2.00f, 1);
+        AddNote(57, 2.25f, 2);
+        AddNote(57, 2.50f, 1);
+        AddNote(57, 2.75f, 2);
+        AddNote(57, 3.00f, 3);
+        AddNote(57, 3.25f, 4);
+        AddNote(57, 3.50f, 3);
+        AddNote(57, 3.75f, 1);
 
-        AddNote(58, 0.00f, 5);
-        AddNote(58, 0.25f, 5);
-        AddNote(58, 0.50f, 5);
-        AddNote(58, 0.75f, 5);
-        AddNote(58, 1.00f, 5);
-        AddNote(58, 1.25f, 5);
-        AddNote(58, 1.50f, 5);
-        AddNote(58, 1.75f, 5);
-        AddNote(58, 2.00f, 5);
-        AddNote(58, 2.25f, 5);
-        AddNote(58, 2.50f, 5);
-        AddNote(58, 2.75f, 5);
-        AddNote(58, 3.00f, 5);
-        AddNote(58, 3.25f, 5);
-        AddNote(58, 3.50f, 5);
-        AddNote(58, 3.75f, 5);
+        AddEffect(58, 0.0f, 3, 8, 0.0f, 5); // 縮放
+        AddNote(58, 0.00f, 2);
+        AddNote(58, 0.25f, 1);
+        AddNote(58, 0.50f, 2);
+        AddNote(58, 0.75f, 1);
+        AddNote(58, 1.00f, 2);
+        AddNote(58, 1.25f, 4);
+        AddNote(58, 1.50f, 3);
+        AddNote(58, 1.75f, 4);
+        AddNote(58, 2.00f, 1);
+        AddNote(58, 2.25f, 2);
+        AddNote(58, 2.50f, 1);
+        AddNote(58, 2.75f, 2);
+        AddNote(58, 3.00f, 3);
+        AddNote(58, 3.25f, 4);
+        AddNote(58, 3.50f, 3);
+        AddNote(58, 3.75f, 1);
 
-        AddNote(59, 0.00f, 5);
-        AddNote(59, 0.25f, 5);
-        AddNote(59, 0.50f, 5);
-        AddNote(59, 0.75f, 5);
-        AddNote(59, 1.00f, 5);
-        AddNote(59, 1.25f, 5);
-        AddNote(59, 1.50f, 5);
-        AddNote(59, 1.75f, 5);
-        AddNote(59, 2.00f, 5);
-        AddNote(59, 2.25f, 5);
-        AddNote(59, 2.50f, 5);
-        AddNote(59, 2.75f, 5);
-        AddNote(59, 3.00f, 5);
-        AddNote(59, 3.25f, 5);
-        AddNote(59, 3.50f, 5);
-        AddNote(59, 3.75f, 5);
+        AddNote(59, 0.00f, 2);
+        AddNote(59, 0.25f, 1);
+        AddNote(59, 0.50f, 2);
+        AddNote(59, 0.75f, 1);
+        AddNote(59, 1.00f, 2);
+        AddNote(59, 1.25f, 4);
+        AddNote(59, 1.50f, 3);
+        AddNote(59, 1.75f, 4);
+        AddNote(59, 2.00f, 1);
+        AddNote(59, 2.25f, 2);
+        AddNote(59, 2.50f, 1);
+        AddNote(59, 2.75f, 2);
+        AddNote(59, 3.00f, 3);
+        AddNote(59, 3.25f, 4);
+        AddNote(59, 3.50f, 3);
+        AddNote(59, 3.75f, 1);
 
-        AddNote(60, 0.00f, 5);
-        AddNote(60, 0.25f, 5);
-        AddNote(60, 0.50f, 5);
-        AddNote(60, 0.75f, 5);
-        AddNote(60, 1.00f, 5);
-        AddNote(60, 1.25f, 5);
-        AddNote(60, 1.50f, 5);
-        AddNote(60, 1.75f, 5);
-        AddNote(60, 2.00f, 5);
-        AddNote(60, 2.25f, 5);
-        AddNote(60, 2.50f, 5);
-        AddNote(60, 2.75f, 5);
-        AddNote(60, 3.00f, 5);
-        AddNote(60, 3.25f, 5);
-        AddNote(60, 3.50f, 5);
-        AddNote(60, 3.75f, 5);
+        AddEffect(60, 0.0f, 3, 5, 0.0f, 5); // 縮放
+        AddNote(60, 0.00f, 2);
+        AddNote(60, 0.25f, 1);
+        AddNote(60, 0.50f, 2);
+        AddNote(60, 0.75f, 1);
+        AddNote(60, 1.00f, 2);
+        AddNote(60, 1.25f, 4);
+        AddNote(60, 1.50f, 3);
+        AddNote(60, 1.75f, 4);
+        AddNote(60, 2.00f, 1);
+        AddNote(60, 2.25f, 2);
+        AddNote(60, 2.50f, 1);
+        AddNote(60, 2.75f, 2);
+        AddNote(60, 3.00f, 3);
+        AddNote(60, 3.25f, 4);
+        AddNote(60, 3.50f, 3);
+        AddNote(60, 3.75f, 4);
+        //(1,-1)
+
+        AddNote(61, 0.0f, 3);
+        AddNote(61, 0.75f, 4);
+        AddNote(61, 1.0f, 3);
+        AddNote(61, 1.25f, 1);
+        AddNote(61, 1.5f, 2);
+        AddNote(61, 1.75f, 1);
+
+        AddNote(61, 2.50f, 2);
+        AddNote(61, 2.75f, 5);
+        AddNote(61, 3.00f, 4);
+        AddNote(61, 3.25f, 5);
+        AddNote(61, 3.75f, 3);
+        AddNote(62, 0.50f, 5);
+        AddNote(62, 0.75f, 4);
+        AddNote(62, 1.00f, 5);
+        AddNote(62, 1.20f, 3);
+        AddNote(62, 1.75f, 5);
+        AddNote(62, 2.50f, 4);
+        AddNote(62, 3.00f, 3);
+        AddNote(62, 3.50f, 4);
+
+        AddNote(63, 0.0f, 3);
+        AddNote(63, 0.75f, 4);
+        AddNote(63, 1.0f, 3);
+        AddNote(63, 1.25f, 1);
+        AddNote(63, 1.5f, 2);
+        AddNote(63, 1.75f, 1);
+
+        AddNote(63, 2.50f, 2);
+        AddNote(63, 2.75f, 5);
+        AddNote(63, 3.00f, 4);
+        AddNote(63, 3.25f, 5);
+        AddNote(63, 3.75f, 3);
+        AddNote(64, 0.50f, 5);
+        AddNote(64, 0.75f, 4);
+        AddNote(64, 1.00f, 5);
+        AddNote(64, 1.20f, 3);
+        AddNote(64, 1.75f, 5);
+        AddNote(64, 2.50f, 4);
+        AddNote(64, 3.00f, 3);
+        AddNote(64, 3.50f, 4);
+        //(1,-1)
+
+        AddNote(65, 0.0f, 1);
+        AddNote(65, 0.75f, 3);
+        AddNote(65, 1.0f, 4);
+        AddNote(65, 1.25f, 2);
+        AddNote(65, 1.5f, 1);
+        AddNote(65, 1.75f, 2);
+        AddNote(65, 3.00f, 1);
+        AddNote(65, 3.50f, 3);
+
+        AddNote(66, 0.0f, 2);
+        AddNote(66, 0.75f, 4);
+        AddNote(66, 1.0f, 3);
+        AddNote(66, 1.25f, 4);
+        AddNote(66, 1.5f, 3);
+        AddNote(66, 1.75f, 4);
+        AddNote(66, 3.00f, 3);
+        AddNote(66, 3.50f, 4);
+
+        //Effect
 
         //main3
-        //(xm,4) 61~64
-
-        AddNote(65, 0.0f, 5);
-        AddNote(65, 0.75f, 5);
-        AddNote(65, 1.0f, 5);
-        AddNote(65, 1.25f, 5);
-        AddNote(65, 1.5f, 5);
-        AddNote(65, 1.75f, 5);
-        AddNote(65, 3.0f, 5);
-        AddNote(65, 3.5f, 5);
+        //(1, -1)
+        AddEffect(70, 0.0f, 3, 7, 0.0f, 1); // 縮放
+        AddNote(70, 0.0f, 1);
+        AddNote(70, 0.75f, 2);
+        AddNote(70, 1.0f, 3);
+        AddNote(70, 1.25f, 4);
+        AddNote(70, 1.5f, 1);
+        AddNote(70, 1.75f, 2);
+        AddNote(70, 3.0f, 3);
+        AddNote(70, 3.5f, 1);
         
-        AddNote(66, 0.0f, 5);
-        AddNote(66, 0.75f, 5);
-        AddNote(66, 1.0f, 5);
-        AddNote(66, 1.25f, 5);
-        AddNote(66, 1.5f, 5);
-        AddNote(66, 1.75f, 5);
-        AddNote(66, 3.0f, 5);
-        AddNote(66, 3.5f, 5);
+        AddNote(71, 0.0f, 4);
+        AddNote(71, 0.75f, 2);
+        AddNote(71, 1.0f, 1);
+        AddNote(71, 1.25f, 3);
+        AddNote(71, 1.5f, 4);
+        AddNote(71, 1.75f, 2);
+        AddNote(71, 3.0f, 3);
+        AddNote(71, 3.5f, 4);
 
-        AddNote(67, 0.0f, 5);
-        AddNote(67, 0.75f, 5);
-        AddNote(67, 1.0f, 5);
-        AddNote(67, 1.25f, 5);
-        AddNote(67, 1.5f, 5);
-        AddNote(67, 1.75f, 5);
-        AddNote(67, 3.0f, 5);
-        AddNote(67, 3.5f, 5);
+        AddNote(72, 0.0f, 3);
+        AddNote(72, 0.75f, 4);
+        AddNote(72, 1.0f, 1);
+        AddNote(72, 1.25f, 2);
+        AddNote(72, 1.5f, 1);
+        AddNote(72, 1.75f, 2);
+        AddNote(72, 3.0f, 1);
+        AddNote(72, 3.5f, 2);
 
-        AddNote(68, 0.0f, 5);
-        AddNote(68, 0.75f, 5);
-        AddNote(68, 1.0f, 5);
-        AddNote(68, 1.25f, 5);
-        AddNote(68, 1.5f, 5);
-        AddNote(68, 1.75f, 5);
-        AddNote(68, 3.0f, 5);
-        AddNote(68, 3.5f, 5);
+        AddNote(73, 0.0f, 3);
+        AddNote(73, 0.75f, 4);
+        AddNote(73, 1.0f, 3);
+        AddNote(73, 1.25f, 1);
+        AddNote(73, 1.5f, 2);
+        AddNote(73, 1.75f, 1);
+        AddNote(73, 3.0f, 2);
+        AddNote(73, 3.5f, 4);
 
-        AddNote(69, 0.0f, 5);
-        AddNote(69, 0.75f, 5);
-        AddNote(69, 1.0f, 5);
-        AddNote(69, 1.25f, 5);
-        AddNote(69, 1.5f, 5);
-        AddNote(69, 1.75f, 5);
-        AddNote(69, 3.0f, 5);
-        AddNote(69, 3.5f, 5);
+        //(1, -1)
+        AddNote(74, 0.0f, 3);
+        AddNote(74, 0.75f, 1);
+        AddNote(74, 1.0f, 2);
+        AddNote(74, 1.25f, 4);
+        AddNote(74, 1.5f, 3);
+        AddNote(74, 1.75f, 1);
+        AddNote(74, 3.0f, 2);
+        AddNote(74, 3.5f, 4);
         
-        AddNote(70, 0.0f, 5);
-        AddNote(70, 0.75f, 5);
-        AddNote(70, 1.0f, 5);
-        AddNote(70, 1.25f, 5);
-        AddNote(70, 1.5f, 5);
-        AddNote(70, 1.75f, 5);
-        AddNote(70, 3.0f, 5);
-        AddNote(70, 3.5f, 5);
+        AddNote(75, 0.0f, 3);
+        AddNote(75, 0.75f, 4);
+        AddNote(75, 1.0f, 3);
+        AddNote(75, 1.25f, 1);
+        AddNote(75, 1.5f, 2);
+        AddNote(75, 1.75f, 4);
+        AddNote(75, 3.0f, 3);
+        AddNote(75, 3.5f, 4);
 
-        AddNote(71, 0.0f, 5);
-        AddNote(71, 0.75f, 5);
-        AddNote(71, 1.0f, 5);
-        AddNote(71, 1.25f, 5);
-        AddNote(71, 1.5f, 5);
-        AddNote(71, 1.75f, 5);
-        AddNote(71, 3.0f, 5);
-        AddNote(71, 3.5f, 5);
+        AddNote(76, 0.0f, 3);
+        AddNote(76, 0.75f, 1);
+        AddNote(76, 1.0f, 4);
+        AddNote(76, 1.25f, 2);
+        AddNote(76, 1.5f, 5);
+        AddNote(76, 1.75f, 1);
+        AddNote(76, 3.0f, 2);
+        AddNote(76, 3.5f, 3);
 
-        AddNote(72, 0.0f, 5);
-        AddNote(72, 0.75f, 5);
-        AddNote(72, 1.0f, 5);
-        AddNote(72, 1.25f, 5);
-        AddNote(72, 1.5f, 5);
-        AddNote(72, 1.75f, 5);
+        AddNote(77, 0.0f, 4);
+        AddNote(77, 0.75f, 1);
+        AddNote(77, 1.0f, 2);
+        AddNote(77, 1.25f, 3);
+        AddNote(77, 1.5f, 4);
+        AddNote(77, 1.75f, 3);
+        AddNote(77, 3.0f, 4);
+        AddNote(77, 3.5f, 5);
 
-        AddNote(0, 40000f, 1);
+        // main 4
+        AddNote(78, 0.0f, 1);
+        AddNote(78, 0.75f, 2);
+        AddNote(78, 1.0f, 3);
+        AddNote(78, 1.25f, 4);
+        AddNote(78, 1.5f, 1);
+        AddNote(78, 1.75f, 2);
+        AddNote(78, 3.0f, 3);
+        AddNote(78, 3.5f, 1);
+        
+        AddNote(79, 0.0f, 4);
+        AddNote(79, 0.75f, 2);
+        AddNote(79, 1.0f, 1);
+        AddNote(79, 1.25f, 3);
+        AddNote(79, 1.5f, 4);
+        AddNote(79, 1.75f, 2);
+        AddNote(79, 3.0f, 3);
+        AddNote(79, 3.5f, 4);
+
+        AddNote(80, 0.0f, 3);
+        AddNote(80, 0.75f, 4);
+        AddNote(80, 1.0f, 1);
+        AddNote(80, 1.25f, 2);
+        AddNote(80, 1.5f, 1);
+        AddNote(80, 1.75f, 2);
+        AddNote(80, 3.0f, 1);
+        AddNote(80, 3.5f, 2);
+
+        AddNote(81, 0.0f, 3);
+        AddNote(81, 0.75f, 4);
+        AddNote(81, 1.0f, 3);
+        AddNote(81, 1.25f, 1);
+        AddNote(81, 1.5f, 2);
+        AddNote(81, 1.75f, 1);
+        AddNote(81, 3.0f, 2);
+        AddNote(81, 3.5f, 4);
+
+        //(1, -1)
+        AddNote(82, 0.0f, 3);
+        AddNote(82, 0.75f, 1);
+        AddNote(82, 1.0f, 2);
+        AddNote(82, 1.25f, 4);
+        AddNote(82, 1.5f, 3);
+        AddNote(82, 1.75f, 1);
+        AddNote(82, 3.0f, 2);
+        AddNote(82, 3.5f, 4);
+        
+        AddNote(83, 0.0f, 3);
+        AddNote(83, 0.75f, 4);
+        AddNote(83, 1.0f, 3);
+        AddNote(83, 1.25f, 1);
+        AddNote(83, 1.5f, 2);
+        AddNote(83, 1.75f, 4);
+        AddNote(83, 3.0f, 3);
+        AddNote(83, 3.5f, 4);
+
+        AddNote(84, 0.0f, 3);
+        AddNote(84, 0.75f, 1);
+        AddNote(84, 1.0f, 4);
+        AddNote(84, 1.25f, 2);
+        AddNote(84, 1.5f, 5);
+        AddNote(84, 1.75f, 1);
+        AddNote(84, 3.0f, 2);
+        AddNote(84, 3.5f, 3);
+
+        AddNote(85, 0.0f, 4);
+        AddNote(85, 0.75f, 1);
+        AddNote(85, 1.0f, 2);
+        AddNote(85, 1.25f, 3);
+        AddNote(85, 1.5f, 4);
+        AddNote(85, 1.75f, 3);
+        AddNote(85, 3.0f, 4);
+        AddNote(85, 3.5f, 5);
+        // end
+
+        AddNote(88, 0.0f, 0);
+        AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
     }
 
     void AddNote(int p, float t, int type){  // 加入音符函式
         Note tmp = new Note();
-        tmp.t = (t+p*4)*60.0f/BPM;
+        tmp.t = (t+p*4)*60.000000f/BPM;
         tmp.type = type;
         notes.Enqueue(tmp);
     }
