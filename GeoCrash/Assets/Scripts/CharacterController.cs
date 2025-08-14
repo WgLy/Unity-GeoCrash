@@ -121,7 +121,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!stopping) gameTime += Time.fixedDeltaTime; // 讓時間流動
+        if(!stopping) gameTime += Time.fixedDeltaTime * dataSenderController.timeDegree; // 讓時間流動
         stoppingTime += Time.fixedDeltaTime;
 
         if (gameTime >= -4 * 60.0f / BPM && moving == false){

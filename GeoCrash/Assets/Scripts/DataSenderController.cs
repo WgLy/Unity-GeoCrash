@@ -32,7 +32,7 @@ public class DataSenderController : MonoBehaviour
     public bool isLineShine;
 
     // 時間流速倍率
-    public float timeDegree;//未設定
+    public float timeDegree;
 
     void Awake()
     {
@@ -56,6 +56,7 @@ public class DataSenderController : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         autoPlay = false;
+        timeDegree = 1.00f;
     }
 
     // Update is called once per frame
@@ -395,7 +396,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(68, 4.0f, 2);
         AddNote(68, 5.0f, 1);
         AddNote(68, 5.5f, 2);
-        AddNote(68, 7.0f, 5);
+        AddNote(68, 6.5f, 5);
         AddNote(68, 7.5f, 1);
         AddNote(70, 0.0f, 5);
         AddNote(70, 2.0f, 2);
@@ -416,16 +417,12 @@ public class DataSenderController : MonoBehaviour
         AddNote(74 -2, 5.5f, 2);
         AddNote(74 -2, 7.0f, 3);
         AddNote(74 -2, 7.5f, 1);
-        AddNote(76 -2, 0.0f, 4);
-        AddNote(76 -2, 1.0f, 2);
-        AddNote(76 -2, 2.0f, 5);
+        AddNote(76 -2, 0.0f, 2);
+        AddNote(76 -2, 1.5f, 4);
         AddNote(76 -2, 3.0f, 3);
-        AddNote(76 -2, 4.0f, 4);
-        AddNote(76 -2, 4.5f, 3);
-        AddNote(76 -2, 5.5f, 5);
+        AddNote(76 -2, 3.5f, 5);
         //-1 ,-1 
 
-        AddNote(76 -2, 6.5f, 5);
         AddNote(76 -2, 7.0f, 5);
         AddNote(76 -2, 7.5f, 5);
         AddNote(78 -2, 0.0f, 5);
@@ -437,7 +434,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(78 -2, 6.5f, 2);
         AddNote(78 -2, 7.5f, 5);
         AddNote(80 -2, 0.0f, 1);
-        AddNote(80 -2, 1.0f, 5);
+        AddNote(80 -2, 0.5f, 5);
         AddNote(80 -2, 2.0f, 2);
         AddNote(80 -2, 3.0f, 5);
         AddNote(80 -2, 4.0f, 1);
@@ -470,16 +467,21 @@ public class DataSenderController : MonoBehaviour
         AddNote(86 -2, 4.0f, 2);
         AddNote(86 -2, 5.0f, 1);
         AddNote(86 -2, 5.5f, 2);
-        AddNote(86 -2, 7.0f, 5);
+        AddNote(86 -2, 6.5f, 5);
         AddNote(86 -2, 7.5f, 4);
         AddNote(88 -2, 0.0f, 5);
-        AddNote(88 -2, 2.0f, 1);
-        AddNote(88 -2, 3.0f, 5);
-        AddNote(88 -2, 4.0f, 2);
+        
+        AddNote(88 -2, 5.0f, 1);
+        AddNote(88 -2, 6.0f, 5);
+        AddNote(88 -2, 7.0f, 2);
+        AddNote(88 -2, 7.5f, 5);
+        AddNote(90 -2, 0.0f, 1);
+        AddNote(90 -2, 1.0f, 5);
+        AddNote(90 -2, 1.5f, 2);
         // (1, -1)
 
 
-        AddEffect(87, 0.0f, 4, 0.01f, 0.01f, 0.01f);
+        AddEffect(89, 0.0f, 4, 0.01f, 0.01f, 0.01f);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
@@ -737,7 +739,7 @@ public class DataSenderController : MonoBehaviour
         InitialStatus.dir = new Vector2(1, 1);
         InitialStatus.speed = 13;
         initialShape = 1;
-        songDeviation = -500; // 問題：測試系統測出-200左右的值
+        songDeviation = -470; // 問題：測試系統測出-200左右的值
         notes.Clear();
         holds.Clear();
         effects.Clear();
@@ -1055,8 +1057,6 @@ public class DataSenderController : MonoBehaviour
         AddNote(35, 3.75f, 4);
         //(1, 1)
 
-        AddNote(36, 0.00f, 3);
-        AddNote(36, 0.50f, 4);
         AddNote(36, 1.00f, 2);
         AddNote(36, 1.50f, 1);
         AddNote(36, 2.00f, 2);

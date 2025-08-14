@@ -79,7 +79,7 @@ public class WallMakerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!stopping) gameTime += Time.fixedDeltaTime; // 讓時間流動
+        if(!stopping) gameTime += Time.fixedDeltaTime * dataSenderController.timeDegree; // 讓時間流動
         stoppingTime += Time.fixedDeltaTime;
 
         //transform.position += dir * moveSpeed * Time.deltaTime * ((gameTime>=-4*60/BPM)?1:0);
