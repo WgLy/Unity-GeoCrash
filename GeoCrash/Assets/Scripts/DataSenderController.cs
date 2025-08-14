@@ -31,6 +31,9 @@ public class DataSenderController : MonoBehaviour
     public bool isWallShine;
     public bool isLineShine;
 
+    // 時間流速倍率
+    public float timeDegree;//未設定
+
     void Awake()
     {
         if (Instance != null && Instance != this) // by Gemini
@@ -476,7 +479,7 @@ public class DataSenderController : MonoBehaviour
         // (1, -1)
 
 
-        AddNote(87, 0f, 0);
+        AddEffect(87, 0.0f, 4, 0.01f, 0.01f, 0.01f);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
@@ -1155,7 +1158,7 @@ public class DataSenderController : MonoBehaviour
         AddHold(47, 0.0f, 3.5f, 1);
         
         
-        AddNote(49, 0.0f, 0);
+        AddEffect(49, 0.0f, 4, 0.01f, 0.01f, 0.01f);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);
@@ -1441,8 +1444,7 @@ public class DataSenderController : MonoBehaviour
         
         for(int i=34;i<=40;i++){
             for(int j=0;j<=3;j++){
-                AddEffect(i, 0.0f+j, 3, 6f, 0.0f, 100); // 縮放
-                AddEffect(i, 0.1f+j, 3, 5, 0.0f, 7); // 縮放
+                AddEffect(i, j, 1, 2, 0.1f, 0.0f); // 震動
             }
         }
         
@@ -1970,7 +1972,7 @@ public class DataSenderController : MonoBehaviour
         AddNote(85, 3.5f, 5);
         // end
 
-        AddNote(88, 0.0f, 0);
+        AddEffect(88, 0.0f, 4, 0.01f, 0.01f, 0.01f);
         AddNote(0, 40000f, 0);
         AddHold(0, 40000.0f, 50000.5f, 0);
         AddEffect(0, 40000, 0, 1, 1, 0.0f);

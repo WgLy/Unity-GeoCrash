@@ -8,6 +8,7 @@ public class MapGeneratorController : MonoBehaviour
     public GameObject songTitlePrefeb;
     List<Song> songList = new List<Song>();
     public int sizeOfSongList;
+    public List<GameObject> songTitlePrefebList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class MapGeneratorController : MonoBehaviour
         }
 
         for(int i=0;i<songList.Count;i++){
-            GameObject currentSongTitle = Instantiate(songTitlePrefeb, transform.position, Quaternion.identity);
+            GameObject currentSongTitle = Instantiate(songTitlePrefebList[i], transform.position, Quaternion.identity);
             currentSongTitle.transform.position = new Vector3(-3, -1.5f*i, 0);
         }
         sizeOfSongList = songList.Count;

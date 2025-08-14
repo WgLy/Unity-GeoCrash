@@ -15,12 +15,12 @@ public class SettingManagerController : MonoBehaviour
     */
     public int nowPosIndex;
     public Vector3[] pos = {
-        new Vector3(-7, 4, 0),
-        new Vector3(-5, 4, 0),
         new Vector3(-7, 2, 0),
         new Vector3(-5, 2, 0),
-        new Vector3(-7, 0, 0),
-        new Vector3(-5, 0, 0)
+        new Vector3(-7, -1, 0),
+        new Vector3(-5, -1, 0),
+        new Vector3(-7, -4, 0),
+        new Vector3(-5, -4, 0)
     };
 
     public int[,] movingChart = {

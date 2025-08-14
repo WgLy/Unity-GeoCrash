@@ -229,7 +229,7 @@ public class CharacterController : MonoBehaviour
             ChangeShape(3);
         }
 
-        if(notes.Peek().type == 0 && holds.Peek().type == 0 && effects.Peek().type == 0 && gameTime>=notes.Peek().t){ // 遊玩結束
+        if(notes.Peek().type == 0 && holds.Peek().type == 0 && effects.Peek().type == 0){ // 遊玩結束
             Debug.Log("end");
             fadingController.Fade(false, "EndScene");
             audioController.StopAllSound();
