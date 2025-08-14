@@ -1053,10 +1053,10 @@ public class DataSenderController : MonoBehaviour
         AddEffect(35, 0.0f, 1, 5, 2.04f, 0.0f); // 震動
         AddHold(35, 0.0f, 3.5f, 1);
         AddEffect(35, 3.5f, 4, 0, 0, 0); // 變色
-        AddNote(35, 3.5f, 3);
-        AddNote(35, 3.75f, 4);
         //(1, 1)
 
+        AddNote(36, 0.00f, 3);
+        AddNote(36, 0.50f, 4);
         AddNote(36, 1.00f, 2);
         AddNote(36, 1.50f, 1);
         AddNote(36, 2.00f, 2);
