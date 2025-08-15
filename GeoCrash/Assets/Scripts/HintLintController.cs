@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HintLintController : MonoBehaviour
+public class HintLintController : MonoBehaviour // HintLineController 藍線
 {
     public float gameTime;
     public SpriteRenderer spriteRenderer;

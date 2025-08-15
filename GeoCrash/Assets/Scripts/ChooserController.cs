@@ -16,6 +16,7 @@ public class ChooserController : MonoBehaviour
     public float gap;
     public bool isChoosingDifficulty;
     public float initial_y;
+    public DifficultyChooserController difficultyChooserController;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class ChooserController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+/*
         if(Input.GetKey(KeyCode.W)){ // 紀錄W長按時間
             holdingTime_W += Time.deltaTime;  
         }else{
@@ -96,15 +98,15 @@ public class ChooserController : MonoBehaviour
         }else if(transform.position.y == idealPosition.y){
             transform.position = new Vector3(transform.position.x, idealPosition.y, transform.position.z);
         }
-
+*/
 
         if (Input.GetKeyDown(KeyCode.Return)){ // 下一個
-            dataSenderController.songIndex = (int)((idealPosition.y-initial_y) / -1.5f) ;
-            dataSenderController.difficulty = (int)((idealPosition.x-3.5f) / 2.0f) ; 
+            dataSenderController.songIndex = mapGeneratorController.currentSongIndex ;
+            dataSenderController.difficulty = difficultyChooserController.currentIndex ; 
             dataSenderController.FillQFunction();
             fadingController.Fade(false, "PlayScene");
         }
-
+/*
         if(Input.GetKeyDown(KeyCode.A) && idealPosition.x >= 0.1f){
             idealPosition -= new Vector3(2, 0, 0);
         }
@@ -112,7 +114,7 @@ public class ChooserController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.D) && idealPosition.x <= 3.9f){
             idealPosition += new Vector3(2, 0, 0);
         }
-
+*/
         if(Input.GetKeyDown(KeyCode.Escape)){
             fadingController.Fade(false, "SettingScene");
         }
