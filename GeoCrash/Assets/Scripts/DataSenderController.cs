@@ -34,6 +34,9 @@ public class DataSenderController : MonoBehaviour
     // 時間流速倍率
     public float timeDegree;
 
+    // 最高紀錄
+    public List<int> songHighScoreList = new List<int>();
+
     void Awake()
     {
         if (Instance != null && Instance != this) // by Gemini

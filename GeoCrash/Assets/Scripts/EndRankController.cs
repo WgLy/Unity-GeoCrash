@@ -16,6 +16,9 @@ public class EndRankController : MonoBehaviour
         myText.text = "N";
         dataSenderController = FindObjectOfType<DataSenderController>();
         totalscore = dataSenderController.finalScore;
+        if(dataSenderController.finalScore > dataSenderController.songHighScoreList[dataSenderController.songIndex]){
+            dataSenderController.songHighScoreList[dataSenderController.songIndex] = dataSenderController.finalScore;
+        }
     }
 
     // Update is called once per frame
