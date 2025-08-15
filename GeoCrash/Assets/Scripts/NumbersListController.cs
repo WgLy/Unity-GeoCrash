@@ -19,7 +19,8 @@ public class NumbersListController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        showNumber = dataSenderController.songHighScoreList[mapGeneratorController.currentSongIndex];
+        if(mapGeneratorController != null) showNumber = dataSenderController.songHighScoreList[mapGeneratorController.currentSongIndex];
+        else showNumber = dataSenderController.finalScore;
         tmp = showNumber;
         for(int i=7;i>=0;i--){
             numbersList[i].numberIndex = tmp%10;
