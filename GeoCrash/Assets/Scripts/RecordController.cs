@@ -23,7 +23,7 @@ public class RecordController : MonoBehaviour
             recordCode = GUIUtility.systemCopyBuffer;
             Debug.Log(recordCode);
             tmp = recordCode.Substring(0, 9);
-            if(tmp == "GeoCrash:" && recordCode.Length == 39){
+            if(tmp == "GeoCrash:" && recordCode.Length == 40){
                 recordCode = recordCode.Substring(9);
                 for(int i=0;i<6;i++){
                     if(recordCode[i]==EnCode('1')){
@@ -39,6 +39,8 @@ public class RecordController : MonoBehaviour
                     }
                     dataSenderController.songHighScoreList[i] = int.Parse(tmp);
                 }
+                if(DeCode(recordCode[30])==1) dataSenderController.isChallenge = true;
+                else dataSenderController.isChallenge = false;
             }
         }
         if(Input.GetKeyDown(KeyCode.T)){
@@ -58,6 +60,11 @@ public class RecordController : MonoBehaviour
                     recordCode += EnCode(dataSenderController.songHighScoreList[i].ToString()[j]);
                 }
                 
+            }
+            if(dataSenderController.isChallenge == true){
+                recordCode += EnCode('1');
+            }else{
+                recordCode += EnCode('0');
             }
             GUIUtility.systemCopyBuffer = recordCode;
         }

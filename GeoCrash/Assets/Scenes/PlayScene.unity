@@ -2247,6 +2247,8 @@ MonoBehaviour:
   stopUIController_quiter: {fileID: 1575063943}
   stopUIController_banner: {fileID: 1456977530}
   activeEscape: 0
+  isChallenge: 0
+  directionPrefeb: {fileID: 2078973908420638628, guid: cb0c367f8760e684382e8f57fce9a4ec, type: 3}
 --- !u!50 &1571931290
 Rigidbody2D:
   serializedVersion: 4

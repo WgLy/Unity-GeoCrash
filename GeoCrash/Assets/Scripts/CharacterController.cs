@@ -75,6 +75,10 @@ public class CharacterController : MonoBehaviour
     public StopUIController stopUIController_banner;
     public bool activeEscape;
 
+    // 挑戰
+    public bool isChallenge;
+    public GameObject directionPrefeb;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -116,6 +120,10 @@ public class CharacterController : MonoBehaviour
         
         // 暫停UI
         activeEscape = false;
+
+        // 挑戰
+        isChallenge = dataSenderController.isChallenge;
+        
     }
 
     // Update is called once per frame
@@ -142,9 +150,13 @@ public class CharacterController : MonoBehaviour
         if(autoPlay){ // 自動演奏
             if(gameTime>=notes.Peek().t){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
-                notes.Dequeue();
-                score += 1;
+                score += (isChallenge)? 1.5f:1;
                 audioController.PlayTapSound();
+                if(isChallenge){
+                    GameObject newDirectionPrefeb = Instantiate(directionPrefeb, transform.position, Quaternion.Euler(0f, 0f, 0f));
+                    newDirectionPrefeb.GetComponent<DirectionPrefebController>().type = notes.Peek().type;
+                }
+                notes.Dequeue();
             }
         }
 
@@ -171,7 +183,7 @@ public class CharacterController : MonoBehaviour
             effects.Dequeue();
         }
 */
-        if(Input.anyKeyDown && !autoPlay){   // 打擊判定
+        if(Input.anyKeyDown && !autoPlay && !isChallenge){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
                 notes.Dequeue();
@@ -187,6 +199,56 @@ public class CharacterController : MonoBehaviour
                 audioController.PlayTapSound();
             }
         }
+
+        if(Input.anyKeyDown && !autoPlay && isChallenge){   // 挑戰模式 打擊判定
+            if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
+                if( 
+                    (notes.Peek().type==1 && Input.GetKeyDown(KeyCode.S)) || 
+                    (notes.Peek().type==2 && Input.GetKeyDown(KeyCode.W)) || 
+                    (notes.Peek().type==3 && Input.GetKeyDown(KeyCode.D)) || 
+                    (notes.Peek().type==4 && Input.GetKeyDown(KeyCode.A)) || 
+                    notes.Peek().type==5 || 
+                    (notes.Peek().type==9 && Input.GetKeyDown(KeyCode.S)) || 
+                    (notes.Peek().type==10 && Input.GetKeyDown(KeyCode.W)) || 
+                    (notes.Peek().type==11 && Input.GetKeyDown(KeyCode.E)) || 
+                    (notes.Peek().type==12 && Input.GetKeyDown(KeyCode.A)) || 
+                    (notes.Peek().type==13 && Input.GetKeyDown(KeyCode.D)) || 
+                    (notes.Peek().type==14 && Input.GetKeyDown(KeyCode.Q))
+                ){
+                    GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
+                    score += 1.5f;
+                    perfect_num++;
+                    audioController.PlayTapSound();
+                    GameObject newDirectionPrefeb = Instantiate(directionPrefeb, transform.position, Quaternion.Euler(0f, 0f, 0f));
+                    newDirectionPrefeb.GetComponent<DirectionPrefebController>().type = notes.Peek().type;
+                    notes.Dequeue();
+                }
+            }
+            else if( Math.Abs(notes.Peek().t - gameTime) <= goodLimit){
+                if( 
+                    (notes.Peek().type==1 && Input.GetKeyDown(KeyCode.S)) || 
+                    (notes.Peek().type==2 && Input.GetKeyDown(KeyCode.W)) || 
+                    (notes.Peek().type==3 && Input.GetKeyDown(KeyCode.D)) || 
+                    (notes.Peek().type==4 && Input.GetKeyDown(KeyCode.A)) || 
+                    notes.Peek().type==5 || 
+                    (notes.Peek().type==9 && Input.GetKeyDown(KeyCode.S)) || 
+                    (notes.Peek().type==10 && Input.GetKeyDown(KeyCode.W)) || 
+                    (notes.Peek().type==11 && Input.GetKeyDown(KeyCode.E)) || 
+                    (notes.Peek().type==12 && Input.GetKeyDown(KeyCode.A)) || 
+                    (notes.Peek().type==13 && Input.GetKeyDown(KeyCode.D)) || 
+                    (notes.Peek().type==14 && Input.GetKeyDown(KeyCode.Q))
+                ){
+                    GameObject newEffector = Instantiate(goodEffectorPrefeb, transform.position, Quaternion.identity);
+                    score += 0.75f;
+                    good_num++;
+                    audioController.PlayTapSound();
+                    GameObject newDirectionPrefeb = Instantiate(directionPrefeb, transform.position, Quaternion.Euler(0f, 0f, 0f));
+                    newDirectionPrefeb.GetComponent<DirectionPrefebController>().type = notes.Peek().type;
+                    notes.Dequeue();
+                }
+            }
+        }
+
         if(gameTime > notes.Peek().t + goodLimit){
             GameObject newEffector = Instantiate(missEffectorPrefeb, transform.position, Quaternion.identity);
             miss_num++;
@@ -215,7 +277,7 @@ public class CharacterController : MonoBehaviour
         if(gameTime >= holds.Peek().t_end){
             currentHoldEffector.GetComponent<HoldEffectorController>().blowing = true;
             currentHoldEffector = null;
-            if(canCatchHold == true) score += 1;
+            if(canCatchHold == true) score += (isChallenge)? 1.5f:1;
             holds.Dequeue();
         }
 
