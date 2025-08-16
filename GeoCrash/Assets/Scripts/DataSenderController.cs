@@ -37,6 +37,9 @@ public class DataSenderController : MonoBehaviour
     // 最高紀錄
     public List<int> songHighScoreList = new List<int>();
 
+    // 挑戰
+    public bool isChallenge;
+
     void Awake()
     {
         if (Instance != null && Instance != this) // by Gemini

@@ -30,7 +30,7 @@ public class DifficultyChooserController : MonoBehaviour
                 spriteRenderer.color.r,
                 spriteRenderer.color.g,
                 spriteRenderer.color.b,
-                0.5f
+                0.3f
             );
         }
 
