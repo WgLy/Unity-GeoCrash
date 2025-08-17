@@ -183,6 +183,15 @@ public class CharacterController : MonoBehaviour
             effects.Dequeue();
         }
 */
+        if(Input.anyKeyDown && !autoPlay){  // 打擊顏色
+            spriteRenderer.color = new Color(0.8f, 0.8f, 0.8f, 1);
+        }
+        if(spriteRenderer.color.r<0.99f){
+            spriteRenderer.color += new Color(Time.fixedDeltaTime, Time.fixedDeltaTime, Time.fixedDeltaTime, 0);
+        }else{
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+        }
+
         if(Input.anyKeyDown && !autoPlay && !isChallenge){   // 打擊判定
             if( Math.Abs(notes.Peek().t - gameTime) <= perfectLimit ){
                 GameObject newEffector = Instantiate(perfectEffectorPrefeb, transform.position, Quaternion.identity);
@@ -280,7 +289,7 @@ public class CharacterController : MonoBehaviour
             if(canCatchHold == true) score += (isChallenge)? 1.5f:1;
             holds.Dequeue();
         }
-
+        /*
         if(Input.GetKeyDown(KeyCode.Keypad1)){
             ChangeShape(1);
         }
@@ -290,7 +299,7 @@ public class CharacterController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad3)){
             ChangeShape(3);
         }
-
+        */
         if(notes.Peek().type == 0 && holds.Peek().type == 0 && effects.Peek().type == 0){ // 遊玩結束
             Debug.Log("end");
             fadingController.Fade(false, "EndScene");
